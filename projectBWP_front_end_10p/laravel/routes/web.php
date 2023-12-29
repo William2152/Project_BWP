@@ -22,6 +22,18 @@ Route::get('/itemPage', function () {
     return view('itemPage');
 });
 
+Route::prefix('/profile')->group(function () {
+    Route::get('/detail', function () {
+        return view('profileDetail');
+    });
+    Route::get('/ubahpw', function () {
+        return view('profilePassword');
+    });
+});
+Route::get('/tokosaya', function () {
+    return view('gakpunyatoko');
+});
+
 Route::prefix('/')->group(function () {
     Route::get('/loginPage', [LoginRegisControler::class, "LoginPage"]);
     Route::get('/registerPage', [LoginRegisControler::class, "RegisterPage"]);
