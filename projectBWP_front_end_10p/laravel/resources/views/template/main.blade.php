@@ -32,6 +32,8 @@
     @yield('rekomendasi')
     @yield('product')
     @yield('toko')
+    @yield('spec')
+    @yield('detail')
     @yield('keterangan')
     <footer>
         <div class="footer" style="background-color: black; height: 20vw;">
