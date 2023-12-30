@@ -65,3 +65,7 @@ Route::get('/pesanansaya', function(){
 Route::get('/vouchersaya', function(){
     return view('user.voucherSaya');
 });
+
+Route::get('/saldosaya', function(){
+    return view('user.saldoSaya');
+});

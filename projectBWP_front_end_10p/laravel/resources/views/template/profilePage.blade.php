@@ -25,7 +25,8 @@
                             style="text-decoration: none; color: black">Pesanan Saya</a></p>
                     <p class="fw-bold" style="margin-top: 1vw;"><a href="{{url('/vouchersaya')}}"
                             style="text-decoration: none; color: black">Voucher Saya</a></p>
-                    <p class="fw-bold" style="margin-top: 1vw;">Saldo Saya</p>
+                    <p class="fw-bold" style="margin-top: 1vw;"><a href="{{url('/saldosaya')}}"
+                            style="text-decoration: none; color: black">Saldo Saya</a></p>
                 </div>
                 @yield('konten')
             </div>
