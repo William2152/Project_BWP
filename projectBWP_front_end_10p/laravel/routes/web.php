@@ -61,3 +61,7 @@ Route::get('/edittoko', function(){
 Route::get('/pesanansaya', function(){
     return view('user.pesananSaya');
 });
+
+Route::get('/vouchersaya', function(){
+    return view('user.voucherSaya');
+});
