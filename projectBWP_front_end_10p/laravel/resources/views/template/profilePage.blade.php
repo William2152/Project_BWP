@@ -21,7 +21,8 @@
                     <p class="fw-bold" style="margin-top: 1vw;"><a href="{{ url('/punyatoko') }}"
                             style="text-decoration: none; color: black">Toko Saya</a></p>
                     <p class="fw-bold" style="margin-top: 1vw;">Keranjang Saya</p>
-                    <p class="fw-bold" style="margin-top: 1vw;">Pesanan Saya</p>
+                    <p class="fw-bold" style="margin-top: 1vw;"><a href="{{url('/pesanansaya')}}"
+                            style="text-decoration: none; color: black">Pesanan Saya</a></p>
                     <p class="fw-bold" style="margin-top: 1vw;">Voucher Saya</p>
                     <p class="fw-bold" style="margin-top: 1vw;">Saldo Saya</p>
                 </div>

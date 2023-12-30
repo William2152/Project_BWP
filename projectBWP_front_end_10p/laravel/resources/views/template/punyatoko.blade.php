@@ -35,7 +35,11 @@
                     </h5>
                 </div>
                 <div class="col-4" style="margin-top: 1vw; margin-bottom: 1vw;">
-                    <h5>Edit Toko</h5>
+                    <h5>
+                        <a href="{{url('/edittoko')}}" style="text-decoration: none; color: black">
+                            Edit Toko
+                        </a>
+                    </h5>
                 </div>
             </div>
         </div>

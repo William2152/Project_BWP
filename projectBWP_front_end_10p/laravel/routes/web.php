@@ -53,3 +53,11 @@ Route::prefix('/')->group(function () {
     Route::post('/register', [LoginRegisControler::class, "Register"]);
     Route::get('/logout', [LoginRegisControler::class, "Logout"]);
 });
+
+Route::get('/edittoko', function(){
+    return view('toko.editToko');
+});
+
+Route::get('/pesanansaya', function(){
+    return view('user.pesananSaya');
+});
