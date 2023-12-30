@@ -16,10 +16,11 @@
                     <p style="margin-top: 0.5vw;"><a href="{{ url('/profile/detail') }}"
                             style="text-decoration: none; color: black">Profile</a>
                     </p>
-                    <p style="margin-top: 0.5vw;">Alamat</p>
                     <p style="margin-top: 0.5vw;"><a href="{{ url('/profile/ubahpw') }}"
                             style="text-decoration: none; color: black">Ubah Password</a></p>
-                    <p class="fw-bold" style="margin-top: 1vw;">Toko Saya</p>
+                    <p class="fw-bold" style="margin-top: 1vw;"><a href="{{ url('/punyatoko') }}"
+                            style="text-decoration: none; color: black">Toko Saya</a></p>
+                    <p class="fw-bold" style="margin-top: 1vw;">Keranjang Saya</p>
                     <p class="fw-bold" style="margin-top: 1vw;">Pesanan Saya</p>
                     <p class="fw-bold" style="margin-top: 1vw;">Voucher Saya</p>
                     <p class="fw-bold" style="margin-top: 1vw;">Saldo Saya</p>

@@ -11,12 +11,12 @@ class LoginRegisControler extends Controller
 {
     public function LoginPage(Request $req)
     {
-        return view('loginPage');
+        return view('menu.loginPage');
     }
 
     public function RegisterPage(Request $req)
     {
-        return view('registerPage');
+        return view('menu.registerPage');
     }
 
     public function Logout(Request $req)
@@ -37,11 +37,11 @@ class LoginRegisControler extends Controller
         if (Auth::guard("web")->attempt($credential)) {
             $user = Auth::guard("web")->user();
             if ($user->user_role == "Admin") {
-                return view('adminPage', ["curr" => $user]);
+                return view('user.adminPage', ["curr" => $user]);
             } else if ($user->user_role == "Customer") {
-                return view('homePage', ["curr" => $user]);
+                return view('menu.homePage', ["curr" => $user]);
             } else if ($user->user_role == "StoreOwner") {
-                return view('homePage', ["curr" => $user]);
+                return view('menu.homePage', ["curr" => $user]);
             }
         } else {
             return redirect('/loginPage')->with('err', 'gagal login!');

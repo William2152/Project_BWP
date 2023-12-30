@@ -14,7 +14,7 @@
 <body>
     <nav class="navbar sticky-top" style="background-color: black">
         <div class="">
-            <a class="navbar-brand" href="#" style="color: aliceblue;">
+            <a class="navbar-brand" href="{{ url('/') }}" style="color: aliceblue;">
                 <img src="{{ asset('assets/ka_store.png') }}" alt="Logo" width="60" height="auto"
                     class="d-inline-block align-text-center">
                 KA STORE
@@ -27,6 +27,7 @@
     @yield('category')
     @yield('login')
     @yield('register')
+    @yield('header')
     @yield('content')
     @yield('rekomendasi')
     @yield('product')

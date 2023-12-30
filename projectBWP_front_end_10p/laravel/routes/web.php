@@ -15,23 +15,35 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('homePage');
+    return view('menu.homePage');
 });
 
 Route::get('/itemPage', function () {
-    return view('itemPage');
+    return view('menu.itemPage');
 });
 
 Route::prefix('/profile')->group(function () {
     Route::get('/detail', function () {
-        return view('profileDetail');
+        return view('user.profileDetail');
     });
     Route::get('/ubahpw', function () {
-        return view('profilePassword');
+        return view('user.profilePassword');
     });
 });
 Route::get('/tokosaya', function () {
-    return view('gakpunyatoko');
+    return view('toko.gakpunyatoko');
+});
+
+Route::get('/punyatoko', function () {
+    return view('toko.tokoProductSaya');
+});
+
+Route::get('/formtoko', function () {
+    return view('toko.tambahToko');
+});
+
+Route::get('/tambahproduk', function () {
+    return view('menu.tambahProduct');
 });
 
 Route::prefix('/')->group(function () {

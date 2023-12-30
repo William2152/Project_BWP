@@ -1,4 +1,4 @@
-@extends('profilePage')
+@extends('template.profilePage')
 @section('konten')
     <div class="col-10" style="background-color: whitesmoke; height: 25vw; margin-bottom: 2vw;">
         <div class="container">
