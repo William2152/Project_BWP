@@ -16,8 +16,7 @@
 
                     <form action="{{ url('/login') }}" method="post">
                         @csrf
-                        <label style="margin-top: 2vw; margin-left: 4vw" for="" class="text-dark">Username /
-                            Email</label>
+                        <label style="margin-top: 2vw; margin-left: 4vw" for="" class="text-dark">Username</label>
                         <br>
                         <input style="margin-left: 4vw; width: 42vw;" type="text" name="username"
                             class="form-control mt-2" id="">
@@ -32,10 +31,14 @@
                         <p style="margin-left: 4vw" class="text-dark">dont have account ? <a
                                 href="/registerPage">Register</a></p>
                     </form>
-                    @if (Session::has('success'))
-                        <div class="alert alert-success rounded-bottom">{{ Session::get('success') }}</div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">{{ $errors->first() }}</div>
+                        {{-- @foreach ($errors->all() as $pesanError)
+                    @endforeach --}}
+                    @elseif (Session::has('success'))
+                        <div class="alert alert-success">{{ Session::get('success') }}</div>
                     @elseif (Session::has('err'))
-                        <div class="alert alert-danger rounded-bottom">{{ Session::get('err') }}</div>
+                        <div class="alert alert-danger">{{ Session::get('err') }}</div>
                     @endif
                 </div>
             </div>

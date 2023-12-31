@@ -40,6 +40,8 @@ CREATE TABLE `order_product` (
   `product_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `order_product_quantity` int(11) NOT NULL,
+  `order_product_review` text null DEFAULT NULL,
+  `order_product_rating` int(11) null DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -59,7 +61,9 @@ DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `total_amount` int(11) NOT NULL,
+  `order_total_amount` int(11) NOT NULL,
+  `order_status` int(2) not null,
+  `order_destination` text not null,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -70,6 +74,7 @@ CREATE TABLE `orders` (
 
 /*Data for the table `orders` */
 
+
 /*Table structure for table `product` */
 
 DROP TABLE IF EXISTS `product`;
@@ -77,9 +82,12 @@ DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
   `product_id` int(11) NOT NULL AUTO_INCREMENT,
   `product_name` varchar(50) NOT NULL,
+  `product_img` text NOT NULL,
   `product_detail` text DEFAULT NULL,
   `product_price` int(11) NOT NULL,
   `product_stock` int(11) NOT NULL DEFAULT 0,
+  `product_avg_rating` decimal null DEFAULT NULL,
+  `product_jumlah_avg_data` int null DEFAULT NULL,
   `category_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -101,8 +109,14 @@ DROP TABLE IF EXISTS `store`;
 CREATE TABLE `store` (
   `store_id` int(11) NOT NULL AUTO_INCREMENT,
   `store_name` varchar(50) NOT NULL,
+  `store_email` varchar(50) NOT NULL,
+  `store_img` text NOT NULL,
+  `store_address` text not null,
   `user_id` int(11) NOT NULL,
   `store_revenue` int(11) NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`store_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `store_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
@@ -122,16 +136,23 @@ CREATE TABLE `users` (
   `user_nama` varchar(50) NOT NULL,
   `user_money` int(11) NOT NULL DEFAULT 0,
   `user_role` varchar(50) NOT NULL DEFAULT 'Customer',
+  `user_img` text NULL,
+  `user_gender` varchar(5) NOT NULL,
+  `user_phone` varchar(50) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+
+
+
+
 /*Data for the table `users` */
 
-insert  into `users`(`user_id`,`user_email`,`user_password`,`user_name`,`user_nama`,`user_money`,`user_role`,`created_at`,`updated_at`,`deleted_at`) values 
-(1,'admin@gmail.com','$2y$12$PTi99ULbUknumwIAiKb47.GblGx9YQrqMVM0GkZ.r1flE9fctrBAi','admin','Admin',0,'Admin','2023-12-28 14:20:29','2023-12-28 14:20:29',NULL);
+insert  into `users`(`user_id`,`user_email`,`user_password`,`user_name`,`user_nama`,`user_money`,`user_role`,`user_img`,`user_gender`,`user_phone`,`created_at`,`updated_at`,`deleted_at`) values 
+(1,'admin@gmail.com','$2y$12$PTi99ULbUknumwIAiKb47.GblGx9YQrqMVM0GkZ.r1flE9fctrBAi','admin','Admin',0,'Admin',NULL,'P','0223421244','2023-12-28 14:20:29','2023-12-28 14:20:29',NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
