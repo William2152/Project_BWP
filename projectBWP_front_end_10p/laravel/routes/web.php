@@ -46,26 +46,29 @@ Route::get('/tambahproduk', function () {
     return view('menu.tambahProduct');
 });
 
+
+
 Route::prefix('/')->group(function () {
     Route::get('/loginPage', [LoginRegisControler::class, "LoginPage"]);
     Route::get('/registerPage', [LoginRegisControler::class, "RegisterPage"]);
     Route::post('/login', [LoginRegisControler::class, "Login"]);
     Route::post('/register', [LoginRegisControler::class, "Register"]);
     Route::get('/logout', [LoginRegisControler::class, "Logout"]);
+    Route::get('/homePage', [LoginRegisControler::class, "homePageUser"]);
 });
 
-Route::get('/edittoko', function(){
+Route::get('/edittoko', function () {
     return view('toko.editToko');
 });
 
-Route::get('/pesanansaya', function(){
+Route::get('/pesanansaya', function () {
     return view('user.pesananSaya');
 });
 
-Route::get('/vouchersaya', function(){
+Route::get('/vouchersaya', function () {
     return view('user.voucherSaya');
 });
 
-Route::get('/saldosaya', function(){
+Route::get('/saldosaya', function () {
     return view('user.saldoSaya');
 });

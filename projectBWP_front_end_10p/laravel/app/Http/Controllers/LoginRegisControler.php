@@ -50,9 +50,7 @@ class LoginRegisControler extends Controller
             if ($user->user_role == "Admin") {
                 return view('user.adminPage', ["curr" => $user]);
             } else if ($user->user_role == "Customer") {
-                return view('menu.homePage', ["curr" => $user]);
-            } else if ($user->user_role == "StoreOwner") {
-                return view('menu.homePage', ["curr" => $user]);
+                return redirect('/homePage');
             }
         } else {
             return redirect('/loginPage')->with('err', 'gagal login!');
@@ -105,5 +103,11 @@ class LoginRegisControler extends Controller
         } else {
             return back()->with('error', 'gagal register!');
         }
+    }
+
+    public function homePageUser(Request $req)
+    {
+        $user = Auth::guard("web")->user();
+        return view('User.homePageUser', ["curr" => $user]);
     }
 }
