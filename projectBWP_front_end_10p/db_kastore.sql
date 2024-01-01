@@ -112,6 +112,7 @@ CREATE TABLE `store` (
   `store_email` varchar(50) NOT NULL,
   `store_img` text NOT NULL,
   `store_address` text not null,
+  `store_status` int(2) not null,
   `user_id` int(11) NOT NULL,
   `store_revenue` int(11) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),

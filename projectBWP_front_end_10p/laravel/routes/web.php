@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginRegisControler;
+use App\Http\Controllers\ProfileUser;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,12 +24,13 @@ Route::get('/itemPage', function () {
 });
 
 Route::prefix('/profile')->group(function () {
-    Route::get('/detail', function () {
-        return view('user.profileDetail');
-    });
-    Route::get('/ubahpw', function () {
-        return view('user.profilePassword');
-    });
+    Route::get('/detail', [ProfileUser::class, 'Profile']);
+    Route::get('/ubahpw', [ProfileUser::class, 'ProfilePass']);
+    Route::get('/pesanansaya', [ProfileUser::class, 'Pesanan']);
+    Route::get('/vouchersaya', [ProfileUser::class, 'Voucher']);
+    Route::get('/saldosaya', [ProfileUser::class, 'Saldo']);
+    Route::post('/ubahProfile', [ProfileUser::class, 'ubahProfile']);
+    Route::post('/ubahPass', [ProfileUser::class, 'ubahProfilePass']);
 });
 Route::get('/tokosaya', function () {
     return view('toko.gakpunyatoko');
@@ -59,16 +61,4 @@ Route::prefix('/')->group(function () {
 
 Route::get('/edittoko', function () {
     return view('toko.editToko');
-});
-
-Route::get('/pesanansaya', function () {
-    return view('user.pesananSaya');
-});
-
-Route::get('/vouchersaya', function () {
-    return view('user.voucherSaya');
-});
-
-Route::get('/saldosaya', function () {
-    return view('user.saldoSaya');
 });
