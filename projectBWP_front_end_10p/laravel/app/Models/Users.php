@@ -41,4 +41,9 @@ class Users extends Authenticatable
     {
         return $this->user_password;
     }
+
+    public function Toko()
+    {
+        return $this->hasOne(Store::class, 'user_id', 'user_id');
+    }
 }

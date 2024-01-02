@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Store;
 use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,6 +50,22 @@ class ProfileUser extends Controller
         ]);
     }
 
+    public function BuatToko(Request $req)
+    {
+        $user = Auth::guard("web")->user();
+        return view("Toko.tambahToko", [
+            "curr" => $user,
+        ]);
+    }
+
+    public function edittoko(Request $req)
+    {
+        $user = Auth::guard("web")->user();
+        return view("Toko.editToko", [
+            "curr" => $user,
+        ]);
+    }
+
     public function ubahProfile(Request $req)
     {
         $req->validate(
@@ -82,6 +99,81 @@ class ProfileUser extends Controller
             return back()->with('success', 'berhasil update data!');
         } else {
             return back()->with('err', 'gagal update data!');
+        }
+    }
+
+    public function TambahToko(Request $req)
+    {
+        $req->validate(
+            [
+                "namaToko" => "required",
+                "alamat" => "required",
+                "email" => "required|email",
+            ],
+            [
+                "namaToko.required" => "nama tidak boleh kosong!",
+                "alamat.required" => "alamat tidak boleh kosong!",
+                "email.required" => "email tidak boleh kosong!",
+                "email.email" => "email harus berbentuk email!",
+            ]
+        );
+        $result = Store::create([
+            "store_name" => $req->namaToko,
+            "store_email" => $req->email,
+            "store_address" => $req->alamat,
+            "store_img" => null,
+            "user_id" => Auth::guard("web")->user()->user_id,
+            "store_revenue" => 0,
+            "store_status" => 0
+        ]);
+        if ($result) {
+            return back()->with('success', 'berhasil Tambah Toko!');
+        } else {
+            return back()->with('err', 'gagal Tambah Toko!');
+        }
+    }
+
+    public function UpdateToko(Request $req)
+    {
+        $req->validate(
+            [
+                "namaToko" => "required",
+                // "alamat" => "required",
+                // "email" => "required|email",
+            ],
+            [
+                "namaToko.required" => "nama tidak boleh kosong!",
+                // "alamat.required" => "alamat tidak boleh kosong!",
+                // "email.required" => "email tidak boleh kosong!",
+                // "email.email" => "email harus berbentuk email!",
+            ]
+        );
+        $tokoID = Auth::guard("web")->user()->Toko->store_id;
+        $updateToko = Store::find($tokoID);
+        $result = $updateToko->update([
+            "store_name" => $req->namaToko,
+            "store_email" => $req->email,
+            "store_address" => $req->alamat,
+            "store_img" => $req->urlLogoToko,
+        ]);
+
+        if ($result) {
+            return back()->with('success', 'berhasil update Toko!');
+        } else {
+            return back()->with('err', 'gagal update Toko!');
+        }
+    }
+
+    public function DeleteToko(Request $req)
+    {
+        $tokoID = Auth::guard("web")->user()->Toko->store_id;
+        $deleteToko = Store::find($tokoID);
+        $result = $deleteToko->delete();
+
+        if ($result) {
+            return back()->with('success', 'berhasil Delete Toko!');
+        } else {
+            return back()->with('err', 'gagal Delete Toko!');
         }
     }
 

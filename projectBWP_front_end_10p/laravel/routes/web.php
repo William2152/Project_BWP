@@ -28,9 +28,13 @@ Route::prefix('/profile')->group(function () {
     Route::get('/ubahpw', [ProfileUser::class, 'ProfilePass']);
     Route::get('/pesanansaya', [ProfileUser::class, 'Pesanan']);
     Route::get('/vouchersaya', [ProfileUser::class, 'Voucher']);
+    Route::get('/formtoko', [ProfileUser::class, 'BuatToko']);
+    Route::get('/updatetoko', [ProfileUser::class, 'editToko']);
     Route::get('/saldosaya', [ProfileUser::class, 'Saldo']);
     Route::post('/ubahProfile', [ProfileUser::class, 'ubahProfile']);
     Route::post('/ubahPass', [ProfileUser::class, 'ubahProfilePass']);
+    Route::post('/tambahtoko', [ProfileUser::class, 'TambahToko']);
+    Route::post('/ubahtoko', [ProfileUser::class, 'UpdateToko']);
 });
 Route::get('/tokosaya', function () {
     return view('toko.gakpunyatoko');
@@ -38,10 +42,6 @@ Route::get('/tokosaya', function () {
 
 Route::get('/punyatoko', function () {
     return view('toko.tokoProductSaya');
-});
-
-Route::get('/formtoko', function () {
-    return view('toko.tambahToko');
 });
 
 Route::get('/tambahproduk', function () {
