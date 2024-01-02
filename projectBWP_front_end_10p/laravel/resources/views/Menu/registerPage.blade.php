@@ -41,7 +41,7 @@
                         <label style="margin-left: 4vw" for="" class="text-dark">Phone Number</label>
                         <input style="margin-left: 4vw; width: 42vw;" type="text" name="user_phone"
                             class="form-control my-2" id="" value="{{ old('user_phone', '') }}"
-                            placeholder="isi dengan nomor telepon...">
+                            placeholder="000-000-0000">
 
                         <label style="margin-left: 4vw" class="text-dark" for="">Gender</label>
                         <select style="margin-left: 4vw; width: 42vw;" name="user_gender" class="form-select my-2"
