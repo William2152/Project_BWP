@@ -12,6 +12,9 @@
                 <label style="width: 9vw; margin-top: 2vw;" for="">Email Toko</label>
                 <input type="text" style="width: 20vw;" name="email" id="">
                 <br>
+                <label style="width: 9vw; margin-top: 2vw;" for="">Alamat Toko</label>
+                <input type="text" style="width: 20vw;" name="text" id="">
+                <br>
                 <input style="margin-top: 2vw; margin-left: vw;" type="submit" value="Simpan" name="simpan">
             </form>
         </div>
