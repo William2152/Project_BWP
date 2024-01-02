@@ -12,7 +12,7 @@ MySQL - 10.4.27-MariaDB : Database - db_kastore
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`db_kastore` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
+CREATE or REPLACE DATABASE `db_kastore` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 
 USE `db_kastore`;
 
@@ -40,8 +40,8 @@ CREATE TABLE `order_product` (
   `product_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `order_product_quantity` int(11) NOT NULL,
-  `order_product_review` text null DEFAULT NULL,
-  `order_product_rating` int(11) null DEFAULT NULL,
+  `order_product_review` text DEFAULT NULL,
+  `order_product_rating` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -62,8 +62,8 @@ CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `order_total_amount` int(11) NOT NULL,
-  `order_status` int(2) not null,
-  `order_destination` text not null,
+  `order_status` int(2) NOT NULL,
+  `order_destination` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -73,7 +73,6 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `orders` */
-
 
 /*Table structure for table `product` */
 
@@ -86,8 +85,8 @@ CREATE TABLE `product` (
   `product_detail` text DEFAULT NULL,
   `product_price` int(11) NOT NULL,
   `product_stock` int(11) NOT NULL DEFAULT 0,
-  `product_avg_rating` decimal null DEFAULT NULL,
-  `product_jumlah_avg_data` int null DEFAULT NULL,
+  `product_avg_rating` decimal(10,0) DEFAULT NULL,
+  `product_jumlah_avg_data` int(11) DEFAULT NULL,
   `category_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -110,11 +109,11 @@ CREATE TABLE `store` (
   `store_id` int(11) NOT NULL AUTO_INCREMENT,
   `store_name` varchar(50) NOT NULL,
   `store_email` varchar(50) NOT NULL,
-  `store_img` text NOT NULL,
-  `store_address` text not null,
+  `store_img` text NULL DEFAULT NULL,
+  `store_address` text NOT NULL,
   `user_id` int(11) NOT NULL,
   `store_revenue` int(11) NOT NULL DEFAULT 0,
-  `store_status` int(2) not null default 0,
+  `store_status` int(2) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -137,122 +136,58 @@ CREATE TABLE `users` (
   `user_nama` varchar(50) NOT NULL,
   `user_money` int(11) NOT NULL DEFAULT 0,
   `user_role` varchar(50) NOT NULL DEFAULT 'Customer',
-  `user_img` text NULL,
+  `user_img` text DEFAULT NULL,
   `user_gender` varchar(5) NOT NULL,
   `user_phone` varchar(50) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
-
-
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `users` */
 
 insert  into `users`(`user_id`,`user_email`,`user_password`,`user_name`,`user_nama`,`user_money`,`user_role`,`user_img`,`user_gender`,`user_phone`,`created_at`,`updated_at`,`deleted_at`) values 
-(1,'admin@gmail.com','$2y$12$PTi99ULbUknumwIAiKb47.GblGx9YQrqMVM0GkZ.r1flE9fctrBAi','admin','Admin',0,'Admin',NULL,'P','0223421244','2023-12-28 14:20:29','2023-12-28 14:20:29',NULL);
-
-INSERT INTO `store` (`store_name`, `store_email`, `store_img`, `store_address`, `user_id`, `store_revenue`, `created_at`, `updated_at`, `deleted_at`)
-VALUES
-  ('Chic Trends', 'chictrends@example.com', 'chic_trends_image.jpg', '123 Fashion Street, Styleville', 1, 3500, '2022-02-01 09:00:00', NULL, NULL),
-  ('Gastronomic Delights', 'gastronomicdelights@example.com', 'gastronomic_delights_image.jpg', '456 Culinary Court, Foodland', 2, 5000, '2022-02-02 11:30:00', NULL, NULL),
-  ('Innovative Electronics', 'innovativeelectronics@example.com', 'innovative_electronics_image.jpg', '789 Tech Terrace, Technoville', 3, 2000, '2022-02-03 14:45:00', NULL, NULL),
-  ('Cozy Book Nook', 'cozybooknook@example.com', 'cozy_book_nook_image.jpg', '567 Literary Lane, Booksville', 4, 8000, '2022-02-04 16:20:00', NULL, NULL),
-  ('Sports Haven', 'sportshaven@example.com', 'sports_haven_image.jpg', '234 Active Avenue, Fitness City', 5, 4500, '2022-02-05 10:10:00', NULL, NULL),
-  ('Home Decor Hub', 'decorhub@example.com', 'decor_hub_image.jpg', '789 Homestead Street, Decor Town', 6, 6000, '2022-02-06 12:40:00', NULL, NULL),
-  ('Pet Paradise', 'petparadise@example.com', 'pet_paradise_image.jpg', '123 Pet Haven, Animal City', 7, 2500, '2022-02-07 14:30:00', NULL, NULL),
-  ('Tech Galaxy', 'techgalaxy@example.com', 'tech_galaxy_image.jpg', '456 Innovation Lane, Technocity', 8, 3000, '2022-02-08 18:15:00', NULL, NULL),
-  ('Outdoor Adventure Gear', 'outdooradventure@example.com', 'outdoor_adventure_image.jpg', '567 Exploration Street, Adventureland', 9, 8000, '2022-02-09 08:45:00', NULL, NULL),
-  ('Vintage Treasures', 'vintagetreasures@example.com', 'vintage_treasures_image.jpg', '890 Retro Road, Nostalgia City', 10, 3500, '2022-02-10 11:20:00', NULL, NULL),
-  ('Luxury Living', 'luxuryliving@example.com', 'luxury_living_image.jpg', '123 Opulence Avenue, Elegance Town', 11, 5000, '2022-02-11 13:40:00', NULL, NULL),
-  ('Healthy Bites', 'healthybites@example.com', 'healthy_bites_image.jpg', '456 Nutritional Street, Wellness City', 12, 2000, '2022-02-12 15:30:00', NULL, NULL),
-  ('Artistic Expressions', 'artisticexpressions@example.com', 'artistic_expressions_image.jpg', '789 Creativity Court, Artland', 13, 8000, '2022-02-13 09:10:00', NULL, NULL),
-  ('Fashion Forward', 'fashionforward@example.com', 'fashion_forward_image.jpg', '567 Trendy Terrace, Style City', 14, 4500, '2022-02-14 12:35:00', NULL, NULL),
-  ('Culinary Crafts', 'culinarycrafts@example.com', 'culinary_crafts_image.jpg', '234 Culinary Court, Foodville', 15, 6000, '2022-02-15 14:20:00', NULL, NULL),
-  ('Digital Dreams', 'digitaldreams@example.com', 'digital_dreams_image.jpg', '789 Tech Terrace, Technoville', 16, 2500, '2022-02-16 16:45:00', NULL, NULL),
-  ('Cozy Corner Bookstore', 'cozycorner@example.com', 'cozy_corner_bookstore_image.jpg', '567 Literary Lane, Booksville', 18, 3000, '2022-02-17 10:30:00', NULL, NULL),
-  ('Spirited Sports', 'spiritedsports@example.com', 'spirited_sports_image.jpg', '123 Active Avenue, Fitness City', 17, 8000, '2022-02-18 12:15:00', NULL, NULL),
-  ('Elegant Homeware', 'eleganthomeware@example.com', 'elegant_homeware_image.jpg', '456 Homestead Street, Decor Town', 19, 3500, '2022-02-19 14:30:00', NULL, NULL),
-  ('Pet Palace', 'petpalace@example.com', 'pet_palace_image.jpg', '789 Pet Haven, Animal City', 20, 5000, '2022-02-20 16:20:00', NULL, NULL),
-  ('Tech Trends', 'techtrends@example.com', 'tech_trends_image.jpg', '234 Innovation Lane, Technocity', 21, 2000, '2022-02-21 11:45:00', NULL, NULL),
-  ('Outdoor Oasis', 'outdooroasis@example.com', 'outdoor_oasis_image.jpg', '567 Exploration Street, Adventureland', 22, 4500, '2022-02-22 14:30:00', NULL, NULL),
-  ('Vintage Values', 'vintagevalues@example.com', 'vintage_values_image.jpg', '890 Retro Road, Nostalgia City', 23, 6000, '2022-02-23 17:00:00', NULL, NULL),
-  ('Luxe Living', 'luxeliving@example.com', 'luxe_living_image.jpg', '123 Opulence Avenue, Elegance Town', 24, 2500, '2022-02-24 09:30:00', NULL, NULL),
-  ('Healthy Hub', 'healthyhub@example.com', 'healthy_hub_image.jpg', '456 Nutritional Street, Wellness City', 26, 3000, '2022-02-25 12:15:00', NULL, NULL),
-  ('Artistic Inspirations', 'artisticinspirations@example.com', 'artistic_inspirations_image.jpg', '789 Creativity Court, Artland', 25, 8000, '2022-02-26 14:45:00', NULL, NULL),
-  ('Chic Couture', 'chiccouture@example.com', 'chic_couture_image.jpg', '567 Trendy Terrace, Style City', 27, 4500, '2022-02-27 17:30:00', NULL, NULL),
-  ('Culinary Creations', 'culinarycreations@example.com', 'culinary_creations_image.jpg', '234 Culinary Court, Foodville', 28, 6000, '2022-02-28 09:45:00', NULL, NULL);
-  -- Generate 30 dummy users with realistic names, updated gender codes, and new passwords
-INSERT INTO `users` (`user_email`, `user_password`, `user_name`, `user_nama`, `user_money`, `user_role`, `user_img`, `user_gender`, `user_phone`, `created_at`, `updated_at`, `deleted_at`)
-VALUES
-  ('john.doe@example.com', '12345678', 'JohnDoe', 'John Doe', 5000, 'storeOwner', null, 'P', '123-456-7890', '2022-03-01 09:00:00', NULL, NULL),
-  ('jane.doe@example.com', '12345678', 'JaneDoe', 'Jane Doe', 7000, 'storeOwner', null, 'W', '987-654-3210', '2022-03-02 11:30:00', NULL, NULL),
-  ('bob.johnson@example.com', '12345678', 'BobJohnson', 'Bob Johnson', 3000, 'storeOwner', null, 'P', '567-890-1234', '2022-03-03 14:45:00', NULL, NULL),
-  ('samantha.white@example.com', '12345678', 'SamanthaWhite', 'Samantha White', 8000, 'storeOwner', null, 'W', '345-678-9012', '2022-03-04 16:20:00', NULL, NULL),
-  ('michael.smith@example.com', '12345678', 'MichaelSmith', 'Michael Smith', 4500, 'storeOwner', null, 'P', '876-543-2109', '2022-03-05 10:10:00', NULL, NULL),
-  ('ella.davis@example.com', '12345678', 'EllaDavis', 'Ella Davis', 6000, 'storeOwner', null, 'W', '234-567-8901', '2022-03-06 12:40:00', NULL, NULL),
-  ('matthew.brown@example.com', '12345678', 'MatthewBrown', 'Matthew Brown', 2500, 'storeOwner', null, 'P', '789-012-3456', '2022-03-07 14:30:00', NULL, NULL),
-  ('olivia.miller@example.com', '12345678', 'OliviaMiller', 'Olivia Miller', 3500, 'storeOwner', null, 'W', '210-987-6543', '2022-03-08 18:15:00', NULL, NULL),
-  ('david.taylor@example.com', '12345678', 'DavidTaylor', 'David Taylor', 7000, 'storeOwner', null, 'P', '432-109-8765', '2022-03-09 08:45:00', NULL, NULL),
-  ('sophia.wilson@example.com', '12345678', 'SophiaWilson', 'Sophia Wilson', 4000, 'storeOwner', null, 'W', '109-876-5432', '2022-03-10 11:20:00', NULL, NULL),
-  ('daniel.martinez@example.com', '12345678', 'DanielMartinez', 'Daniel Martinez', 6500, 'storeOwner', null, 'P', '678-345-0123', '2022-03-11 13:40:00', NULL, NULL),
-  ('ava.jackson@example.com', '12345678', 'AvaJackson', 'Ava Jackson', 3000, 'storeOwner', null, 'W', '345-678-9012', '2022-03-12 15:30:00', NULL, NULL),
-  ('josephine.garcia@example.com', '12345678', 'JosephineGarcia', 'Josephine Garcia', 5500, 'storeOwner', null, 'W', '012-345-6789', '2022-03-13 09:10:00', NULL, NULL),
-  ('lucas.rodriguez@example.com', '12345678', 'LucasRodriguez', 'Lucas Rodriguez', 4500, 'storeOwner', null, 'P', '567-890-1234', '2022-03-14 12:35:00', NULL, NULL),
-  ('isabella.lopez@example.com', '12345678', 'IsabellaLopez', 'Isabella Lopez', 6000, 'storeOwner', null, 'W', '234-567-8901', '2022-03-15 14:20:00', NULL, NULL),
-  ('benjamin.smith@example.com', '12345678', 'BenjaminSmith', 'Benjamin Smith', 3500, 'storeOwner', null, 'P', '789-012-3456', '2022-03-16 16:45:00', NULL, NULL),
-  ('mia.davis@example.com', '12345678', 'MiaDavis', 'Mia Davis', 5000, 'storeOwner', null, 'W', '210-987-6543', '2022-03-17 10:30:00', NULL, NULL),
-  ('elijah.johnson@example.com', '12345678', 'ElijahJohnson', 'Elijah Johnson', 2500, 'storeOwner', null, 'P', '432-109-8765', '2022-03-18 12:15:00', NULL, NULL),
-  ('scarlett.taylor@example.com', '12345678', 'ScarlettTaylor', 'Scarlett Taylor', 4500, 'storeOwner', null, 'W', '109-876-5432', '2022-03-19 14:30:00', NULL, NULL),
-  ('lucas.martinez@example.com', '12345678', 'LucasMartinez', 'Lucas Martinez', 6500, 'storeOwner', null, 'P', '678-345-0123', '2022-03-20 16:20:00', NULL, NULL),
-  ('aria.garcia@example.com', '12345678', 'AriaGarcia', 'Aria Garcia', 3000, 'storeOwner', null, 'W', '345-678-9012', '2022-03-21 11:45:00', NULL, NULL),
-  ('henry.wilson@example.com', '12345678', 'HenryWilson', 'Henry Wilson', 5500, 'storeOwner', null, 'P', '012-345-6789', '2022-03-22 14:30:00', NULL, NULL),
-  ('emma.jackson@example.com', '12345678', 'EmmaJackson', 'Emma Jackson', 4000, 'storeOwner', null, 'W', '567-890-1234', '2022-03-23 17:00:00', NULL, NULL),
-  ('liam.miller@example.com', '12345678', 'LiamMiller', 'Liam Miller', 3000, 'storeOwner', null, 'P', '789-012-3456', '2022-03-24 09:30:00', NULL, NULL),
-  ('olivia.smith@example.com', '12345678', 'OliviaSmith', 'Olivia Smith', 5000, 'storeOwner', null, 'W', '210-987-6543', '2022-03-25 12:15:00', NULL, NULL),
-  ('noah.taylor@example.com', '12345678', 'NoahTaylor', 'Noah Taylor', 3500, 'storeOwner', null, 'P', '432-109-8765', '2022-03-26 14:45:00', NULL, NULL),
-  ('ava.johnson@example.com', '12345678', 'AvaJohnson', 'Ava Johnson', 4500, 'storeOwner', null, 'W', '109-876-5432', '2022-03-27 17:30:00', NULL, NULL),
-  ('liam.davis@example.com', '12345678', 'LiamDavis', 'Liam Davis', 6000, 'Customer', null, 'P', '678-345-0123', '2022-03-28 09:45:00', NULL, NULL),
-  ('emma.martinez@example.com', '12345678', 'EmmaMartinez', 'Emma Martinez', 2500, 'Customer', null, 'W', '012-345-6789', '2022-03-29 12:30:00', NULL, NULL);
-
-  -- Generate additional 30 dummy users with realistic names, updated gender codes, new passwords, and NULL user_img
-INSERT INTO `users` (`user_email`, `user_password`, `user_name`, `user_nama`, `user_money`, `user_role`, `user_img`, `user_gender`, `user_phone`, `created_at`, `updated_at`, `deleted_at`)
-VALUES
-  ('emma.miller@example.com', '12345678', 'EmmaMiller', 'Emma Miller', 5500, 'Customer', NULL, 'W', '234-567-8901', '2022-04-01 09:30:00', NULL, NULL),
-  ('oliver.taylor@example.com', '12345678', 'OliverTaylor', 'Oliver Taylor', 3500, 'Customer', NULL, 'P', '789-012-3456', '2022-04-02 11:15:00', NULL, NULL),
-  ('mia.rodriguez@example.com', '12345678', 'MiaRodriguez', 'Mia Rodriguez', 6000, 'Customer', NULL, 'W', '210-987-6543', '2022-04-03 14:00:00', NULL, NULL),
-  ('daniel.jones@example.com', '12345678', 'DanielJones', 'Daniel Jones', 4500, 'Customer', NULL, 'P', '432-109-8765', '2022-04-04 16:30:00', NULL, NULL),
-  ('olivia.jackson@example.com', '12345678', 'OliviaJackson', 'Olivia Jackson', 7000, 'Customer', NULL, 'W', '109-876-5432', '2022-04-05 10:45:00', NULL, NULL),
-  ('william.wilson@example.com', '12345678', 'WilliamWilson', 'William Wilson', 4000, 'Customer', NULL, 'P', '876-543-2109', '2022-04-06 13:20:00', NULL, NULL),
-  ('mia.hernandez@example.com', '12345678', 'MiaHernandez', 'Mia Hernandez', 5500, 'Customer', NULL, 'W', '345-678-9012', '2022-04-07 15:45:00', NULL, NULL),
-  ('jackson.martin@example.com', '12345678', 'JacksonMartin', 'Jackson Martin', 3000, 'Customer', NULL, 'P', '678-345-0123', '2022-04-08 09:15:00', NULL, NULL),
-  ('ava.hernandez@example.com', '12345678', 'AvaHernandez', 'Ava Hernandez', 6500, 'Customer', NULL, 'W', '345-678-9012', '2022-04-09 12:40:00', NULL, NULL),
-  ('oliver.martinez@example.com', '12345678', 'OliverMartinez', 'Oliver Martinez', 3000, 'Customer', NULL, 'P', '012-345-6789', '2022-04-10 14:30:00', NULL, NULL),
-  ('mia.davis@example.com', '12345678', 'MiaDavis', 'Mia Davis', 5000, 'Customer', NULL, 'W', '210-987-6543', '2022-04-11 16:45:00', NULL, NULL),
-  ('elijah.johnson@example.com', '12345678', 'ElijahJohnson', 'Elijah Johnson', 2500, 'Customer', NULL, 'P', '432-109-8765', '2022-04-12 10:30:00', NULL, NULL),
-  ('scarlett.taylor@example.com', '12345678', 'ScarlettTaylor', 'Scarlett Taylor', 10000, 'Customer', NULL, 'W', '109-876-5432', '2022-04-13 12:15:00', NULL, NULL),
-  ('lucas.martinez@example.com', '12345678', 'LucasMartinez', 'Lucas Martinez', 6500, 'Customer', NULL, 'P', '678-345-0123', '2022-04-14 14:20:00', NULL, NULL),
-  ('aria.garcia@example.com', '12345678', 'AriaGarcia', 'Aria Garcia', 3000, 'Customer', NULL, 'W', '345-678-9012', '2022-04-15 11:45:00', NULL, NULL),
-  ('henry.wilson@example.com', '12345678', 'HenryWilson', 'Henry Wilson', 5500, 'Customer', NULL, 'P', '012-345-6789', '2022-04-16 14:30:00', NULL, NULL),
-  ('emma.jackson@example.com', '12345678', 'EmmaJackson', 'Emma Jackson', 4000, 'Customer', NULL, 'W', '567-890-1234', '2022-04-17 17:00:00', NULL, NULL),
-  ('liam.miller@example.com', '12345678', 'LiamMiller', 'Liam Miller', 3000, 'Customer', NULL, 'P', '789-012-3456', '2022-04-18 09:30:00', NULL, NULL),
-  ('olivia.smith@example.com', '12345678', 'OliviaSmith', 'Olivia Smith', 3000, 'Customer', NULL, 'W', '210-987-6543', '2022-04-19 12:15:00', NULL, NULL),
-  ('noah.taylor@example.com', '12345678', 'NoahTaylor', 'Noah Taylor', 3000, 'Customer', NULL, 'P', '432-109-8765', '2022-04-20 14:45:00', NULL, NULL),
-  ('ava.johnson@example.com', '12345678', 'AvaJohnson', 'Ava Johnson', 3000, 'Customer', NULL, 'W', '109-876-5432', '2022-04-21 17:30:00', NULL, NULL),
-  ('liam.davis@example.com', '12345678', 'LiamDavis', 'Liam Davis', 6000, 'Customer', NULL, 'P', '678-345-0123', '2022-04-22 09:45:00', NULL, NULL),
-  ('emma.martinez@example.com', '12345678', 'EmmaMartinez', 'Emma Martinez', 2500, 'Customer', NULL, 'W', '012-345-6789', '2022-04-23 12:30:00', NULL, NULL),
-  ('oliver.garcia@example.com', '12345678', 'OliverGarcia', 'Oliver Garcia', 7000, 'Customer', NULL, 'P', '567-890-1234', '2022-04-24 14:20:00', NULL, NULL),
-  ('ella.anderson@example.com', '12345678', 'EllaAnderson', 'Ella Anderson', 4500, 'Customer', NULL, 'W', '234-567-8901', '2022-04-25 16:30:00', NULL, NULL),
-  ('jack.jones@example.com', '12345678', 'JackJones', 'Jack Jones', 7000, 'Customer', NULL, 'P', '789-012-3456', '2022-04-26 10:45:00', NULL, NULL),
-  ('ava.hernandez@example.com', '12345678', 'AvaHernandez', 'Ava Hernandez', 4000, 'Customer', NULL, 'W', '210-987-6543', '2022-04-27 13:20:00', NULL, NULL),
-  ('lucas.johnson@example.com', '12345678', 'LucasJohnson', 'Lucas Johnson', 5500, 'Customer', NULL, 'P', '876-543-2109', '2022-04-28 15:45:00', NULL, NULL),
-  ('olivia.rodriguez@example.com', '12345678', 'OliviaRodriguez', 'Olivia Rodriguez', 3000, 'Customer', NULL, 'W', '345-678-9012', '2022-04-29 09:15:00', NULL, NULL),
-  ('william.miller@example.com', '12345678', 'WilliamMiller', 'William Miller', 6500, 'Customer', NULL, 'P', '678-345-0123', '2022-04-30 12:40:00', NULL, NULL);
-
-
+(1,'admin@gmail.com','$2y$12$PTi99ULbUknumwIAiKb47.GblGx9YQrqMVM0GkZ.r1flE9fctrBAi','admin','Admin',0,'Admin',NULL,'P','0223421244','2023-12-28 14:20:29','2023-12-28 14:20:29',NULL),
+(2,'john.doe@example.com','$2y$12$FH.zrmGpehpsfLUZdfDq0uZ1w1YAMSn82kX1QPitfcy8vZ/OlrNN6','JohnDoe','John Doe',0,'Customer',NULL,'P','123-456-7890','2024-01-02 16:12:39','2024-01-02 16:12:39',NULL),
+(3,'jane.doe@example.com','$2y$12$SI5cFE/PBh6oPek489gTEe1hK1cCftkue8MbOS.iHp9f66UuLwj/y','JaneDoe','Jane Doe',0,'Customer',NULL,'W','987-654-3210','2024-01-02 16:18:41','2024-01-02 16:18:41',NULL),
+(4,'bob.johnson@example.com','$2y$12$Kk2QlxSYjiz9ArH1Il4Dz.Pf8uq5M4qVU.qYaJu7EnKM8mMTVAEyS','bobjohnson','Bob Johnson',0,'Customer',NULL,'P','567-890-1234','2024-01-02 16:19:59','2024-01-02 16:19:59',NULL),
+(5,'samantha.white@example.com','$2y$12$8mBfUECOWJ5X6HSiKuSbEOSvEMgdEL3xb9DtmH6Ji/pe/vq1NH7Dq','samanthawhite','Samantha White',0,'Customer',NULL,'W','345-678-9012','2024-01-02 16:22:36','2024-01-02 16:22:36',NULL),
+(6,'michael.smith@example.com','$2y$12$o6e0t0HnuDbDZcIB0zozAu3chtpkM0EDjmzD7FnfnA/VWwRLSyJZG','michaelsmith','Michael Smith',0,'Customer',NULL,'W','876-543-2109','2024-01-02 16:25:28','2024-01-02 16:25:28',NULL),
+(7,'ella.davis@example.com','$2y$12$WOH2S1AeS8R.BL64n.KJl.3SekPBWx872FchdVOLu2D/2Seh6S5cq','elladavis','Ella Davis',0,'Customer',NULL,'W','234-567-8901','2024-01-02 16:26:59','2024-01-02 16:26:59',NULL),
+(8,'matthew.brown@example.com','$2y$12$hIdds0ONL2ivDXcskIlmr.QV2i1kb8F8aqLlkmmPqaKx2snuEoojG','matthewbrown','Matthew Brown',0,'Customer',NULL,'P','789-012-3456','2024-01-02 16:28:36','2024-01-02 16:28:36',NULL),
+(9,'olivia.miller@example.com','$2y$12$SZMRfMuycESS/Y/92KvkPOUB5D0sPTOeuWLpwVUAXNAQL/Nqs948S','oliviamiller','Olivia Miller',0,'Customer',NULL,'W','210-987-6543','2024-01-02 16:29:58','2024-01-02 16:29:58',NULL),
+(10,'david.taylor@example.com','$2y$12$tPzvqVK8DqhmaSpcndslCOPQQjTEtLYYrurIljz6HwIt2mAVm/EnC','davidtaylor','David Taylor',0,'Customer',NULL,'P','432-109-8765','2024-01-02 16:31:09','2024-01-02 16:31:09',NULL),
+(11,'sophia.wilson@example.com','$2y$12$0phOpIm9b.JMm.HIJx2ps.syjo3Qc1ycayMyzKHcigOx5apwM6L5a','sophiawilson','Sophia Wilson',0,'Customer',NULL,'W','109-876-5432','2024-01-02 16:32:03','2024-01-02 16:32:03',NULL),
+(12,'daniel.martinez@example.com','$2y$12$KYVGOgCd0ufQFym9NALRkO8zSgPiFm3sTYhpLVR4WNM/9UsuktV0G','danielmartinez','Daniel Martinez',0,'Customer',NULL,'P','678-345-0123','2024-01-02 16:32:41','2024-01-02 16:32:41',NULL),
+(13,'ava.jackson@example.com','$2y$12$5o09MOCgblez5CHdEcLR4.eLKFzFsCVwqxt67d56a21oZTBn5Q3ju','avajackson','Ava Jackson',0,'Customer',NULL,'W','345-678-9012','2024-01-02 16:33:24','2024-01-02 16:33:24',NULL),
+(14,'josephine.garcia@example.com','$2y$12$LQThDTAG26oqO5LgrwMlOO3M/ciyYtaOjqx/WWGgX445Si8X3uOEO','josephinegarcia','Josephine Garcia',0,'Customer',NULL,'W','012-345-6789','2024-01-02 16:34:52','2024-01-02 16:34:52',NULL),
+(15,'lucas.rodriguez@example.com','$2y$12$cCUxmj6xxvSaRO1I6tElAOkvH8z/7Rd.rZ7sFYm7EpzAzmPgZCTai','lucasrodriguez','Lucas Rodriguez',0,'Customer',NULL,'P','567-890-1234','2024-01-02 16:35:37','2024-01-02 16:35:37',NULL),
+(16,'isabella.lopez@example.com','$2y$12$sWKQnGVDzdOFUReFhiFuG./ozvyCY3BUlWi2aMHNZT0SeulUcka5u','isabellalopez','Isabella Lopez',0,'Customer',NULL,'W','234-567-8901','2024-01-02 16:37:11','2024-01-02 16:37:11',NULL),
+(17,'benjamin.smith@example.com','$2y$12$O9sLmkERkqJayejFjfVmQuAO8aWBSeL0pkYEqtuWn0LZqph3pGgPS','benjaminsmith','Benjamin Smith',0,'Customer',NULL,'P','789-012-3456','2024-01-02 16:37:45','2024-01-02 16:37:45',NULL),
+(18,'mia.davis@example.com','$2y$12$Ku1990hwLrbFGI6B2bwnWuIb24FmUs3gXDkNNe5JClA6I8GfnWKwe','miadavis','Mia Davis',0,'Customer',NULL,'W','210-987-6543','2024-01-02 16:38:39','2024-01-02 16:38:39',NULL),
+(19,'elijah.johnson@example.com','$2y$12$8yC.3zmYRWzTsCuSuT.0zOV4EGqgpX2TFjuAGfaoJtCBe2rBZL7O6','elijahjohnson','Elijah Johnson',0,'Customer',NULL,'W','432-109-8765','2024-01-02 16:40:14','2024-01-02 16:40:14',NULL),
+(20,'scarlett.taylor@example.com','$2y$12$6qE6FtjT1ROA2hqvZeaLde6RjlKapJZkXBQk25.Z0UBguowQZI8om','scarletttaylor','Scarlett Taylor',0,'Customer',NULL,'W','109-876-5432','2024-01-02 16:41:11','2024-01-02 16:41:11',NULL),
+(21,'lucas.martinez@example.com','$2y$12$NgFSJk.68/2KUjTwvbqJuuLdyDM2422zUMG4X9I02F8JpFDecgCtK','lucasmartinez','Lucas Martinez',0,'Customer',NULL,'P','678-345-0123','2024-01-02 16:42:10','2024-01-02 16:42:10',NULL),
+(22,'aria.garcia@example.com','$2y$12$4XLbYmViOHzzjx.aJOMaTuQgbZWv14xcm70W.6T4cLHSYZ9NOueSe','ariagarcia','Aria Garcia',0,'Customer',NULL,'W','345-678-9012','2024-01-02 16:43:42','2024-01-02 16:43:42',NULL),
+(23,'henry.wilson@example.com','$2y$12$dOdxaFYjLXsXKzbXc/Yu7uC9TPH2D6d4WtJM8q19VcocnnS1sozQi','henrywilson','Henry Wilson',0,'Customer',NULL,'P','012-345-6789','2024-01-02 16:45:06','2024-01-02 16:45:06',NULL),
+(24,'emma.jackson@example.com','$2y$12$LkTScVtyxEUVo2WVdnhFWe66J8Kw4dQpcWSnezbADzKNYdDmQjp2e','emmajackson','Emma Jackson',0,'Customer',NULL,'W','567-890-1234','2024-01-02 16:45:53','2024-01-02 16:45:53',NULL),
+(25,'liam.miller@example.com','$2y$12$HJklDw3rg8SFLq.Uo6KRde9T5qzHYvM2ziAD4KS4sDOFqe8POnRWO','liammiller','Liam Miller',0,'Customer',NULL,'P','789-012-3456','2024-01-02 16:46:50','2024-01-02 16:46:50',NULL),
+(26,'olivia.smith@example.com','$2y$12$ApHTCvttnIGO.MdpM6Qvkei9nsupgvG/n0NyRTegZ2H46TVI9G1vi','oliviasmith','Olivia Smith',0,'Customer',NULL,'W','210-987-6543','2024-01-02 16:47:30','2024-01-02 16:47:30',NULL),
+(27,'noah.taylor@example.com','$2y$12$Xfrw1z.4pjHxh1.vwLeB4ODgQ8SHYN/4pBsOsT60yvjKkST5cZ5TS','noahtaylor','Noah Taylor',0,'Customer',NULL,'W','432-109-8765','2024-01-02 16:48:13','2024-01-02 16:48:13',NULL),
+(28,'ava.johnson@example.com','$2y$12$fPu65YhW16F2PeVjU8pphOK.ggRYiJjsOFVryQ8irpdi8ndCC5kBG','avajohnson','Ava Johnson',0,'Customer',NULL,'W','109-876-5432','2024-01-02 16:49:17','2024-01-02 16:49:17',NULL),
+(29,'liam.davis@example.com','$2y$12$d1UBgBEJ/eQ1Sbq8MWISsu19athTu4Ujdf7tglME1QrSz9Eb1HIYe','liamdavis','Liam Davis',0,'Customer',NULL,'P','678-345-0123','2024-01-02 16:50:25','2024-01-02 16:50:25',NULL),
+(30,'emma.martinez@example.com','$2y$12$kPwQq69i9GP/v7KjdnksmuTf6UY7mmQGisA6XHcs2JhdE6JvU45bK','emmamartinez','Emma Martinez',0,'Customer',NULL,'W','012-345-6789','2024-01-02 16:51:03','2024-01-02 16:51:03',NULL),
+(31,'emma.miller@example.com','$2y$12$mxG.2ZCfTAg25P2nYxFn.uzXOcmGYilQJKLWRu5cRJ2Q1vc6UXeqW','emmamiller','Emma Miller',0,'Customer',NULL,'W','234-567-8901','2024-01-02 16:54:04','2024-01-02 16:54:04',NULL),
+(32,'oliver.taylor@example.com','$2y$12$kTTGUwnTGvXn7/twYt7bD.uG9Ns9aaQ8F4hn2G9iphZER5T5eO4za','olivertaylor','Oliver Taylor',0,'Customer',NULL,'W','789-012-3456','2024-01-02 16:54:38','2024-01-02 16:54:38',NULL),
+(33,'mia.rodriguez@example.com','$2y$12$2vGxyqsRvzB67RSXc6pwner0i351HzEzy8VX7A68z3Y3fR9n8em0q','miarodriguez','Mia Rodriguez',0,'Customer',NULL,'W','210-987-6543','2024-01-02 16:55:53','2024-01-02 16:55:53',NULL),
+(34,'daniel.jones@example.com','$2y$12$8KeOnKCOVywNkJwDXxHYB.gQM2ITZGltp1XDBSR/.dcdcUY0xlMKu','danieljones','Daniel Jones',0,'Customer',NULL,'P','432-109-8765','2024-01-02 16:56:41','2024-01-02 16:56:41',NULL),
+(35,'olivia.jackson@example.com','$2y$12$0S88JO7lmNYkuMeBrwLIkuQkL3nUdLZNx4sP.nh4TbSWuSB06IiHO','oliviajackson','Olivia Jackson',0,'Customer',NULL,'W','109-876-5432','2024-01-02 16:57:30','2024-01-02 16:57:30',NULL),
+(36,'william.wilson@example.com','$2y$12$t28gMI.0XD/GAAWjpPBW6efbo.K4RLbgve7ylWizk0i6aOU6G9I.2','williamwilson','William Wilson',0,'Customer',NULL,'P','876-543-2109','2024-01-02 16:58:11','2024-01-02 16:58:11',NULL),
+(37,'mia.hernandez@example.com','$2y$12$zEy.1U9ct39qgjDxQF7SBuYO8rZ3oRh9RdVl1Ck5qFhMwh3iEQW2.','miahernandez','Mia Hernandez',0,'Customer',NULL,'W','345-678-9012','2024-01-02 16:58:39','2024-01-02 16:58:39',NULL),
+(38,'jackson.martin@example.com','$2y$12$pHJPT8HerajdIkiswCd0z.Mbe2j5sJAq8of/8MwixNW/30mNYGhbG','jacksonmartin','Jackson Martin',0,'Customer',NULL,'P','678-345-0123','2024-01-02 16:59:31','2024-01-02 16:59:31',NULL),
+(39,'ava.hernandez@example.com','$2y$12$.w5WR/4McUQ9Ea2Y77Oql..BlFV8Pk0xWs.Y.HttrNnLEbHrevqia','avahernandez','Ava Hernandez',0,'Customer',NULL,'W','345-678-9012','2024-01-02 17:00:54','2024-01-02 17:00:54',NULL),
+(40,'oliver.martinez@example.com','$2y$12$.BdouEN3HoBVSCCvrRx7kerUE7rCT5F3UJ/SXEE.jppqAkKg6vbWS','olivermartinez','Oliver Martinez',0,'Customer',NULL,'W','012-345-6789','2024-01-02 17:01:27','2024-01-02 17:01:27',NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

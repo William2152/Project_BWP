@@ -61,10 +61,10 @@ class LoginRegisControler extends Controller
     {
         $req->validate(
             [
-                "user_nama" => "required",
+                "user_nama" => "required|",
                 "user_name" => "required",
                 "user_email" => "required|email",
-                "user_phone" => "required|numeric|digits:10",
+                "user_phone" => "required|min:10|regex:/^[0-9]+(-[0-9]+)*$/",
                 "user_gender" => "required",
                 "user_password" => "required|min:8",
                 "password_confirmation" => "required|same:user_password",
@@ -76,8 +76,8 @@ class LoginRegisControler extends Controller
                 "user_email.required" => "email tidak boleh kosong!",
                 "user_email.email" => "email harus berbentuk email!",
                 "user_phone.required" => "nomor telepon tidak boleh kosong!",
-                "user_phone.numeric" => "nomor telepon harus dalam bentuk angka!",
-                "user_phone.digits" => "nomor telepon minimal 10 digit!",
+                "user_phone.min" => "nomor telepon minimal 10 digit!",
+                "user_phone.regex" => "nomor telepon boleh mengandung angka dan - !",
                 "user_gender.required" => "gender tidak boleh kosong!",
 
                 "user_password.required" => "password tidak boleh kosong!",
@@ -99,7 +99,7 @@ class LoginRegisControler extends Controller
         ]);
 
         if ($result) {
-            return redirect('/')->with('success', 'berhasil register!');
+            return redirect('/registerPage')->with('success', 'berhasil register!');
         } else {
             return back()->with('error', 'gagal register!');
         }
