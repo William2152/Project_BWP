@@ -54,6 +54,9 @@ Route::get('/userCart', function(){
     return view('User.userCart');
 });
 
+Route::get('/userCheckout', function(){
+    return view('User.userCheckout');
+});
 Route::prefix('/')->group(function () {
     Route::get('/loginPage', [LoginRegisControler::class, "LoginPage"]);
     Route::get('/registerPage', [LoginRegisControler::class, "RegisterPage"]);
