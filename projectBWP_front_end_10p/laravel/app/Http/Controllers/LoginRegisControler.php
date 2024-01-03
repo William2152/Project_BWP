@@ -10,6 +10,14 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginRegisControler extends Controller
 {
+    public function HomePage(Request $req)
+    {
+        $product = Product::all();
+        return view('menu.HomePage', [
+            "product" => $product,
+        ]);
+    }
+
     public function LoginPage(Request $req)
     {
         return view('menu.loginPage');

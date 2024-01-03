@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('menu.homePage');
-});
+
 
 Route::get('/itemPage', function () {
     return view('menu.itemPage');
@@ -54,14 +52,15 @@ Route::get('/tambahproduk', function () {
     return view('menu.tambahProduct');
 });
 
-Route::get('/userCart', function(){
+Route::get('/userCart', function () {
     return view('User.userCart');
 });
 
-Route::get('/userCheckout', function(){
+Route::get('/userCheckout', function () {
     return view('User.userCheckout');
 });
 Route::prefix('/')->group(function () {
+    Route::get('/', [LoginRegisControler::class, "HomePage"]);
     Route::get('/loginPage', [LoginRegisControler::class, "LoginPage"]);
     Route::get('/registerPage', [LoginRegisControler::class, "RegisterPage"]);
     Route::post('/login', [LoginRegisControler::class, "Login"]);
