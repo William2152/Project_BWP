@@ -204,6 +204,26 @@ insert  into `users`(`user_id`,`user_email`,`user_password`,`user_name`,`user_na
 (39,'ava.hernandez@example.com','$2y$12$.w5WR/4McUQ9Ea2Y77Oql..BlFV8Pk0xWs.Y.HttrNnLEbHrevqia','avahernandez','Ava Hernandez',0,'Customer',NULL,'W','345-678-9012','2024-01-02 17:00:54','2024-01-02 17:00:54',NULL),
 (40,'oliver.martinez@example.com','$2y$12$.BdouEN3HoBVSCCvrRx7kerUE7rCT5F3UJ/SXEE.jppqAkKg6vbWS','olivermartinez','Oliver Martinez',0,'Customer',NULL,'W','012-345-6789','2024-01-02 17:01:27','2024-01-02 17:01:27',NULL);
 
+INSERT INTO `category` (`category_name`, `created_at`, `updated_at`, `deleted_at`) VALUES
+  ('electronic', '2022-01-01 08:00:00', NULL, NULL),
+  ('clothes', '2022-01-01 08:00:00', NULL, NULL),
+  ('jewelry', '2022-01-01 08:00:00', NULL, NULL),
+  ('medicine', '2022-01-01 08:00:00', NULL, NULL),
+  ('bag', '2022-01-01 08:00:00', NULL, NULL),
+  ('book', '2022-01-01 08:00:00', NULL, NULL),
+  ('cook', '2022-01-01 08:00:00', NULL, NULL),
+  ('toys', '2022-01-01 08:00:00', NULL, NULL),
+  ('sport', '2022-01-01 08:00:00', NULL, NULL),
+  ('pediatric', '2022-01-01 08:00:00', NULL, NULL),
+  ('headphone', '2022-01-01 08:00:00', NULL, NULL),
+  ('phone', '2022-01-01 08:00:00', NULL, NULL),
+  ('cook', '2022-01-01 08:00:00', NULL, NULL),
+  ('art', '2022-01-01 08:00:00', NULL, NULL),
+  ('food', '2022-01-01 08:00:00', NULL, NULL),
+  ('keyboard', '2022-01-01 08:00:00', NULL, NULL),
+  ('pets', '2022-01-01 08:00:00', NULL, NULL),
+  ('garden', '2022-01-01 08:00:00', NULL, NULL),
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
