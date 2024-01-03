@@ -81,7 +81,7 @@
             <form action="" method="post" style="text-align: right">
                 @csrf
                 <br>
-                <input type="button" value="Buat Pesanan" style="width: 10vw; height: 2vw; border-radius: 1vw; border: 1px solid black">
+                <input type="button" value="Buat Pesanan" style="width: 10vw; height: 2vw; border-radius: 1vw; border: 0px solid black; color: white; background-color: rgba(33, 33, 150, 0.753);">
             </form>
         </div>
     </div>
