@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -108,6 +109,10 @@ class LoginRegisControler extends Controller
     public function homePageUser(Request $req)
     {
         $user = Auth::guard("web")->user();
-        return view('User.homePageUser', ["curr" => $user]);
+        $product = Product::all();
+        return view('User.homePageUser', [
+            "curr" => $user,
+            "product" => $product,
+        ]);
     }
 }
