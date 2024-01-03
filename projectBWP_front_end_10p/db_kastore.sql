@@ -145,6 +145,21 @@ CREATE TABLE `users` (
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+/*Table structure for table `saldo` */
+
+DROP TABLE IF EXISTS `topup`;
+
+CREATE TABLE `topup` (
+  `topup_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL REFERENCES users(user_id),
+  `topup_saldo` int(11) NOT NULL check(topup_saldo > 0),
+  `topup_status` int(2) NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`topup_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 /*Data for the table `users` */
 
 insert  into `users`(`user_id`,`user_email`,`user_password`,`user_name`,`user_nama`,`user_money`,`user_role`,`user_img`,`user_gender`,`user_phone`,`created_at`,`updated_at`,`deleted_at`) values 
