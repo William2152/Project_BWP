@@ -28,6 +28,8 @@ Route::prefix('/profile')->group(function () {
     Route::get('/ubahpw', [ProfileUser::class, 'ProfilePass']);
     Route::get('/pesanansaya', [ProfileUser::class, 'Pesanan']);
     Route::get('/vouchersaya', [ProfileUser::class, 'Voucher']);
+    Route::get('/tokosaya', [ProfileUser::class, 'TokoSaya']);
+
     Route::get('/formtoko', [ProfileUser::class, 'BuatToko']);
     Route::get('/updatetoko', [ProfileUser::class, 'editToko']);
     Route::get('/saldosaya', [ProfileUser::class, 'Saldo']);
