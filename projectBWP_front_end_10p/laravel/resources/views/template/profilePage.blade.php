@@ -22,7 +22,7 @@
                     <p class="fw-bold" style="margin-top: 1vw;"><a href="{{ url('/profile/tokosaya') }}"
                             style="text-decoration: none; color: black">Toko Saya</a></p>
                     <p class="fw-bold" style="margin-top: 1vw;">Keranjang Saya</p>
-                    <p class="fw-bold" style="margin-top: 1vw;"><a href="{{ url('/profile/pesanansaya') }}"
+                    <p class="fw-bold" style="margin-top: 1vw;"><a href="{{ url('/profile/pesanansaya/belumdikirim') }}"
                             style="text-decoration: none; color: black">Pesanan Saya</a></p>
                     <p class="fw-bold" style="margin-top: 1vw;"><a href="{{ url('/profile/vouchersaya') }}"
                             style="text-decoration: none; color: black">Voucher Saya</a></p>
