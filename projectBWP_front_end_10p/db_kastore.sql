@@ -204,6 +204,37 @@ insert  into `users`(`user_id`,`user_email`,`user_password`,`user_name`,`user_na
 (39,'ava.hernandez@example.com','$2y$12$.w5WR/4McUQ9Ea2Y77Oql..BlFV8Pk0xWs.Y.HttrNnLEbHrevqia','avahernandez','Ava Hernandez',0,'Customer',NULL,'W','345-678-9012','2024-01-02 17:00:54','2024-01-02 17:00:54',NULL),
 (40,'oliver.martinez@example.com','$2y$12$.BdouEN3HoBVSCCvrRx7kerUE7rCT5F3UJ/SXEE.jppqAkKg6vbWS','olivermartinez','Oliver Martinez',0,'Customer',NULL,'W','012-345-6789','2024-01-02 17:01:27','2024-01-02 17:01:27',NULL);
 
+INSERT INTO `store` (`store_name`, `store_email`, `store_img`, `store_address`, `user_id`, `store_revenue`, `created_at`, `updated_at`, `deleted_at`)
+VALUES
+  ('Chic Trends', 'chictrends@example.com', 'chic_trends_image.jpg', '123 Fashion Street, Styleville', 8, 3500, '2022-02-01 09:00:00', NULL, NULL),
+  ('Gastronomic Delights', 'gastronomicdelights@example.com', 'gastronomic_delights_image.jpg', '456 Culinary Court, Foodland', 9, 5000, '2022-02-02 11:30:00', NULL, NULL),
+  ('Innovative Electronics', 'innovativeelectronics@example.com', 'innovative_electronics_image.jpg', '789 Tech Terrace, Technoville', 8, 2000, '2022-02-03 14:45:00', NULL, NULL),
+  ('Cozy Book Nook', 'cozybooknook@example.com', 'cozy_book_nook_image.jpg', '567 Literary Lane, Booksville', 10, 8000, '2022-02-04 16:20:00', NULL, NULL),
+  ('Sports Haven', 'sportshaven@example.com', 'sports_haven_image.jpg', '234 Active Avenue, Fitness City', 11, 4500, '2022-02-05 10:10:00', NULL, NULL),
+  ('Home Decor Hub', 'decorhub@example.com', 'decor_hub_image.jpg', '789 Homestead Street, Decor Town', 12, 6000, '2022-02-06 12:40:00', NULL, NULL),
+  ('Pet Paradise', 'petparadise@example.com', 'pet_paradise_image.jpg', '123 Pet Haven, Animal City', 13, 2500, '2022-02-07 14:30:00', NULL, NULL),
+  ('Tech Galaxy', 'techgalaxy@example.com', 'tech_galaxy_image.jpg', '456 Innovation Lane, Technocity', 14, 3000, '2022-02-08 18:15:00', NULL, NULL),
+  ('Outdoor Adventure Gear', 'outdooradventure@example.com', 'outdoor_adventure_image.jpg', '567 Exploration Street, Adventureland', 15, 8000, '2022-02-09 08:45:00', NULL, NULL),
+  ('Vintage Treasures', 'vintagetreasures@example.com', 'vintage_treasures_image.jpg', '890 Retro Road, Nostalgia City', 16, 3500, '2022-02-10 11:20:00', NULL, NULL),
+  ('Luxury Living', 'luxuryliving@example.com', 'luxury_living_image.jpg', '123 Opulence Avenue, Elegance Town', 17, 5000, '2022-02-11 13:40:00', NULL, NULL),
+  ('Healthy Bites', 'healthybites@example.com', 'healthy_bites_image.jpg', '456 Nutritional Street, Wellness City', 18, 2000, '2022-02-12 15:30:00', NULL, NULL),
+  ('Artistic Expressions', 'artisticexpressions@example.com', 'artistic_expressions_image.jpg', '789 Creativity Court, Artland', 19, 8000, '2022-02-13 09:10:00', NULL, NULL),
+  ('Fashion Forward', 'fashionforward@example.com', 'fashion_forward_image.jpg', '567 Trendy Terrace, Style City', 20, 4500, '2022-02-14 12:35:00', NULL, NULL),
+  ('Culinary Crafts', 'culinarycrafts@example.com', 'culinary_crafts_image.jpg', '234 Culinary Court, Foodville', 21, 6000, '2022-02-15 14:20:00', NULL, NULL),
+  ('Digital Dreams', 'digitaldreams@example.com', 'digital_dreams_image.jpg', '789 Tech Terrace, Technoville', 22, 2500, '2022-02-16 16:45:00', NULL, NULL),
+  ('Cozy Corner Bookstore', 'cozycorner@example.com', 'cozy_corner_bookstore_image.jpg', '567 Literary Lane, Booksville', 23, 3000, '2022-02-17 10:30:00', NULL, NULL),
+  ('Spirited Sports', 'spiritedsports@example.com', 'spirited_sports_image.jpg', '123 Active Avenue, Fitness City', 24, 8000, '2022-02-18 12:15:00', NULL, NULL),
+  ('Elegant Homeware', 'eleganthomeware@example.com', 'elegant_homeware_image.jpg', '456 Homestead Street, Decor Town', 25, 3500, '2022-02-19 14:30:00', NULL, NULL),
+  ('Pet Palace', 'petpalace@example.com', 'pet_palace_image.jpg', '789 Pet Haven, Animal City', 26, 5000, '2022-02-20 16:20:00', NULL, NULL),
+  ('Tech Trends', 'techtrends@example.com', 'tech_trends_image.jpg', '234 Innovation Lane, Technocity', 27, 2000, '2022-02-21 11:45:00', NULL, NULL),
+  ('Outdoor Oasis', 'outdooroasis@example.com', 'outdoor_oasis_image.jpg', '567 Exploration Street, Adventureland', 28, 4500, '2022-02-22 14:30:00', NULL, NULL),
+  ('Vintage Values', 'vintagevalues@example.com', 'vintage_values_image.jpg', '890 Retro Road, Nostalgia City', 29, 6000, '2022-02-23 17:00:00', NULL, NULL),
+  ('Luxe Living', 'luxeliving@example.com', 'luxe_living_image.jpg', '123 Opulence Avenue, Elegance Town', 30, 2500, '2022-02-24 09:30:00', NULL, NULL),
+  ('Healthy Hub', 'healthyhub@example.com', 'healthy_hub_image.jpg', '456 Nutritional Street, Wellness City', 31, 3000, '2022-02-25 12:15:00', NULL, NULL),
+  ('Artistic Inspirations', 'artisticinspirations@example.com', 'artistic_inspirations_image.jpg', '789 Creativity Court, Artland', 32, 8000, '2022-02-26 14:45:00', NULL, NULL),
+  ('Chic Couture', 'chiccouture@example.com', 'chic_couture_image.jpg', '567 Trendy Terrace, Style City', 33, 4500, '2022-02-27 17:30:00', NULL, NULL),
+  ('Culinary Creations', 'culinarycreations@example.com', 'culinary_creations_image.jpg', '234 Culinary Court, Foodville', 34, 6000, '2022-02-28 09:45:00', NULL, NULL);
+
 INSERT INTO `category` (`category_name`, `created_at`, `updated_at`, `deleted_at`) VALUES
   ('electronic', '2022-01-01 08:00:00', NULL, NULL),
   ('clothes', '2022-01-01 08:00:00', NULL, NULL),
@@ -222,7 +253,9 @@ INSERT INTO `category` (`category_name`, `created_at`, `updated_at`, `deleted_at
   ('food', '2022-01-01 08:00:00', NULL, NULL),
   ('keyboard', '2022-01-01 08:00:00', NULL, NULL),
   ('pets', '2022-01-01 08:00:00', NULL, NULL),
-  ('garden', '2022-01-01 08:00:00', NULL, NULL),
+  ('garden', '2022-01-01 08:00:00', NULL, NULL);
+
+  
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
