@@ -1,8 +1,8 @@
 @extends('template.main')
 
 @section('content')
-    <div class="content" style="margin-top: 1vw; margin-bottom: 2vw; height: auto;">
-        <h1 style="text-align: center">Check Out</h1>
+    <div class="content" style="height: auto; background-color: rgba(33, 33, 150, 0.753); padding-top: 1.5vw; padding-bottom: 1.5vw;">
+        <h1 style="text-align: center; color: aliceblue">Check Out</h1>
         <div class="container" style="background-color: whitesmoke; margin-top: 1vw; margin-bottom: 1vw; height: auto; padding-top: 1vw; padding-bottom: 1vw; display: flex; flex-direction: column; justify-content: center;">
             @for ($i = 0; $i < 3; $i++)
                 <div class="boxItem" style="margin-right: 1vw; margin-left: 1vw; background-color: aliceblue; width: 100% -2vw; height: 10vw; display: flex;  flex-direction: row; margin-bottom: 1vw; margin-top: 1vw;">
