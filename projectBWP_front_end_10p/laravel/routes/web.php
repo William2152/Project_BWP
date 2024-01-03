@@ -50,7 +50,9 @@ Route::get('/tambahproduk', function () {
     return view('menu.tambahProduct');
 });
 
-
+Route::get('/userCart', function(){
+    return view('User.userCart');
+});
 
 Route::prefix('/')->group(function () {
     Route::get('/loginPage', [LoginRegisControler::class, "LoginPage"]);
