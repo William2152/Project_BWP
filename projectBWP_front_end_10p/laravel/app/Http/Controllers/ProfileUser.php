@@ -26,10 +26,26 @@ class ProfileUser extends Controller
         ]);
     }
 
-    public function Pesanan(Request $req)
+    public function Belumdikirim(Request $req)
     {
         $user = Auth::guard("web")->user();
-        return view("User.pesananSaya", [
+        return view("User.belumdikirim", [
+            "curr" => $user,
+        ]);
+    }
+
+    public function sedangdikirim(Request $req)
+    {
+        $user = Auth::guard("web")->user();
+        return view("User.terkirim", [
+            "curr" => $user,
+        ]);
+    }
+
+    public function selesai(Request $req)
+    {
+        $user = Auth::guard("web")->user();
+        return view("User.selesai", [
             "curr" => $user,
         ]);
     }

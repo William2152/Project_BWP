@@ -26,7 +26,11 @@ Route::get('/itemPage', function () {
 Route::prefix('/profile')->group(function () {
     Route::get('/detail', [ProfileUser::class, 'Profile']);
     Route::get('/ubahpw', [ProfileUser::class, 'ProfilePass']);
-    Route::get('/pesanansaya', [ProfileUser::class, 'Pesanan']);
+    Route::prefix('/pesanansaya')->group(function () {
+        Route::get('/belumdikirim', [ProfileUser::class, 'belumdikirim']);
+        Route::get('/sedangdikirim', [ProfileUser::class, 'sedangdikirim']);
+        Route::get('/selesai', [ProfileUser::class, 'selesai']);
+    });
     Route::get('/vouchersaya', [ProfileUser::class, 'Voucher']);
     Route::get('/tokosaya', [ProfileUser::class, 'TokoSaya']);
 
