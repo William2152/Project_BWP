@@ -7,9 +7,9 @@
                     <div class="profileIcon" style="display: flex">
                         <img src="{{ $curr->user_img == null ? '/profileIcon.png' : $curr->user_img }}"
                             style="width: 70px; height: 70px;" alt="">
-                        <div class="row">
-                            <div class="col-12">
-                                <p style="margin-left: 1vw; text-align: center; margin-top: 1vw;">{{ $curr->user_nama }}</p>
+                        <div class="row ms-2">
+                            <div class="col-12 d-flex justify-content-center align-items-center pt-2">
+                                <p class="fs-5">{{ $curr->user_nama }}</p>
                             </div>
                         </div>
                     </div>
@@ -19,7 +19,7 @@
                     </p>
                     <p style="margin-top: 0.5vw;"><a href="{{ url('/profile/ubahpw') }}"
                             style="text-decoration: none; color: black">Ubah Password</a></p>
-                    <p class="fw-bold" style="margin-top: 1vw;"><a href="{{ url('/punyatoko') }}"
+                    <p class="fw-bold" style="margin-top: 1vw;"><a href="{{ url('/profile/tokosaya') }}"
                             style="text-decoration: none; color: black">Toko Saya</a></p>
                     <p class="fw-bold" style="margin-top: 1vw;">Keranjang Saya</p>
                     <p class="fw-bold" style="margin-top: 1vw;"><a href="{{ url('/profile/pesanansaya') }}"

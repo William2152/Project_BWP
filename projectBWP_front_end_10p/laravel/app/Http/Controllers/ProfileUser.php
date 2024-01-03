@@ -50,6 +50,23 @@ class ProfileUser extends Controller
         ]);
     }
 
+    public function TokoSaya(Request $req)
+    {
+        $user = Auth::guard("web")->user();
+        $toko = $user->Toko;
+
+        if ($toko == null) {
+            return view("toko.gakpunyatoko", [
+                "curr" => $user,
+            ]);
+        }
+
+        return view("toko.tokoProductSaya", [
+            "curr" => $user,
+            "toko" => $toko,
+        ]);
+    }
+
     public function BuatToko(Request $req)
     {
         $user = Auth::guard("web")->user();
