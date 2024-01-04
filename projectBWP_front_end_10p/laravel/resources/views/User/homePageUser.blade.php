@@ -260,7 +260,7 @@
 
                             </div>
                             <div class="ms-3 mt-auto mb-3">
-                                <a href="#" class="btn btn-primary">Detail Item</a>
+                                <a href="{{ url('itemPage/' . $p->product_id) }}" class="btn btn-primary">Detail Item</a>
                             </div>
                         </div>
                     </div>
