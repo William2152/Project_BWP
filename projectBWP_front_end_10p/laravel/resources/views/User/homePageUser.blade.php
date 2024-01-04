@@ -171,8 +171,8 @@
                                 </a>
                             </div>
                             <div class="bg-light" style="width: 50px; height: 50px; margin-top: 1vw; margin-bottom: 1vw;">
-                                <a href="{{ url('/shopping/cook') }}">
-                                    <img src="/assets/category/cook.png" style="width: 50px; height: 50px;"
+                                <a href="{{ url('/shopping/furniture') }}">
+                                    <img src="/assets/category/furniture.png" style="width: 50px; height: 50px;"
                                         alt="">
                                 </a>
                             </div>
@@ -251,7 +251,7 @@
             <div class="row row-cols-5">
                 @foreach ($product as $p)
                     <div class="col d-flex align-items-stretch">
-                        <div class="card" style="margin-top: 2vw;">
+                        <div class="card" style="margin-top: 2vw; width: 20vw;">
                             <img src="{{ $p->product_img }}" style=" height: 12vw; object-fit: cover;"
                                 class="card-img-top img-fluid w-100" alt="...">
                             <div class="card-body">
