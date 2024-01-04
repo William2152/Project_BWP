@@ -22,13 +22,14 @@
         <div class="content" style="margin-top: 2vw; margin-left: 1vw;">
             <div class="row">
                 <div class="col-4">
-                    <img src="/Carousel2.jpg" style="height: 100%; width: 100%; margin-top: 2vw;" alt="">
+                    <img src="{{ $product->product_img == null ? '/Carousel2.jpg' : $product->product_img }}"
+                        style="height: 100%; width: 100%; margin-top: 2vw;" alt="">
                 </div>
                 <div class="col-8">
-                    <h4 style="margin-top: 2vw;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, a.</h4>
+                    <h4 style="margin-top: 2vw;">{{ $product->product_name }}</h4>
                     <p>Rating : 5 | 100 Penilaian | 100 Terjual</p>
                     <br>
-                    <h1>Rp100.000</h1>
+                    <h1 id="totalHarga">Rp{{ $product->product_price }}</h1>
                     <p>Pengiriman ke : </p>
                     <p>Ongkos Kirim : </p>
                     <div class="col">
@@ -41,13 +42,21 @@
                         </div>
 
                         <script>
+                            var minQuantity = 1;
+                            var maxQuantity = <?php echo $product->product_stock; ?>;
+                            var price = <?php echo $product->product_price; ?>;
+
+
                             function updateQuantity(change) {
                                 var quantityInput = document.getElementById('quantity');
                                 var currentQuantity = parseInt(quantityInput.value, 10);
 
-                                var newQuantity = Math.max(1, currentQuantity + change);
+                                var newQuantity = Math.min(Math.max(minQuantity, currentQuantity + change), maxQuantity);
+
+                                var priceTotal = price * newQuantity;
 
                                 quantityInput.value = newQuantity;
+                                document.getElementById('totalHarga').textContent = 'Rp' + priceTotal;
                             }
                         </script>
                     </div>
@@ -69,14 +78,16 @@
             <div class="row">
                 <div class="tokoMiniProfileBox" style="width: 30vw; height: 10vw; display: flex; flex-direction: row;">
                     <div class="tokoMiniProfileBox1" style="padding-left: 1vw; padding-top: 2.5vw;">
-                        <img src="{{ asset('assets/ka_store.png') }}" alt="" style="border-radius: 50%; width: 5vw; height: 5vw;">
+                        <img src="{{ $toko->store_img == null ? asset('assets/category/store.png') : $toko->store_img }}"
+                            alt="" style="border-radius: 50%; width: 5vw; height: 5vw;">
                     </div>
                     <div class="tokoMiniProfileBox2" style="margin-left: 2vw; padding-top: 2vw;">
-                        <h4 style="text-align:">Store Name</h4>
+                        <h4 style="text-align:">{{ $toko->store_name }}</h4>
                         <h6 style="font-style: oblique; color: gray">Online</h6>
                         <form action="" method="post">
                             @csrf
-                            <input type="submit" value="Chat Sekarang"> <input type="submit" value="Kunjungi Toko">
+                            <input type="submit" value="Chat Sekarang" name="btnChat">
+                            <input type="submit" value="Kunjungi Toko" name="btnKunjungi">
                         </form>
                     </div>
                 </div>
@@ -86,19 +97,21 @@
 @endsection
 
 @section('spec')
-    <div class="container" style="margin-top: 2vw; background-color: whitesmoke; height: auto; margin-bottom: 2vw; padding-bottom: 1vw; padding-left: 1vw;">
+    <div class="container"
+        style="margin-top: 2vw; background-color: whitesmoke; height: auto; margin-bottom: 2vw; padding-bottom: 1vw; padding-left: 1vw;">
         <h3 style="padding-top: 1vw; margin-bottom: 1vw;">Spesifikasi Product</h3>
-        <h5>Kategori     : Lorem ipsum dolor sit amet.</h5>
-        <h5>Merek        : Lorem ipsum dolor sit amet.</h5>
-        <h5>Kapasitas    : Lorem ipsum dolor sit amet.</h5>
+        <h5>Kategori : Lorem ipsum dolor sit amet.</h5>
+        <h5>Merek : Lorem ipsum dolor sit amet.</h5>
+        <h5>Kapasitas : Lorem ipsum dolor sit amet.</h5>
         <h5>Masa Garansi : Lorem ipsum dolor sit amet.</h5>
         <h5>Dikirim dari : Lorem ipsum dolor sit amet.</h5>
     </div>
 @endsection
 
 @section('detail')
-    <div class="container" style="margin-top: 2vw; background-color: whitesmoke; height: auto; margin-bottom: 2vw; padding-bottom: 1vw; padding-left: 1vw;">
+    <div class="container"
+        style="margin-top: 2vw; background-color: whitesmoke; height: auto; margin-bottom: 2vw; padding-bottom: 1vw; padding-left: 1vw;">
         <h3 style="padding-top: 1vw; margin-bottom: 1vw;">Spesifikasi Product</h3>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis perspiciatis explicabo quaerat eaque consectetur error delectus, neque tenetur modi, quibusdam aut. Ab consectetur vel error nulla nisi cumque optio! Laborum quaerat officia animi minus culpa illum quas tempora sequi at, tempore provident maxime vel dignissimos pariatur libero debitis id architecto, adipisci laboriosam voluptates tenetur cumque atque dolorum explicabo! Consequatur labore at incidunt suscipit cumque voluptatem iste minus earum tempore voluptatibus ipsa corporis rerum officia numquam, rem sunt sapiente magnam animi quam eum! Dolorum voluptate eos eaque nobis eum sint inventore dolorem molestiae et odio velit ipsum, dicta dolores soluta vero.</p>
+        <p>{{ $product->product_detail }}</p>
     </div>
 @endsection

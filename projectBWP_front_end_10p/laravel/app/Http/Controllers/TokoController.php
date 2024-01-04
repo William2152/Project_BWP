@@ -125,4 +125,14 @@ class TokoController extends Controller
             return back()->with('err', 'gagal add Product!');
         }
     }
+
+    public function itemPage(Request $req)
+    {
+        $product = Product::find($req->id);
+        $store = $product->Toko;
+        return view('menu.itemPage', [
+            "product" => $product,
+            "toko" => $store,
+        ]);
+    }
 }
