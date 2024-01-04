@@ -58,6 +58,22 @@ class ProfileUser extends Controller
         ]);
     }
 
+    public function historypembelian(Request $req)
+    {
+        $user = Auth::guard("web")->user();
+        return view("User.historypembelian", [
+            "curr" => $user,
+        ]);
+    }
+
+    public function historytopup(Request $req)
+    {
+        $user = Auth::guard("web")->user();
+        return view("User.historytopup", [
+            "curr" => $user,
+        ]);
+    }
+
     public function Saldo(Request $req)
     {
         $user = Auth::guard("web")->user();

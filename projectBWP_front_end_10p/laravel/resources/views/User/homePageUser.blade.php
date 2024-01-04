@@ -36,38 +36,18 @@
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
                     aria-label="Slide 3"></button>
             </div>
-            <div class="carousel-inner" style="height: 20vw;">
+            <div class="carousel-inner" style="height: 30vw;">
                 <div class="carousel-item active">
-                    <img src="/Carousel1.jpg" style="object-fit: cover; height: 100%; width: 100%;" class="d-block"
+                    <img src="/Carousel1.jpg" style="object-fit: fill; height: 100%; width: 100%;" class="d-block"
                         alt="Slide 1">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="/Carousel2.jpg" style="object-fit: contain; height: 100%;" class="d-block w-100"
+                    <img src="/Carousel2.jpg" style="object-fit: cover; height: 100%; width: 100%;" class="d-block w-100"
                         alt="Slide 2">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Second slide label</h5>
-                        <p>Some representative placeholder content for the second slide.</p>
-                    </div>
                 </div>
                 <div class="carousel-item">
                     <img src="/Carousel3.jpg" style="object-fit: contain; height: 100%;" class="d-block w-100"
                         alt="Slide 3">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Third slide label</h5>
-                        <p>Some representative placeholder content for the third slide.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="/Carousel3.jpg" style="object-fit: contain; height: 100%;" class="d-block w-100"
-                        alt="Slide 3">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Third slide label</h5>
-                        <p>Some representative placeholder content for the third slide.</p>
-                    </div>
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
@@ -105,8 +85,7 @@
                             </div>
                             <div class="bg-light" style="width: 50px; height: 50px; margin-top: 1vw; margin-bottom: 1vw;">
                                 <a href="{{ url('/shopping/clothes') }}">
-                                    <img src="/assets/category/shirt.png" style="width: 50px; height: 50px;"
-                                        alt="">
+                                    <img src="/assets/category/shirt.png" style="width: 50px; height: 50px;" alt="">
                                 </a>
                             </div>
                         </div>

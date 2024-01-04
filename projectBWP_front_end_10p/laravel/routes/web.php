@@ -31,10 +31,11 @@ Route::prefix('/profile')->group(function () {
     });
     Route::get('/vouchersaya', [ProfileUser::class, 'Voucher']);
     Route::get('/tokosaya', [ProfileUser::class, 'TokoSaya']);
-
     Route::get('/formtoko', [ProfileUser::class, 'BuatToko']);
     Route::get('/updatetoko', [ProfileUser::class, 'editToko']);
     Route::get('/saldosaya', [ProfileUser::class, 'Saldo']);
+    Route::get('/saldosaya/history/topup', [ProfileUser::class, 'historytopup']);
+    Route::get('/saldosaya/history/pembelian', [ProfileUser::class, 'historypembelian']);
     Route::post('/ubahProfile', [ProfileUser::class, 'ubahProfile']);
     Route::post('/ubahPass', [ProfileUser::class, 'ubahProfilePass']);
     Route::post('/tambahtoko', [ProfileUser::class, 'TambahToko']);
