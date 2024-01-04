@@ -221,12 +221,12 @@ VALUES
   ('Artistic Expressions', 'artisticexpressions@example.com', 'artistic_expressions_image.jpg', '789 Creativity Court, Artland', 19, 8000, '2022-02-13 09:10:00', NULL, NULL),
   ('Fashion Forward', 'fashionforward@example.com', 'fashion_forward_image.jpg', '567 Trendy Terrace, Style City', 20, 4500, '2022-02-14 12:35:00', NULL, NULL),
   ('Culinary Crafts', 'culinarycrafts@example.com', 'culinary_crafts_image.jpg', '234 Culinary Court, Foodville', 21, 6000, '2022-02-15 14:20:00', NULL, NULL),
-  ('Digital Dreams', 'digitaldreams@example.com', 'digital_dreams_image.jpg', '789 Tech Terrace, Technoville', 22, 2500, '2022-02-16 16:45:00', NULL, NULL),
+  ('Cooking Paradise', 'cookingparadise@example.com', 'digital_dreams_image.jpg', '789 Tech Terrace, Technoville', 22, 2500, '2022-02-16 16:45:00', NULL, NULL),
   ('Cozy Corner Bookstore', 'cozycorner@example.com', 'cozy_corner_bookstore_image.jpg', '567 Literary Lane, Booksville', 23, 3000, '2022-02-17 10:30:00', NULL, NULL),
   ('Spirited Sports', 'spiritedsports@example.com', 'spirited_sports_image.jpg', '123 Active Avenue, Fitness City', 24, 8000, '2022-02-18 12:15:00', NULL, NULL),
   ('Elegant Homeware', 'eleganthomeware@example.com', 'elegant_homeware_image.jpg', '456 Homestead Street, Decor Town', 25, 3500, '2022-02-19 14:30:00', NULL, NULL),
   ('Pet Palace', 'petpalace@example.com', 'pet_palace_image.jpg', '789 Pet Haven, Animal City', 26, 5000, '2022-02-20 16:20:00', NULL, NULL),
-  ('Tech Trends', 'techtrends@example.com', 'tech_trends_image.jpg', '234 Innovation Lane, Technocity', 27, 2000, '2022-02-21 11:45:00', NULL, NULL),
+  ('Toys Trends', 'toystrends@example.com', 'tech_trends_image.jpg', '234 Innovation Lane, Technocity', 27, 2000, '2022-02-21 11:45:00', NULL, NULL),
   ('Outdoor Oasis', 'outdooroasis@example.com', 'outdoor_oasis_image.jpg', '567 Exploration Street, Adventureland', 28, 4500, '2022-02-22 14:30:00', NULL, NULL),
   ('Vintage Values', 'vintagevalues@example.com', 'vintage_values_image.jpg', '890 Retro Road, Nostalgia City', 29, 6000, '2022-02-23 17:00:00', NULL, NULL),
   ('Luxe Living', 'luxeliving@example.com', 'luxe_living_image.jpg', '123 Opulence Avenue, Elegance Town', 30, 2500, '2022-02-24 09:30:00', NULL, NULL),
@@ -351,17 +351,70 @@ INSERT INTO `product` (`product_name`, `product_img`, `product_detail`, `product
 ('The Hobbit', 'https://i.pinimg.com/736x/b3/da/6c/b3da6c61f387e12ada45eb885552f00d.jpg', 'Fantasy novel by J.R.R. Tolkien.', 14, 60, 7, 4, current_timestamp(), NULL, NULL),
 ('The Girl on the Train', 'https://i.pinimg.com/736x/40/a9/28/40a928fd94976858d0af49e6ad3bbd3a.jpg', 'Mystery thriller by Paula Hawkins.', 24, 15, 7, 4, current_timestamp(), NULL, NULL)
 ;
-
-
 -- cook
+INSERT INTO `product` (`product_name`, `product_img`, `product_detail`, `product_price`, `product_stock`, `category_id`, `store_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+('Stainless Steel Cookware Set', 'https://i.pinimg.com/564x/a5/49/c9/a549c9ef996ebd4c8b8a40a980c348b3.jpg', 'Durable stainless steel cookware set for your kitchen.', 150, 20, 8, 16, current_timestamp(), NULL, NULL),
+('Non-Stick Frying Pan', 'https://i.pinimg.com/736x/ad/f6/df/adf6dfe69a33009272246c41de78e0f5.jpg', 'Versatile non-stick frying pan for cooking various dishes.', 30, 40, 8, 16, current_timestamp(), NULL, NULL),
+('Chef Knife Set', 'https://i.pinimg.com/564x/1f/0e/87/1f0e872a3db1ec7b1a3610f756ae8528.jpg', 'High-quality knife set for professional chefs and home cooks.', 80, 25, 8, 16, current_timestamp(), NULL, NULL),
+('Electric Stand Mixer', 'https://i.pinimg.com/564x/e0/3f/74/e03f74e54fcc9f21b7265d23f81b60ea.jpg', 'Powerful electric stand mixer for baking and cooking.', 120, 15, 8, 16, current_timestamp(), NULL, NULL),
+('Copper Bottom Saucepan', 'https://i.pinimg.com/564x/12/3b/54/123b543493caa22f940b6f254880168d.jpg', 'Classic copper bottom saucepan for even heat distribution.', 50, 30, 8, 16, current_timestamp(), NULL, NULL),
+('Silicone Cooking Utensil Set', 'https://i.pinimg.com/564x/ed/95/6d/ed956db0289e26d2944834dcedb5da2d.jpg', 'Flexible and heat-resistant silicone cooking utensil set.', 40, 35, 8, 16, current_timestamp(), NULL, NULL),
+('Bamboo Cutting Board', 'https://i.pinimg.com/564x/9d/7e/9f/9d7e9f44d72fc941bc6beba4dca89430.jpg', 'Eco-friendly bamboo cutting board for kitchen prep.', 25, 50, 8, 16, current_timestamp(), NULL, NULL),
+('Cast Iron Skillet', 'https://i.pinimg.com/564x/f9/8c/ca/f98ccaecd6b1c9de9390163edb319745.jpg', 'Durable cast iron skillet for searing and frying.', 60, 20, 8, 16, current_timestamp(), NULL, NULL),
+('Digital Kitchen Scale', 'https://i.pinimg.com/564x/76/b8/fd/76b8fd16eb94886b9884b16078eecd5f.jpg', 'Accurate digital kitchen scale for precise measurements.', 20, 40, 8, 16, current_timestamp(), NULL, NULL),
+('Glass Baking Dish Set', 'https://i.pinimg.com/564x/b1/82/41/b182414847f000367b2819b600e7a87c.jpg', 'Versatile glass baking dish set for oven cooking.', 35, 25, 8, 16, current_timestamp(), NULL, NULL);
 
 -- toys
+INSERT INTO `product` (`product_name`, `product_img`, `product_detail`, `product_price`, `product_stock`, `category_id`, `store_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+('LEGO Classic Creative Bricks', 'https://i.pinimg.com/564x/5f/f7/fa/5ff7fab15f70cd8f0c4239a962f5a50b.jpg', 'Build endless creations with this LEGO Classic set.', 25, 50, 9, 21, current_timestamp(), NULL, NULL),
+('Barbie Dreamhouse', 'https://i.pinimg.com/736x/93/34/cf/9334cf3e3c38b9b526b6bffd79f38791.jpg', 'Classic Barbie Dreamhouse for imaginative play.', 80, 15, 9, 21, current_timestamp(), NULL, NULL),
+('Nerf N-Strike Elite Disruptor', 'https://i.pinimg.com/736x/14/ec/72/14ec72ad01348e7ec404f2e549303a5e.jpg', 'Nerf N-Strike Elite Disruptor for action-packed fun.', 20, 30, 9, 21, current_timestamp(), NULL, NULL),
+('Dollhouse with Furniture', 'https://i.pinimg.com/564x/b4/5d/27/b45d27375cb804c624f4406c29dded7b.jpg', 'Complete dollhouse set with miniature furniture.', 50, 20, 9, 21, current_timestamp(), NULL, NULL),
+('Remote Control Car', 'https://i.pinimg.com/564x/3e/e9/55/3ee955dd884bbf71df9b6d927730179a.jpg', 'Fast and fun remote control car for racing.', 35, 25, 9, 21, current_timestamp(), NULL, NULL),
+('Board Game Bundle', 'https://i.pinimg.com/564x/e3/ba/5c/e3ba5c092ec32add9f46923ee124c40c.jpg', 'Bundle of classic board games for family game night.', 60, 15, 9, 21, current_timestamp(), NULL, NULL),
+('Puzzle Set for Kids', 'https://i.pinimg.com/564x/77/69/2d/77692dd0bb7632bab5c7aea1ac22357f.jpg', 'Educational puzzle set for kids of all ages.', 15, 40, 9, 21, current_timestamp(), NULL, NULL),
+('Stuffed Animal Collection', 'https://i.pinimg.com/564x/00/9b/25/009b25997481203565fbba7a67324918.jpg', 'Adorable stuffed animal collection for cuddling.', 30, 35, 9, 21, current_timestamp(), NULL, NULL),
+('Art Supplies Kit for Kids', 'https://i.pinimg.com/564x/19/1d/84/191d842e19f57f058c9a5c8c44fefed4.jpg', 'Complete art supplies kit for creative expression.', 25, 30, 9, 21, current_timestamp(), NULL, NULL),
+('Educational STEM Kit', 'https://i.pinimg.com/564x/4c/45/76/4c457625390e1309977a5116d6e6fe8e.jpg', 'STEM educational kit for hands-on learning.', 40, 20, 9, 21, current_timestamp(), NULL, NULL);
 
 -- sport
+INSERT INTO `product` (`product_name`, `product_img`, `product_detail`, `product_price`, `product_stock`, `category_id`, `store_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+('Running Shoes', 'https://i.pinimg.com/564x/39/94/61/399461d8af4337ffaa8dbf41232ba779.jpg', 'Comfortable running shoes for all types of runners.', 80, 30, 10, 18, current_timestamp(), NULL, NULL),
+('Yoga Mat', 'https://i.pinimg.com/564x/91/d0/28/91d028dd7f7bf0708c6561a355f1aef8.jpg', 'Non-slip yoga mat for a comfortable and stable practice.', 25, 40, 10, 18, current_timestamp(), NULL, NULL),
+('Dumbbell Set', 'https://i.pinimg.com/564x/46/0f/4f/460f4f839251a0ef6432f02eba649c1c.jpg', 'Adjustable dumbbell set for strength training at home.', 120, 15, 10, 18, current_timestamp(), NULL, NULL),
+('Fitness Tracker', 'https://i.pinimg.com/564x/45/09/2d/45092d28962b6f5dd4432dbe58928e19.jpg', 'Smart fitness tracker to monitor your daily activities.', 50, 25, 10, 18, current_timestamp(), NULL, NULL),
+('Basketball', 'https://i.pinimg.com/564x/57/27/01/5727019819ba23255fee48e641afbc39.jpg', 'Official size and weight basketball for indoor and outdoor play.', 30, 20, 10, 18, current_timestamp(), NULL, NULL),
+('Jump Rope', 'https://i.pinimg.com/736x/1f/47/2e/1f472e7a0b8f908255cc7fed24bbee6d.jpg', 'Durable jump rope for cardio and fitness workouts.', 15, 35, 10, 18, current_timestamp(), NULL, NULL),
+('Tennis Racket', 'https://i.pinimg.com/564x/90/be/01/90be0114b0b254c33459f97594cc23fd.jpg', 'Professional tennis racket for tennis enthusiasts.', 90, 10, 10, 18, current_timestamp(), NULL, NULL),
+('Bike Helmet', 'https://i.pinimg.com/564x/54/27/fc/5427fc03332089fa9838f24cf2d5c765.jpg', 'Safety-first bike helmet for cycling enthusiasts.', 40, 30, 10, 18, current_timestamp(), NULL, NULL),
+('Resistance Bands Set', 'https://i.pinimg.com/564x/e9/e6/80/e9e68014c1938c739ab30f1b4513add1.jpg', 'Versatile resistance bands set for full-body workouts.', 35, 25, 10, 18, current_timestamp(), NULL, NULL),
+('Soccer Ball', 'https://i.pinimg.com/564x/83/8c/05/838c053793b37b28da06e39633d7c59d.jpg', 'High-quality soccer ball for soccer enthusiasts.', 25, 15, 10, 18, current_timestamp(), NULL, NULL);
 
 -- pediatric
+INSERT INTO `product` (`product_name`, `product_img`, `product_detail`, `product_price`, `product_stock`, `category_id`, `store_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+('Baby Formula', 'https://i.pinimg.com/736x/95/93/2a/95932a23b38263d52d733dfdeb785a7c.jpg', 'Nutritious baby formula for infants.', 30, 50, 11, 27, current_timestamp(), NULL, NULL),
+('Baby Diapers Pack', 'https://i.pinimg.com/564x/da/8d/64/da8d6408a4958f52280a03323c29064e.jpg', 'High-quality baby diapers for comfort and dryness.', 20, 100, 11, 27, current_timestamp(), NULL, NULL),
+('Baby Onesie Set', 'https://i.pinimg.com/736x/90/81/a7/9081a7f69914dd46d592736aba5dcb19.jpg', 'Cute onesie set for newborns and infants.', 15, 30, 11, 27, current_timestamp(), NULL, NULL),
+('Baby Stroller', 'https://i.pinimg.com/736x/0b/fc/71/0bfc71133be1bf3773bb5d36f461a997.jpg', 'Lightweight and easy-to-use baby stroller for parents.', 80, 20, 11, 27, current_timestamp(), NULL, NULL),
+('Baby Bath Tub', 'https://i.pinimg.com/564x/30/95/19/309519c1d5a20a8ab96753d7b5a6b1bc.jpg', 'Comfortable baby bath tub for a safe and enjoyable bath time.', 25, 25, 11, 27, current_timestamp(), NULL, NULL),
+('Children Vitamins', 'https://i.pinimg.com/564x/4c/94/ae/4c94aeacbb912fd17b04ecd6bc99af90.jpg', 'Nutrient-rich vitamins for growing children.', 15, 40, 11, 27, current_timestamp(), NULL, NULL),
+('Kids Toy Set', 'https://i.pinimg.com/564x/97/3e/96/973e965f311b6060e974a13aec2916e9.jpg', 'Assortment of safe and entertaining toys for kids.', 40, 35, 11, 27, current_timestamp(), NULL, NULL),
+('Children Books Bundle', 'https://i.pinimg.com/564x/0e/5c/c0/0e5cc02fc3ff829a4a3a171f293a66c1.jpg', 'Collection of educational and fun books for children.', 30, 30, 11, 27, current_timestamp(), NULL, NULL),
+('Baby Clothes Bundle', 'https://i.pinimg.com/564x/d5/19/47/d519475874127678a3e828472f4ae30f.jpg', 'Bundle of adorable baby clothes for boys and girls.', 50, 15, 11, 27, current_timestamp(), NULL, NULL),
+('Baby Monitor', 'https://i.pinimg.com/736x/08/48/5d/08485d6ceda01f69c448d99888b2c128.jpg', 'Digital baby monitor for peace of mind.', 60, 10, 11, 27, current_timestamp(), NULL, NULL);
 
 -- headphone
+INSERT INTO `product` (`product_name`, `product_img`, `product_detail`, `product_price`, `product_stock`, `category_id`, `store_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+('Wireless Over-Ear Headphones', 'https://i.pinimg.com/564x/14/66/1f/14661f5f4375ca159224561f579d7173.jpg', 'High-quality wireless over-ear headphones with noise cancellation.', 120, 30, 12, 27, current_timestamp(), NULL, NULL),
+('In-Ear Earphones with Mic', 'https://i.pinimg.com/564x/40/bf/20/40bf20368329172163d91963e22c297b.jpg', 'Comfortable in-ear earphones with built-in microphone.', 30, 50, 12, 27, current_timestamp(), NULL, NULL),
+('Bluetooth Sports Headset', 'https://i.pinimg.com/736x/60/9b/63/609b6378c1fd139f840160efc23566a5.jpg', 'Sweat-resistant Bluetooth sports headset for active users.', 50, 40, 12, 27, current_timestamp(), NULL, NULL),
+('Gaming Headset with RGB Lights', 'https://i.pinimg.com/564x/d5/50/fb/d550fb2340f01da2f7e46a4ddea67284.jpg', 'Immersive gaming headset with RGB lights and surround sound.', 80, 20, 12, 27, current_timestamp(), NULL, NULL),
+('Noise-Canceling On-Ear Headphones', 'https://i.pinimg.com/564x/97/9d/3e/979d3e6bccfc02533b7fe78dd39db958.jpg', 'Compact noise-canceling on-ear headphones for travel and commuting.', 100, 25, 12, 27, current_timestamp(), NULL, NULL),
+('Studio Monitor Headphones', 'https://i.pinimg.com/564x/04/56/83/045683615820bc0a7da61df72bb6dd8b.jpg', 'Professional studio monitor headphones for audio production.', 150, 15, 12, 27, current_timestamp(), NULL, NULL),
+('Kids Headphones with Volume Limiting', 'https://i.pinimg.com/736x/c8/d0/61/c8d0612a8513b98ecf0b61169c6d4136.jpg', 'Safe and comfortable headphones designed for kids with volume limiting.', 35, 30, 12, 27, current_timestamp(), NULL, NULL),
+('Foldable DJ Headphones', 'https://i.pinimg.com/736x/c4/15/5c/c4155c3f28d326e72b4fc51dd4bff4de.jpg', 'Foldable DJ headphones with swiveling earcups for easy storage.', 70, 35, 12, 27, current_timestamp(), NULL, NULL),
+('True Wireless Earbuds', 'https://i.pinimg.com/736x/dd/9b/c6/dd9bc67dae4623389906178bb096a724.jpg', 'Compact and cable-free true wireless earbuds for on-the-go use.', 60, 45, 12, 27, current_timestamp(), NULL, NULL),
+('Open-Back Audiophile Headphones', 'https://i.pinimg.com/736x/66/44/10/664410db192b250f4d578c9f72f8fbcf.jpg', 'Premium open-back audiophile headphones for high-fidelity audio.', 200, 10, 12, 27, current_timestamp(), NULL, NULL);
 
 -- phone
 
