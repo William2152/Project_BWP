@@ -230,7 +230,7 @@ VALUES
   ('Outdoor Oasis', 'outdooroasis@example.com', 'outdoor_oasis_image.jpg', '567 Exploration Street, Adventureland', 28, 4500, '2022-02-22 14:30:00', NULL, NULL),
   ('Vintage Values', 'vintagevalues@example.com', 'vintage_values_image.jpg', '890 Retro Road, Nostalgia City', 29, 6000, '2022-02-23 17:00:00', NULL, NULL),
   ('Keyboard Kingdom', 'keyboardkingdom@example.com', 'luxe_living_image.jpg', '123 Opulence Avenue, Elegance Town', 30, 2500, '2022-02-24 09:30:00', NULL, NULL),
-  ('Healthy Hub', 'healthyhub@example.com', 'healthy_hub_image.jpg', '456 Nutritional Street, Wellness City', 31, 3000, '2022-02-25 12:15:00', NULL, NULL),
+  ('Music Hub', 'musichub@example.com', 'healthy_hub_image.jpg', '456 Nutritional Street, Wellness City', 31, 3000, '2022-02-25 12:15:00', NULL, NULL),
   ('Artistic Inspirations', 'artisticinspirations@example.com', 'artistic_inspirations_image.jpg', '789 Creativity Court, Artland', 32, 8000, '2022-02-26 14:45:00', NULL, NULL),
   ('Chic Couture', 'chiccouture@example.com', 'chic_couture_image.jpg', '567 Trendy Terrace, Style City', 33, 4500, '2022-02-27 17:30:00', NULL, NULL),
   ('Culinary Creations', 'culinarycreations@example.com', 'culinary_creations_image.jpg', '234 Culinary Court, Foodville', 34, 6000, '2022-02-28 09:45:00', NULL, NULL),
@@ -258,7 +258,8 @@ INSERT INTO `category` (`category_name`, `created_at`, `updated_at`, `deleted_at
   ('keyboard', '2022-01-01 08:00:00', NULL, NULL),
   ('pets', '2022-01-01 08:00:00', NULL, NULL),
   ('garden', '2022-01-01 08:00:00', NULL, NULL),
-  ('furniture', '2022-01-01 08:00:00', NULL, NULL);
+  ('furniture', '2022-01-01 08:00:00', NULL, NULL),
+  ('music', '2022-01-01 08:00:00', NULL, NULL);
 
 
 -- insert buat product data
@@ -471,29 +472,29 @@ INSERT INTO `product` (`product_name`, `product_img`, `product_detail`, `product
 
 -- pets
 INSERT INTO `product` (`product_name`, `product_img`, `product_detail`, `product_price`, `product_stock`, `category_id`, `store_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('Pet Food - Premium Mix', 'https://i.pinimg.com/564x/1a/a2/c3/1aa2c36fc739c273196db7b531ab66b9.jpg', 'Nutrient-rich premium pet food mix.', 30, 50, 18, 7, current_timestamp(), NULL, NULL),
-('Dog Leash with Reflectors', 'https://i.pinimg.com/564x/fc/d9/69/fcd969027a672661f920c4df3b6a05ae.jpg', 'Durable leash with reflective strips for safety.', 15, 40, 18, 7, current_timestamp(), NULL, NULL),
-('Cat Scratching Post', 'https://i.pinimg.com/564x/b2/93/28/b29328ff2b891fcc50ddec074f369f87.jpg', 'Interactive scratching post for cats.', 20, 30, 18, 7, current_timestamp(), NULL, NULL),
-('Aquarium Starter Kit', 'https://i.pinimg.com/564x/71/fc/f8/71fcf834d72131b64278dd1214d4d752.jpg', 'Complete kit for starting your aquarium.', 50, 20, 18, 7, current_timestamp(), NULL, NULL),
-('Small Animal Cage', 'https://i.pinimg.com/564x/27/20/e7/2720e761962e40a2cfb130fa455f7577.jpg', 'Spacious cage for small pets like hamsters.', 25, 25, 18, 7, current_timestamp(), NULL, NULL),
-('Bird Cage with Perch', 'https://i.pinimg.com/564x/86/d2/63/86d2631e2dbcaf92dfb2eff6dd787254.jpg', 'Comfortable cage with perch for birds.', 35, 15, 18, 7, current_timestamp(), NULL, NULL),
-('Pet Grooming Kit', 'https://i.pinimg.com/564x/15/6b/ce/156bce1ab86ca4f4acba292baf52fb89.jpg', 'Complete grooming kit for dogs and cats.', 40, 20, 18, 7, current_timestamp(), NULL, NULL),
-('Reptile Heating Lamp', 'https://i.pinimg.com/564x/cb/ed/7c/cbed7cb913a598d0a3cdb2248927eb61.jpg', 'Heat lamp for reptile terrariums.', 18, 30, 18, 7, current_timestamp(), NULL, NULL),
-('Fish Tank Decorations', 'https://i.pinimg.com/564x/a1/67/9f/a1679f39859dd3bcfc7a3a2ccbf90296.jpg', 'Colorful decorations for your fish tank.', 12, 40, 18, 7, current_timestamp(), NULL, NULL),
-('Pet Travel Carrier', 'https://i.pinimg.com/736x/93/52/14/9352140c60e529721a55a4a6f0a48b45.jpg', 'Portable carrier for pets on the go.', 35, 10, 18, 7, current_timestamp(), NULL, NULL);
+('Pet Food - Premium Mix', 'https://i.pinimg.com/564x/1a/a2/c3/1aa2c36fc739c273196db7b531ab66b9.jpg', 'Nutrient-rich premium pet food mix.', 30, 50, 17, 7, current_timestamp(), NULL, NULL),
+('Dog Leash with Reflectors', 'https://i.pinimg.com/564x/fc/d9/69/fcd969027a672661f920c4df3b6a05ae.jpg', 'Durable leash with reflective strips for safety.', 15, 40, 17, 7, current_timestamp(), NULL, NULL),
+('Cat Scratching Post', 'https://i.pinimg.com/564x/b2/93/28/b29328ff2b891fcc50ddec074f369f87.jpg', 'Interactive scratching post for cats.', 20, 30, 17, 7, current_timestamp(), NULL, NULL),
+('Aquarium Starter Kit', 'https://i.pinimg.com/564x/71/fc/f8/71fcf834d72131b64278dd1214d4d752.jpg', 'Complete kit for starting your aquarium.', 50, 20, 17, 7, current_timestamp(), NULL, NULL),
+('Small Animal Cage', 'https://i.pinimg.com/564x/27/20/e7/2720e761962e40a2cfb130fa455f7577.jpg', 'Spacious cage for small pets like hamsters.', 25, 25, 17, 7, current_timestamp(), NULL, NULL),
+('Bird Cage with Perch', 'https://i.pinimg.com/564x/86/d2/63/86d2631e2dbcaf92dfb2eff6dd787254.jpg', 'Comfortable cage with perch for birds.', 35, 15, 17, 7, current_timestamp(), NULL, NULL),
+('Pet Grooming Kit', 'https://i.pinimg.com/564x/15/6b/ce/156bce1ab86ca4f4acba292baf52fb89.jpg', 'Complete grooming kit for dogs and cats.', 40, 20, 17, 7, current_timestamp(), NULL, NULL),
+('Reptile Heating Lamp', 'https://i.pinimg.com/564x/cb/ed/7c/cbed7cb913a598d0a3cdb2248927eb61.jpg', 'Heat lamp for reptile terrariums.', 18, 30, 17, 7, current_timestamp(), NULL, NULL),
+('Fish Tank Decorations', 'https://i.pinimg.com/564x/a1/67/9f/a1679f39859dd3bcfc7a3a2ccbf90296.jpg', 'Colorful decorations for your fish tank.', 12, 40, 17, 7, current_timestamp(), NULL, NULL),
+('Pet Travel Carrier', 'https://i.pinimg.com/736x/93/52/14/9352140c60e529721a55a4a6f0a48b45.jpg', 'Portable carrier for pets on the go.', 35, 10, 17, 7, current_timestamp(), NULL, NULL);
 
 -- gardening
 INSERT INTO `product` (`product_name`, `product_img`, `product_detail`, `product_price`, `product_stock`, `category_id`, `store_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('Gardening Tool Set', 'https://i.pinimg.com/736x/8b/62/29/8b6229f2a569a323ffe41e7e5293d4a6.jpg', 'Complete set for your gardening needs.', 29, 50, 19, 29, current_timestamp(), NULL, NULL),
-('Floral Pruning Shears', 'https://i.pinimg.com/564x/c8/56/27/c856279b5f7fd76b3076866615db4fe9.jpg', 'High-quality shears for precise pruning.', 15, 30, 19, 29, current_timestamp(), NULL, NULL),
-('Decorative Flower Pots', 'https://i.pinimg.com/564x/72/8e/a2/728ea2a5a01db5bdf44c9383b461a65b.jpg', 'Colorful pots to enhance your garden.', 12, 100, 19, 29, current_timestamp(), NULL, NULL),
-('Garden Soil Fertilizer', 'https://i.pinimg.com/564x/ee/30/fa/ee30fa2b46a1007ae5dc21dfd41489c2.jpg', 'Enriched fertilizer for healthy plants.', 20, 40, 19, 29, current_timestamp(), NULL, NULL),
-('LED Solar Garden Lights', 'https://i.pinimg.com/564x/8c/37/a0/8c37a03926b4ec9f80596d584ec7578e.jpg', 'Energy-efficient lights for your garden.', 35, 25, 19, 29, current_timestamp(), NULL, NULL),
-('Garden Hose with Nozzle', 'https://i.pinimg.com/564x/a6/aa/7c/a6aa7c6c83bfd56486bc97d8874f96d2.jpg', 'Durable hose with adjustable nozzle.', 18, 60, 19, 29, current_timestamp(), NULL, NULL),
-('Rustic Wooden Plant Stand', 'https://i.pinimg.com/564x/49/1e/f4/491ef42132e41ec53bf3f37896912657.jpg', 'Elevate your plants with this stylish stand.', 25, 20, 19, 29, current_timestamp(), NULL, NULL),
-('Garden Gloves with Grips', 'https://i.pinimg.com/564x/8b/30/5b/8b305b38a766edafdcef34018194aa1d.jpg', 'Comfortable gloves with non-slip grips.', 10, 75, 19, 29, current_timestamp(), NULL, NULL),
-('Garden Kneeler and Seat', 'https://i.pinimg.com/564x/bb/fa/72/bbfa728c29de03e879112c269f58992e.jpg', 'Convenient kneeler for comfortable gardening.', 30, 15, 19, 29, current_timestamp(), NULL, NULL),
-('Hanging Flower Basket', 'https://i.pinimg.com/564x/cb/57/13/cb5713fdf1404ae8406c64514ce58071.jpg', 'Attractive baskets for hanging plants.', 22, 35, 19, 29, current_timestamp(), NULL, NULL);
+('Gardening Tool Set', 'https://i.pinimg.com/736x/8b/62/29/8b6229f2a569a323ffe41e7e5293d4a6.jpg', 'Complete set for your gardening needs.', 29, 50, 18, 29, current_timestamp(), NULL, NULL),
+('Floral Pruning Shears', 'https://i.pinimg.com/564x/c8/56/27/c856279b5f7fd76b3076866615db4fe9.jpg', 'High-quality shears for precise pruning.', 15, 30, 18, 29, current_timestamp(), NULL, NULL),
+('Decorative Flower Pots', 'https://i.pinimg.com/564x/72/8e/a2/728ea2a5a01db5bdf44c9383b461a65b.jpg', 'Colorful pots to enhance your garden.', 12, 100, 18, 29, current_timestamp(), NULL, NULL),
+('Garden Soil Fertilizer', 'https://i.pinimg.com/564x/ee/30/fa/ee30fa2b46a1007ae5dc21dfd41489c2.jpg', 'Enriched fertilizer for healthy plants.', 20, 40, 18, 29, current_timestamp(), NULL, NULL),
+('LED Solar Garden Lights', 'https://i.pinimg.com/564x/8c/37/a0/8c37a03926b4ec9f80596d584ec7578e.jpg', 'Energy-efficient lights for your garden.', 35, 25, 18, 29, current_timestamp(), NULL, NULL),
+('Garden Hose with Nozzle', 'https://i.pinimg.com/564x/a6/aa/7c/a6aa7c6c83bfd56486bc97d8874f96d2.jpg', 'Durable hose with adjustable nozzle.', 18, 60, 18, 29, current_timestamp(), NULL, NULL),
+('Rustic Wooden Plant Stand', 'https://i.pinimg.com/564x/49/1e/f4/491ef42132e41ec53bf3f37896912657.jpg', 'Elevate your plants with this stylish stand.', 25, 20, 18, 29, current_timestamp(), NULL, NULL),
+('Garden Gloves with Grips', 'https://i.pinimg.com/564x/8b/30/5b/8b305b38a766edafdcef34018194aa1d.jpg', 'Comfortable gloves with non-slip grips.', 10, 75, 18, 29, current_timestamp(), NULL, NULL),
+('Garden Kneeler and Seat', 'https://i.pinimg.com/564x/bb/fa/72/bbfa728c29de03e879112c269f58992e.jpg', 'Convenient kneeler for comfortable gardening.', 30, 15, 18, 29, current_timestamp(), NULL, NULL),
+('Hanging Flower Basket', 'https://i.pinimg.com/564x/cb/57/13/cb5713fdf1404ae8406c64514ce58071.jpg', 'Attractive baskets for hanging plants.', 22, 35, 18, 29, current_timestamp(), NULL, NULL);
 
 -- furniture
 INSERT INTO `product` (`product_name`, `product_img`, `product_detail`, `product_price`, `product_stock`, `category_id`, `store_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -512,6 +513,19 @@ INSERT INTO `product` (`product_name`, `product_img`, `product_detail`, `product
 ('Red White Dress Size M', 'https://i.pinimg.com/474x/06/13/ff/0613ffa2fc99e6e7ba59945b2e54e089.jpg', 'In good conditions, for cosplay', 1500000, 1, 2, 31, '2024-01-04 08:32:29', NULL, NULL),
 ('Floral Red Elegant Dress Size M', 'https://i.pinimg.com/474x/05/80/d7/0580d7fe79c690fc768c69162dfffdb8.jpg', 'Magnificent Beautiful Floral Red Dress, Size M, Material Silk', 3000000, 2, 2, 31, '2024-01-04 08:49:01', NULL, NULL)
 ;
+
+-- music
+INSERT INTO product (product_name, product_img, product_detail, product_price, product_stock, category_id, store_id)
+VALUES ('Guitar', 'https://i.pinimg.com/564x/37/7c/71/377c71088694d6d71bec12dea5c66ddd.jpg', 'High-quality acoustic guitar for professionals', 500, 10, 20, 25),
+       ('Piano', 'https://i.pinimg.com/564x/f6/56/f1/f656f1d120da13b2cde9211a9f822522.jpg', 'Digital piano with weighted keys', 800, 15, 20, 25),
+       ('Violin', 'https://i.pinimg.com/736x/3a/11/0d/3a110d92a6d2a894a792db4dca88c0c8.jpg', 'Handcrafted violin with bow and case', 300, 20, 20, 25),
+       ('Drum Set', 'https://i.pinimg.com/736x/29/2b/06/292b06a448605bffc25b1d1fa85a1d2c.jpg', 'Complete drum set with cymbals', 700, 12, 20, 25),
+       ('Trumpet', 'https://i.pinimg.com/736x/42/6f/8b/426f8b32d45fbc387c200cce771031ab.jpg', 'Brass trumpet for beginners and intermediates', 250, 18, 20, 25),
+       ('Saxophone', 'https://i.pinimg.com/564x/48/f4/03/48f4032e2a5849a64ecf24e5d597c9e5.jpg', 'Alto saxophone with case and accessories', 600, 8, 20, 25),
+       ('Keyboard', 'https://i.pinimg.com/564x/54/7a/3f/547a3fdba8a1ef0a70942efc4f1f85f2.jpg', 'Portable electronic keyboard with touch-sensitive keys', 400, 25, 20, 25),
+       ('Flute', 'https://i.pinimg.com/736x/16/41/41/1641413f873c0f14e040f5e069d58ba3.jpg', 'Silver-plated flute for classical music enthusiasts', 350, 22, 20, 25),
+       ('Electric Guitar', 'https://i.pinimg.com/564x/2d/1a/d8/2d1ad86826bd9d4c2f7eb3e3b09d9381.jpg', 'Solid body electric guitar for rock and metal', 450, 14, 20, 25),
+       ('Cello', 'https://i.pinimg.com/564x/d7/bd/1a/d7bd1aa94ee00efcf5a962b2a5aa9f37.jpg', 'Full-size cello for advanced players', 900, 10, 20, 25);
 
 
 
