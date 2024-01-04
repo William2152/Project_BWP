@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginRegisControler;
 use App\Http\Controllers\ProfileUser;
+use App\Http\Controllers\TokoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,28 +31,31 @@ Route::prefix('/profile')->group(function () {
         Route::get('/selesai', [ProfileUser::class, 'selesai']);
     });
     Route::get('/vouchersaya', [ProfileUser::class, 'Voucher']);
-    Route::get('/tokosaya', [ProfileUser::class, 'TokoSaya']);
     Route::get('/formtoko', [ProfileUser::class, 'BuatToko']);
-    Route::get('/updatetoko', [ProfileUser::class, 'editToko']);
+
     Route::get('/saldosaya', [ProfileUser::class, 'Saldo']);
     Route::get('/saldosaya/history/topup', [ProfileUser::class, 'historytopup']);
     Route::get('/saldosaya/history/pembelian', [ProfileUser::class, 'historypembelian']);
     Route::post('/ubahProfile', [ProfileUser::class, 'ubahProfile']);
     Route::post('/ubahPass', [ProfileUser::class, 'ubahProfilePass']);
     Route::post('/tambahtoko', [ProfileUser::class, 'TambahToko']);
-    Route::post('/ubahtoko', [ProfileUser::class, 'UpdateToko']);
 });
-Route::get('/tokosaya', function () {
-    return view('toko.gakpunyatoko');
+
+Route::prefix('tokosaya')->group(function () {
+    Route::get('/', [TokoController::class, 'TokoSaya']);
+    Route::get('/updatetoko', [TokoController::class, 'editToko']);
+    Route::get('/tambahproduk', [TokoController::class, 'AddProductPage']);
+
+    Route::post('/ubahtoko', [TokoController::class, 'UpdateToko']);
+    Route::post('/addProduct', [TokoController::class, 'AddProduct']);
 });
+
 
 Route::get('/punyatoko', function () {
     return view('toko.tokoProductSaya');
 });
 
-Route::get('/tambahproduk', function () {
-    return view('menu.tambahProduct');
-});
+
 
 Route::get('/userCart', function () {
     return view('User.userCart');

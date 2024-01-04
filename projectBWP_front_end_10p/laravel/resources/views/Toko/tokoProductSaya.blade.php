@@ -3,104 +3,28 @@
     <div class="content" style="background-color: whitesmoke; padding-bottom: 2vw;">
         <div class="container">
             <div class="isi ms-2">
-                <div class="row">
-                    <div class="col-2">
-                        <div class="card" style="width: 12vw; margin-top: 2vw;">
-                            <img src="/carousel1.jpg" style="width: 12vw; height: 12vw;" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                    of
-                                    the
-                                    card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <div class="row row-cols-5">
+                    @if ($product != null)
+                        @foreach ($product as $p)
+                            <div class="col d-flex align-items-stretch">
+                                <div class="card" style="margin-top: 2vw;">
+                                    <img src="{{ $p->product_img == null ? '/carousel1.jpg' : $p->product_img }}"
+                                        style="object-fit: cover; height: 12vw;" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $p->product_name }}</h5>
+                                        <p class="card-text fw-bold">Price : Rp {{ $p->product_price }}</p>
+                                        <p class="card-text fw-bold">Stok : {{ $p->product_stock }}</p>
+                                        <p class="card-text">{{ $p->product_detail }}</p>
+                                    </div>
+                                    <div class="ms-3 mt-auto mb-3">
+                                        <a href="#" class="btn btn-primary">Edit Item</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="card" style="width: 12vw; margin-top: 2vw;">
-                            <img src="/carousel1.jpg" style="width: 12vw; height: 12vw;" class="card-img-top"
-                                alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                    of
-                                    the
-                                    card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="card" style="width: 12vw; margin-top: 2vw;">
-                            <img src="/carousel1.jpg" style="width: 12vw; height: 12vw;" class="card-img-top"
-                                alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                    of
-                                    the
-                                    card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="card" style="width: 12vw; margin-top: 2vw;">
-                            <img src="/carousel1.jpg" style="width: 12vw; height: 12vw;" class="card-img-top"
-                                alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                    of
-                                    the
-                                    card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="card" style="width: 12vw; margin-top: 2vw;">
-                            <img src="/carousel1.jpg" style="width: 12vw; height: 12vw;" class="card-img-top"
-                                alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                    of
-                                    the
-                                    card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="card" style="width: 12vw; margin-top: 2vw;">
-                            <img src="/carousel1.jpg" style="width: 12vw; height: 12vw;" class="card-img-top"
-                                alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                    of
-                                    the
-                                    card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="card" style="width: 12vw; margin-top: 2vw;">
-                            <img src="/carousel1.jpg" style="width: 12vw; height: 12vw;" class="card-img-top"
-                                alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                    of
-                                    the
-                                    card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
+                        @endforeach
+                    @else
+                    @endif
+
                 </div>
             </div>
         </div>

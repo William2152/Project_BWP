@@ -83,7 +83,7 @@ CREATE TABLE `product` (
   `product_name` varchar(50) NOT NULL,
   `product_img` text NOT NULL,
   `product_detail` text DEFAULT NULL,
-  `product_price` int(11) NOT NULL,
+  `product_price` int(11) NOT NULL check(product_price > 0),
   `product_stock` int(11) NOT NULL DEFAULT 0,
   `product_avg_rating` decimal(10,0) DEFAULT NULL,
   `product_jumlah_avg_data` int(11) DEFAULT NULL,

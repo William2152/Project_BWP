@@ -82,22 +82,7 @@ class ProfileUser extends Controller
         ]);
     }
 
-    public function TokoSaya(Request $req)
-    {
-        $user = Auth::guard("web")->user();
-        $toko = $user->Toko;
 
-        if ($toko == null) {
-            return view("toko.gakpunyatoko", [
-                "curr" => $user,
-            ]);
-        }
-
-        return view("toko.tokoProductSaya", [
-            "curr" => $user,
-            "toko" => $toko,
-        ]);
-    }
 
     public function BuatToko(Request $req)
     {
@@ -107,13 +92,7 @@ class ProfileUser extends Controller
         ]);
     }
 
-    public function edittoko(Request $req)
-    {
-        $user = Auth::guard("web")->user();
-        return view("Toko.editToko", [
-            "curr" => $user,
-        ]);
-    }
+
 
     public function ubahProfile(Request $req)
     {
@@ -176,42 +155,13 @@ class ProfileUser extends Controller
             "store_status" => 0
         ]);
         if ($result) {
-            return back()->with('success', 'berhasil Tambah Toko!');
+            return redirect("/tokosaya")->with('success', 'berhasil Tambah Toko!');
         } else {
             return back()->with('err', 'gagal Tambah Toko!');
         }
     }
 
-    public function UpdateToko(Request $req)
-    {
-        $req->validate(
-            [
-                "namaToko" => "required",
-                // "alamat" => "required",
-                // "email" => "required|email",
-            ],
-            [
-                "namaToko.required" => "nama tidak boleh kosong!",
-                // "alamat.required" => "alamat tidak boleh kosong!",
-                // "email.required" => "email tidak boleh kosong!",
-                // "email.email" => "email harus berbentuk email!",
-            ]
-        );
-        $tokoID = Auth::guard("web")->user()->Toko->store_id;
-        $updateToko = Store::find($tokoID);
-        $result = $updateToko->update([
-            "store_name" => $req->namaToko,
-            "store_email" => $req->email,
-            "store_address" => $req->alamat,
-            "store_img" => $req->urlLogoToko,
-        ]);
 
-        if ($result) {
-            return back()->with('success', 'berhasil update Toko!');
-        } else {
-            return back()->with('err', 'gagal update Toko!');
-        }
-    }
 
     public function DeleteToko(Request $req)
     {

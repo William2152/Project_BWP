@@ -11,7 +11,7 @@
     @endif
     <h1 style="text-align: center; margin-bottom: 1vw;">Edit Toko</h1>
     <div class="container" style="border: 2px solid black; margin-bottom: 2vw; padding-bottom: 2vw;">
-        <form action="{{ url('/profile/ubahtoko') }}" method="post">
+        <form action="{{ url('/tokosaya/ubahtoko') }}" method="post">
             @csrf
             <label style="width: 9vw; margin-top: 2vw;" for="">Nama Toko</label>:
             <input type="text" style="width: 20vw;" name="namaToko" id="">

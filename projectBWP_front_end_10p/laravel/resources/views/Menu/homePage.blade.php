@@ -254,7 +254,7 @@
 
                             </div>
                             <div class="ms-3 mt-auto mb-3">
-                                <a href="#" class="btn btn-primary">Add To Cart</a>
+                                <a href="#" class="btn btn-primary">Detail Item</a>
                             </div>
                         </div>
                     </div>
