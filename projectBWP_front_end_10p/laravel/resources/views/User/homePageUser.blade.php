@@ -37,17 +37,30 @@
                     aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner" style="height: 30vw;">
-                <div class="carousel-item active">
-                    <img src="/Carousel1.jpg" style="object-fit: fill; height: 100%; width: 100%;" class="d-block"
-                        alt="Slide 1">
+                <div class="carousel-item active"
+                    style="border: 2px solid black;
+                padding: 15rem;
+                background: url(https://i.pinimg.com/564x/4a/c8/82/4ac8824569cb3a40b9317e26f984c849.jpg);
+                background-repeat: no-repeat;
+                background-size:cover;
+                background-position: center;">
                 </div>
-                <div class="carousel-item">
-                    <img src="/Carousel2.jpg" style="object-fit: cover; height: 100%; width: 100%;" class="d-block w-100"
-                        alt="Slide 2">
+
+                <div class="carousel-item"
+                    style="border: 2px solid black;
+            padding: 15rem;
+            background: url(/Carousel2.jpg);
+            background-repeat: no-repeat;
+            background-size:cover;
+            background-position: center;">
                 </div>
-                <div class="carousel-item">
-                    <img src="/Carousel3.jpg" style="object-fit: contain; height: 100%;" class="d-block w-100"
-                        alt="Slide 3">
+                <div class="carousel-item"
+                    style="border: 2px solid black;
+            padding: 15rem;
+            background: url(/Carousel3.jpg);
+            background-repeat: no-repeat;
+            background-size:cover;
+            background-position: center;">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
@@ -92,14 +105,12 @@
                         <div class="col" style="margin-top: 1vw;">
                             <div class="bg-light" style="width: 50px; height: 50px;">
                                 <a href="{{ url('/shopping/jewelry') }}">
-                                    <img src="/assets/category/jewel.png" style="width: 50px; height: 50px;"
-                                        alt="">
+                                    <img src="/assets/category/jewel.png" style="width: 50px; height: 50px;" alt="">
                                 </a>
                             </div>
                             <div class="bg-light" style="width: 50px; height: 50px; margin-top: 1vw; margin-bottom: 1vw;">
                                 <a href="{{ url('/shopping/medicine') }}">
-                                    <img src="/assets/category/medic.png" style="width: 50px; height: 50px;"
-                                        alt="">
+                                    <img src="/assets/category/medic.png" style="width: 50px; height: 50px;" alt="">
                                 </a>
                             </div>
                         </div>

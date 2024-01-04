@@ -11,38 +11,31 @@
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
                     aria-label="Slide 3"></button>
             </div>
-            <div class="carousel-inner" style="height: 20vw;">
-                <div class="carousel-item active">
-                    <img src="/Carousel1.jpg" style="object-fit: cover; height: 100%; width: 100%;" class="d-block"
-                        alt="Slide 1">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
+            <div class="carousel-inner" style="height: 30vw;">
+                <div class="carousel-item active"
+                    style="border: 2px solid black;
+                    padding: 15rem;
+                    background: url(https://i.pinimg.com/564x/4a/c8/82/4ac8824569cb3a40b9317e26f984c849.jpg);
+                    background-repeat: no-repeat;
+                    background-size:cover;
+                    background-position: center;">
                 </div>
-                <div class="carousel-item">
-                    <img src="/Carousel2.jpg" style="object-fit: contain; height: 100%;" class="d-block w-100"
-                        alt="Slide 2">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Second slide label</h5>
-                        <p>Some representative placeholder content for the second slide.</p>
-                    </div>
+
+                <div class="carousel-item"
+                    style="border: 2px solid black;
+                padding: 15rem;
+                background: url(/Carousel2.jpg);
+                background-repeat: no-repeat;
+                background-size:cover;
+                background-position: center;">
                 </div>
-                <div class="carousel-item">
-                    <img src="/Carousel3.jpg" style="object-fit: contain; height: 100%;" class="d-block w-100"
-                        alt="Slide 3">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Third slide label</h5>
-                        <p>Some representative placeholder content for the third slide.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="/Carousel3.jpg" style="object-fit: contain; height: 100%;" class="d-block w-100"
-                        alt="Slide 3">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Third slide label</h5>
-                        <p>Some representative placeholder content for the third slide.</p>
-                    </div>
+                <div class="carousel-item"
+                    style="border: 2px solid black;
+                padding: 15rem;
+                background: url(/Carousel3.jpg);
+                background-repeat: no-repeat;
+                background-size:cover;
+                background-position: center;">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
@@ -100,22 +93,19 @@
                         <div class="col" style="margin-top: 1vw;">
                             <div class="bg-light" style="width: 50px; height: 50px;">
                                 <a href="{{ url('/shopping/shoes') }}">
-                                    <img src="/assets/category/shoes.png" style="width: 50px; height: 50px;"
-                                        alt="">
+                                    <img src="/assets/category/shoes.png" style="width: 50px; height: 50px;" alt="">
                                 </a>
                             </div>
                             <div class="bg-light" style="width: 50px; height: 50px; margin-top: 1vw; margin-bottom: 1vw;">
                                 <a href="{{ url('/shopping/bag') }}">
-                                    <img src="/assets/category/bag.png" style="width: 50px; height: 50px;"
-                                        alt="">
+                                    <img src="/assets/category/bag.png" style="width: 50px; height: 50px;" alt="">
                                 </a>
                             </div>
                         </div>
                         <div class="col" style="margin-top: 1vw;">
                             <div class="bg-light" style="width: 50px; height: 50px;">
                                 <a href="{{ url('/shopping/book') }}">
-                                    <img src="/assets/category/book.png" style="width: 50px; height: 50px;"
-                                        alt="">
+                                    <img src="/assets/category/book.png" style="width: 50px; height: 50px;" alt="">
                                 </a>
                             </div>
                             <div class="bg-light" style="width: 50px; height: 50px; margin-top: 1vw; margin-bottom: 1vw;">
@@ -245,7 +235,7 @@
             <div class="row row-cols-5">
                 @foreach ($product as $p)
                     <div class="col d-flex align-items-stretch">
-                        <div class="card" style="margin-top: 2vw;">
+                        <div class="card" style="margin-top: 2vw; width: 20vw;">
                             <img src="{{ $p->product_img }}" style=" height: 12vw; object-fit: cover;"
                                 class="card-img-top img-fluid w-100" alt="...">
                             <div class="card-body">
@@ -272,10 +262,13 @@
             <h5>KA Store</h5>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat, inventore ipsum. Tenetur nobis commodi
                 expedita. Eos eum ipsum quasi iusto, pariatur corrupti at impedit incidunt numquam dolorum qui accusamus
-                unde vero esse soluta nisi minima voluptatum reiciendis rerum earum corporis minus officiis facilis error!
+                unde vero esse soluta nisi minima voluptatum reiciendis rerum earum corporis minus officiis facilis
+                error!
                 Sed, officiis exercitationem! Aut dolor debitis a! Ducimus debitis necessitatibus quisquam? Ea suscipit
-                magni blanditiis, veritatis molestias qui necessitatibus odio ut quidem magnam, quo pariatur tempore tenetur
-                praesentium vero sunt harum asperiores veniam aut ratione. Ex ea quidem error ad voluptas modi dolores natus
+                magni blanditiis, veritatis molestias qui necessitatibus odio ut quidem magnam, quo pariatur tempore
+                tenetur
+                praesentium vero sunt harum asperiores veniam aut ratione. Ex ea quidem error ad voluptas modi dolores
+                natus
                 nam nihil doloremque, dolore quaerat, et accusantium harum minus tempore minima quo.</p>
             <br>
             <h5>Toko Online Terpercaya</h5>
@@ -284,14 +277,20 @@
                 voluptate earum doloribus temporibus architecto dolore! Sint quas earum ratione nisi quam, natus nostrum
                 aperiam vitae numquam fugit. Temporibus consequatur architecto cumque quod! Fuga blanditiis corrupti eum
                 possimus illo, quis iure modi odio, magnam perspiciatis cupiditate quo quas sunt id praesentium nesciunt
-                enim nulla rerum. Esse expedita quod veritatis neque incidunt. Magni maiores eligendi recusandae molestiae
-                ex eos? Consequuntur nobis quod suscipit pariatur veniam sed facere maxime quo, cupiditate doloremque iusto.
+                enim nulla rerum. Esse expedita quod veritatis neque incidunt. Magni maiores eligendi recusandae
+                molestiae
+                ex eos? Consequuntur nobis quod suscipit pariatur veniam sed facere maxime quo, cupiditate doloremque
+                iusto.
                 Rerum quae laboriosam tempora dolorem modi quis alias libero dolore sint, ducimus incidunt illo voluptas
-                laudantium, esse saepe inventore nesciunt perferendis, possimus eius non! Non voluptatum praesentium autem
+                laudantium, esse saepe inventore nesciunt perferendis, possimus eius non! Non voluptatum praesentium
+                autem
                 totam assumenda doloribus, dolore doloremque unde ea natus, veniam eligendi eveniet, dolores distinctio
-                excepturi repellendus a ab dolorum officiis esse libero aut nostrum. Id saepe alias consectetur. Aut itaque
-                voluptatum veniam, alias eos quasi laudantium, aliquid omnis corrupti eius quis nisi ab ad cumque similique
-                amet modi tempore dolores? Numquam, incidunt non. Dolores, officia illum quia omnis eligendi ad voluptas,
+                excepturi repellendus a ab dolorum officiis esse libero aut nostrum. Id saepe alias consectetur. Aut
+                itaque
+                voluptatum veniam, alias eos quasi laudantium, aliquid omnis corrupti eius quis nisi ab ad cumque
+                similique
+                amet modi tempore dolores? Numquam, incidunt non. Dolores, officia illum quia omnis eligendi ad
+                voluptas,
                 nam quis alias corporis atque assumenda, enim quod. Quia ab saepe quae ipsam atque.</p>
         </div>
     </div>
