@@ -229,7 +229,7 @@ VALUES
   ('Toys Trends', 'toystrends@example.com', 'tech_trends_image.jpg', '234 Innovation Lane, Technocity', 27, 2000, '2022-02-21 11:45:00', NULL, NULL),
   ('Outdoor Oasis', 'outdooroasis@example.com', 'outdoor_oasis_image.jpg', '567 Exploration Street, Adventureland', 28, 4500, '2022-02-22 14:30:00', NULL, NULL),
   ('Vintage Values', 'vintagevalues@example.com', 'vintage_values_image.jpg', '890 Retro Road, Nostalgia City', 29, 6000, '2022-02-23 17:00:00', NULL, NULL),
-  ('Luxe Living', 'luxeliving@example.com', 'luxe_living_image.jpg', '123 Opulence Avenue, Elegance Town', 30, 2500, '2022-02-24 09:30:00', NULL, NULL),
+  ('Keyboard Kingdom', 'keyboardkingdom@example.com', 'luxe_living_image.jpg', '123 Opulence Avenue, Elegance Town', 30, 2500, '2022-02-24 09:30:00', NULL, NULL),
   ('Healthy Hub', 'healthyhub@example.com', 'healthy_hub_image.jpg', '456 Nutritional Street, Wellness City', 31, 3000, '2022-02-25 12:15:00', NULL, NULL),
   ('Artistic Inspirations', 'artisticinspirations@example.com', 'artistic_inspirations_image.jpg', '789 Creativity Court, Artland', 32, 8000, '2022-02-26 14:45:00', NULL, NULL),
   ('Chic Couture', 'chiccouture@example.com', 'chic_couture_image.jpg', '567 Trendy Terrace, Style City', 33, 4500, '2022-02-27 17:30:00', NULL, NULL),
@@ -417,12 +417,57 @@ INSERT INTO `product` (`product_name`, `product_img`, `product_detail`, `product
 ('Open-Back Audiophile Headphones', 'https://i.pinimg.com/736x/66/44/10/664410db192b250f4d578c9f72f8fbcf.jpg', 'Premium open-back audiophile headphones for high-fidelity audio.', 200, 10, 12, 27, current_timestamp(), NULL, NULL);
 
 -- phone
+INSERT INTO `product` (`product_name`, `product_img`, `product_detail`, `product_price`, `product_stock`, `category_id`, `store_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+('Smartphone XYZ', 'https://i.pinimg.com/564x/6f/58/d6/6f58d6cbe47e655d4af4f1519459084d.jpg', 'High-performance smartphone with XYZ features.', 700, 50, 13, 11, current_timestamp(), NULL, NULL),
+('Flagship Android Phone', 'https://i.pinimg.com/564x/f8/00/5f/f8005fcca3c8313418c511d9d5060bd5.jpg', 'Top-of-the-line Android smartphone with cutting-edge technology.', 900, 30, 13, 11, current_timestamp(), NULL, NULL),
+('Budget-Friendly Smartphone', 'https://i.pinimg.com/564x/65/12/33/651233ae8d12e11b76a96b369041d1eb.jpg', 'Affordable smartphone with essential features for everyday use.', 300, 80, 13, 11, current_timestamp(), NULL, NULL),
+('iOS-powered iPhone', 'https://i.pinimg.com/736x/cb/5a/a9/cb5aa9630759829d2e4da149eec9ade5.jpg', 'Elegant iPhone running the latest iOS software.', 800, 40, 13, 11, current_timestamp(), NULL, NULL),
+('5G-enabled Mobile Device', 'https://i.pinimg.com/736x/ee/b9/52/eeb9526f64a659c3f5cf22344c8a030d.jpg', 'Fast and reliable 5G-enabled mobile device for high-speed connectivity.', 1000, 20, 13, 11, current_timestamp(), NULL, NULL),
+('Compact Flip Phone', 'https://i.pinimg.com/564x/35/f3/a8/35f3a8130cc578305ea00d2ba2c8cf53.jpg', 'Classic flip phone design with modern features in a compact form factor.', 400, 60, 13, 11, current_timestamp(), NULL, NULL),
+('Camera-centric Smartphone', 'https://i.pinimg.com/564x/54/62/36/546236cd3ee2144b19f90f6f1d6d8747.jpg', 'Smartphone optimized for photography enthusiasts with advanced camera features.', 600, 45, 13, 11, current_timestamp(), NULL, NULL),
+('Business-oriented Mobile Device', 'https://i.pinimg.com/564x/14/47/d9/1447d951c29930fd34b04ec0f548e78b.jpg', 'Mobile device tailored for business professionals with productivity tools.', 1200, 25, 13, 11, current_timestamp(), NULL, NULL),
+('Rugged Outdoor Phone', 'https://i.pinimg.com/736x/04/09/4f/04094f1dcb48f3f78fa8bea418717db4.jpg', 'Durable and rugged phone designed for outdoor and adventurous use.', 500, 35, 13, 11, current_timestamp(), NULL, NULL),
+('Foldable Smartphone', 'https://i.pinimg.com/564x/1e/a9/fd/1ea9fd408409f4cfecd2dae407ff7194.jpg', 'Cutting-edge foldable smartphone with a flexible display.', 1500, 15, 13, 11, current_timestamp(), NULL, NULL);
 
 -- art
+INSERT INTO `product` (`product_name`, `product_img`, `product_detail`, `product_price`, `product_stock`, `category_id`, `store_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+('Acrylic Paint Set', 'https://i.pinimg.com/564x/09/ae/ff/09aeffd9694e2c075c93c8922407167b.jpg', 'Complete set of high-quality acrylic paints for artists.', 40, 50, 14, 26, current_timestamp(), NULL, NULL),
+('Sketching Pencils Kit', 'https://i.pinimg.com/564x/c6/8a/19/c68a197dec4850fdafbc8f484862e315.jpg', 'Assorted sketching pencils for various shading techniques.', 20, 70, 14, 26, current_timestamp(), NULL, NULL),
+('Watercolor Palette', 'https://i.pinimg.com/564x/85/7b/44/857b4440637887406e8b606cfdd6debb.jpg', 'Compact watercolor palette with a range of vibrant colors.', 30, 60, 14, 26, current_timestamp(), NULL, NULL),
+('Canvas Pack', 'https://i.pinimg.com/564x/07/1a/11/071a11259221faf0675c2572083ab6d7.jpg', 'High-quality canvas pack for artists to create their masterpieces.', 25, 40, 14, 26, current_timestamp(), NULL, NULL),
+('Oil Paint Set', 'https://i.pinimg.com/564x/1c/e4/bc/1ce4bc1734ddcee4cd2e01374efd0b78.jpg', 'Comprehensive set of oil paints for professional artists.', 50, 30, 14, 26, current_timestamp(), NULL, NULL),
+('Artist Easel', 'https://i.pinimg.com/564x/6c/97/7d/6c977dfab7734c44371134c0ea986931.jpg', 'Sturdy and adjustable easel for comfortable painting.', 60, 20, 14, 26, current_timestamp(), NULL, NULL),
+('Mixed Media Art Supplies', 'https://i.pinimg.com/564x/92/af/0e/92af0e8b120f0bd77473c76ae02734b6.jpg', 'Assorted art supplies for mixed media artwork.', 35, 55, 14, 26, current_timestamp(), NULL, NULL),
+('Pastel Colors Set', 'https://i.pinimg.com/564x/3d/77/5f/3d775f7b33d0a1c37416b29aa581fce9.jpg', 'Soft pastel colors set for delicate and nuanced artwork.', 45, 25, 14, 26, current_timestamp(), NULL, NULL),
+('Art Brushes Collection', 'https://i.pinimg.com/736x/88/ba/58/88ba58fb0e5b039424373e379aeafd2a.jpg', 'Various brushes for different painting techniques.', 15, 75, 14, 26, current_timestamp(), NULL, NULL),
+('Charcoal Drawing Kit', 'https://i.pinimg.com/564x/1b/8a/e2/1b8ae2064aaf1f284c33556446c1296c.jpg', 'Complete kit for charcoal drawing and sketching.', 30, 35, 14, 26, current_timestamp(), NULL, NULL);
 
 -- food 
+INSERT INTO `product` (`product_name`, `product_img`, `product_detail`, `product_price`, `product_stock`, `category_id`, `store_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+('Premium Olive Oil', 'https://i.pinimg.com/736x/f1/01/d9/f101d9345f8dc226cfd99e12a8e4dc28.jpg', 'High-quality extra virgin olive oil for cooking and dressing.', 20, 100, 15, 28, current_timestamp(), NULL, NULL),
+('Organic Quinoa (1kg)', 'https://i.pinimg.com/564x/b5/16/8b/b5168b3132e9c19df49dc7a560bc9f9a.jpg', 'Certified organic quinoa for a nutritious and versatile grain option.', 15, 80, 15, 28, current_timestamp(), NULL, NULL),
+('Assorted Nuts and Dried Fruits', 'https://i.pinimg.com/564x/60/5c/87/605c87d45e6221015ff25d13f362a9d7.jpg', 'Mix of assorted nuts and dried fruits for a healthy snack.', 25, 120, 15, 28, current_timestamp(), NULL, NULL),
+('Natural Honey (500g)', 'https://i.pinimg.com/564x/8b/ac/70/8bac70502bd0a211223cc211979d35b4.jpg', 'Pure and natural honey for sweetening and culinary use.', 18, 90, 15, 28, current_timestamp(), NULL, NULL),
+('Organic Green Tea (50 Bags)', 'https://i.pinimg.com/564x/80/de/ca/80deca16fb89c23c255e091f96b0f728.jpg', 'Organic green tea bags for a refreshing and antioxidant-rich beverage.', 12, 60, 15, 28, current_timestamp(), NULL, NULL),
+('Whole Grain Pasta (2kg)', 'https://i.pinimg.com/564x/fe/2c/e9/fe2ce9e596e36f30569d4fdb93f86784.jpg', 'Whole grain pasta for a healthier alternative to traditional pasta.', 22, 70, 15, 28, current_timestamp(), NULL, NULL),
+('Gourmet Chocolate Assortment', 'https://i.pinimg.com/564x/4d/52/4e/4d524eb680d39f9501a014f7b2330311.jpg', 'Assortment of gourmet chocolates for indulgent treats.', 30, 50, 15, 28, current_timestamp(), NULL, NULL),
+('Organic Coconut Oil (750ml)', 'https://i.pinimg.com/736x/f6/68/ef/f668efad78dc6033c120b187f1f56589.jpg', 'Certified organic coconut oil for cooking and skincare.', 25, 110, 15, 28, current_timestamp(), NULL, NULL),
+('Artisanal Bread Selection', 'https://i.pinimg.com/564x/a4/1a/33/a41a33e5748b689aca7d66e1b80e2f3c.jpg', 'Selection of artisanal bread for a delicious and hearty meal.', 15, 40, 15, 28, current_timestamp(), NULL, NULL),
+('Premium Coffee Beans (1kg)', 'https://i.pinimg.com/564x/73/42/3b/73423b19855f1244f0f7f1b7e64d91c8.jpg', 'High-quality premium coffee beans for a rich and flavorful brew.', 28, 75, 15, 28, current_timestamp(), NULL, NULL);
 
 -- keyboard
+INSERT INTO `product` (`product_name`, `product_img`, `product_detail`, `product_price`, `product_stock`, `category_id`, `store_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+('Mechanical Gaming Keyboard', 'https://i.pinimg.com/564x/d5/2f/be/d52fbe0e4c5e589f7dba32c466c96c74.jpg', 'RGB backlit mechanical gaming keyboard with customizable keys.', 75, 50, 16, 24, current_timestamp(), NULL, NULL),
+('Wireless Bluetooth Keyboard', 'https://i.pinimg.com/564x/e5/63/ec/e563ec022edc58d70bba4274771a25be.jpg', 'Slim and portable wireless Bluetooth keyboard for tablets and smartphones.', 30, 80, 16, 24, current_timestamp(), NULL, NULL),
+('Mechanical Typing Keyboard', 'https://i.pinimg.com/736x/89/78/4b/89784b08c903d1640c62d3fee2a2fcd4.jpg', 'Classic mechanical keyboard with tactile switches for comfortable typing.', 60, 60, 16, 24, current_timestamp(), NULL, NULL),
+('Programmable Gaming Keypad', 'https://i.pinimg.com/564x/dc/4d/1f/dc4d1f457939b710d28bf97a7ed34487.jpg', 'Programmable gaming keypad with customizable macro keys for enhanced gameplay.', 45, 40, 16, 24, current_timestamp(), NULL, NULL),
+('Ergonomic Split Keyboard', 'https://i.pinimg.com/564x/c8/53/a4/c853a41bba4768782daed6a7e2038b3e.jpg', 'Ergonomic split keyboard design for improved comfort and reduced strain.', 80, 30, 16, 24, current_timestamp(), NULL, NULL),
+('Compact Mechanical Keyboard', 'https://i.pinimg.com/736x/d8/52/51/d852518aebb7beae7ed406b192dda527.jpg', 'Compact and space-saving mechanical keyboard for efficient desk use.', 50, 70, 16, 24, current_timestamp(), NULL, NULL),
+('Wireless Mechanical Keypad', 'https://i.pinimg.com/564x/c1/e0/ed/c1e0edca365f8f6b1f551674eff62894.jpg', 'Wireless mechanical keypad for convenient number input and calculations.', 35, 55, 16, 24, current_timestamp(), NULL, NULL),
+('Backlit Gaming Keypad', 'https://i.pinimg.com/564x/6a/0a/2f/6a0a2f833f8358c75cbc3c5af527a923.jpg', 'Backlit gaming keypad with customizable RGB lighting for a stylish setup.', 55, 45, 16, 24, current_timestamp(), NULL, NULL),
+('Numeric Keypad with USB', 'https://i.pinimg.com/564x/c2/10/4a/c2104a6603eae8d15c7e0775eaccd546.jpg', 'Numeric keypad with USB connectivity for quick and easy number entry.', 25, 75, 16, 24, current_timestamp(), NULL, NULL),
+('Ultra-Thin Bluetooth Keyboard', 'https://i.pinimg.com/564x/70/be/f5/70bef595868833e163e5d35e221a48c0.jpg', 'Ultra-thin Bluetooth keyboard with responsive keys for on-the-go use.', 40, 65, 16, 24, current_timestamp(), NULL, NULL);
+
 
 -- pets
 INSERT INTO `product` (`product_name`, `product_img`, `product_detail`, `product_price`, `product_stock`, `category_id`, `store_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
