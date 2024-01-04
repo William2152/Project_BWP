@@ -18,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/itemPage', function () {
-    return view('menu.itemPage');
-});
+Route::get('/itemPage/{id}', [TokoController::class, 'itemPage']);
 
 Route::prefix('/profile')->group(function () {
     Route::get('/detail', [ProfileUser::class, 'Profile']);
