@@ -90,6 +90,7 @@ Route::prefix('/')->group(function () {
         Route::get('/pets', [LoginRegisControler::class, "CategoryPets"]);
         Route::get('/garden', [LoginRegisControler::class, "CategoryGarden"]);
         Route::get('/furniture', [LoginRegisControler::class, "CategoryFurniture"]);
+        Route::get('/music', [LoginRegisControler::class, "CategoryMusic"]);
     });
 });
 
