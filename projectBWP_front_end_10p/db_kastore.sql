@@ -235,7 +235,9 @@ VALUES
   ('Chic Couture', 'chiccouture@example.com', 'chic_couture_image.jpg', '567 Trendy Terrace, Style City', 33, 4500, '2022-02-27 17:30:00', NULL, NULL),
   ('Culinary Creations', 'culinarycreations@example.com', 'culinary_creations_image.jpg', '234 Culinary Court, Foodville', 34, 6000, '2022-02-28 09:45:00', NULL, NULL),
   ('GreenThumb Garden Supplies', 'greenthumbgardensupplies@example.com', 'culinary_creations_image.jpg', '234 garden Court, Gardenville', 35, 6600, '2022-02-28 09:45:00', NULL, NULL),
-  ('Footwear Haven', 'footwearhaven@example.com', 'culinary_creations_image.jpg', '234 foot Court, Footville', 36, 6900, '2022-02-28 09:45:00', NULL, NULL);
+  ('Footwear Haven', 'footwearhaven@example.com', 'culinary_creations_image.jpg', '234 foot Court, Footville', 36, 6900, '2022-02-28 09:45:00', NULL, NULL),
+  ('Ella Fashion Store', 'ellasfashion@example.com', 'https://i.pinimg.com/474x/ec/0d/31/ec0d31d5c31b84f10072ab90dbde9934.jpg', '234 Fashion Show street, Sydney', 7, 0, '2024-01-04 07:04:20', '2024-01-04 07:36:48', NULL)
+  ;
 
 INSERT INTO `category` (`category_name`, `created_at`, `updated_at`, `deleted_at`) VALUES
   ('electronic', '2022-01-01 08:00:00', NULL, NULL),
@@ -347,7 +349,8 @@ INSERT INTO `product` (`product_name`, `product_img`, `product_detail`, `product
 ('The Alchemist', 'https://i.pinimg.com/736x/05/0d/8c/050d8c9d7be040c067bd8e54f6f60cea.jpg', 'Philosophical novel by Paulo Coelho.', 22, 25, 7, 4, current_timestamp(), NULL, NULL),
 ('Becoming', 'https://i.pinimg.com/736x/92/16/37/921637f51d3277cd154db14f27965970.jpg', 'Memoir by Michelle Obama, former First Lady of the United States.', 28, 20, 7, 4, current_timestamp(), NULL, NULL),
 ('The Hobbit', 'https://i.pinimg.com/736x/b3/da/6c/b3da6c61f387e12ada45eb885552f00d.jpg', 'Fantasy novel by J.R.R. Tolkien.', 14, 60, 7, 4, current_timestamp(), NULL, NULL),
-('The Girl on the Train', 'https://i.pinimg.com/736x/40/a9/28/40a928fd94976858d0af49e6ad3bbd3a.jpg', 'Mystery thriller by Paula Hawkins.', 24, 15, 7, 4, current_timestamp(), NULL, NULL);
+('The Girl on the Train', 'https://i.pinimg.com/736x/40/a9/28/40a928fd94976858d0af49e6ad3bbd3a.jpg', 'Mystery thriller by Paula Hawkins.', 24, 15, 7, 4, current_timestamp(), NULL, NULL)
+;
 
 
 -- cook
@@ -405,7 +408,12 @@ INSERT INTO `product` (`product_name`, `product_img`, `product_detail`, `product
 ('Bookshelf with Cabinets', 'https://i.pinimg.com/564x/04/26/b8/0426b8c1c4deff1df18ecfa3ca93afda.jpg', 'Versatile bookshelf with additional storage cabinets.', 150, 25, 19, 6, current_timestamp(), NULL, NULL),
 ('Recliner Lounge Chair', 'https://i.pinimg.com/736x/ae/3b/da/ae3bda54d4e9d24fba0d3323a9b54cc4.jpg', 'Comfortable recliner chair for relaxation.', 200, 10, 19, 6, current_timestamp(), NULL, NULL),
 ('Outdoor Patio Set', 'https://i.pinimg.com/564x/ee/cc/5a/eecc5a84b3314af41e7b6f9219eccf27.jpg', 'Weather-resistant patio furniture set.', 450, 6, 19, 6, current_timestamp(), NULL, NULL),
-('Ergonomic Office Chair', 'https://i.pinimg.com/736x/ea/5f/4e/ea5f4e02ad11234e2c328f51da9b20a1.jpg', 'Adjustable and supportive office chair.', 120, 15, 19, 6, current_timestamp(), NULL, NULL);
+('Ergonomic Office Chair', 'https://i.pinimg.com/736x/ea/5f/4e/ea5f4e02ad11234e2c328f51da9b20a1.jpg', 'Adjustable and supportive office chair.', 120, 15, 19, 6, current_timestamp(), NULL, NULL),
+
+('Elegant Dark Purple Dress Size L', 'https://i.pinimg.com/474x/b8/a9/0a/b8a90ae51fa3eeedb8d9942239270548.jpg', 'Elegant Dark Purple Dress, Size : L, Material : Silk', 2000000, 4, 2, 31, '2024-01-04 08:13:11', NULL, NULL),
+('Red White Dress Size M', 'https://i.pinimg.com/474x/06/13/ff/0613ffa2fc99e6e7ba59945b2e54e089.jpg', 'In good conditions, for cosplay', 1500000, 1, 2, 31, '2024-01-04 08:32:29', NULL, NULL),
+('Floral Red Elegant Dress Size M', 'https://i.pinimg.com/474x/05/80/d7/0580d7fe79c690fc768c69162dfffdb8.jpg', 'Magnificent Beautiful Floral Red Dress, Size M, Material Silk', 3000000, 2, 2, 31, '2024-01-04 08:49:01', NULL, NULL)
+;
 
 
 
