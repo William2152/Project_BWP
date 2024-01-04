@@ -7,7 +7,7 @@
                     @if ($product != null)
                         @foreach ($product as $p)
                             <div class="col d-flex align-items-stretch">
-                                <div class="card" style="margin-top: 2vw;">
+                                <div class="card" style="margin-top: 2vw; width: 20vw;">
                                     <img src="{{ $p->product_img == null ? '/carousel1.jpg' : $p->product_img }}"
                                         style="object-fit: cover; height: 12vw;" class="card-img-top" alt="...">
                                     <div class="card-body">
