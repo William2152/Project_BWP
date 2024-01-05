@@ -17,7 +17,7 @@
                                         <p class="card-text">{{ $p->product_detail }}</p>
                                     </div>
                                     <div class="ms-3 mt-auto mb-3">
-                                        <a href="#" class="btn btn-primary">Edit Item</a>
+                                        <a href="{{ url('/edit/' . $p->product_id) }}" class="btn btn-primary">Edit Item</a>
                                     </div>
                                 </div>
                             </div>

@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/itemPage/{id}', [TokoController::class, 'itemPage']);
+Route::get('/edit/{id}', [LoginRegisControler::class, 'EditProduct']);
+Route::post('/edit/request', [TokoController::class, 'EditProduct']);
 
 Route::prefix('/profile')->group(function () {
     Route::get('/detail', [ProfileUser::class, 'Profile']);
@@ -52,7 +54,6 @@ Route::prefix('tokosaya')->group(function () {
 Route::get('/punyatoko', function () {
     return view('toko.tokoProductSaya');
 });
-
 
 
 Route::get('/userCart', function () {

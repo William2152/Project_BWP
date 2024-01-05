@@ -126,6 +126,46 @@ class TokoController extends Controller
         }
     }
 
+    public function EditProduct(Request $req)
+    {
+
+        $req->validate(
+            [
+                "product_img" => "required",
+                "product_name" => "required",
+                "product_price" => "required|numeric|min:1",
+                "product_stock" => "required|numeric",
+                "product_detail" => "required",
+            ],
+            [
+                "product_img.required" => "url gambar produk tidak boleh kosong!",
+                "product_name.required" => "nama produk tidak boleh kosong!",
+                "product_price.required" => "harga tidak boleh kosong!",
+                "product_price.numeric" => "harga harus angka!",
+                "product_price.min" => "harga harus lebih besar dari 0!",
+                "product_stock.required" => "stok produk tidak boleh kosong!",
+                "product_stock.numeric" => "stok harus angka!",
+                "product_detail.required" => "deskripsi product tidak boleh kosong!",
+            ]
+        );
+
+        $productID = $req->id;
+        $updateProduct = Product::find($productID);
+        $result = $updateProduct->update([
+            "product_img" => $req->product_img,
+            "product_name" => $req->product_name,
+            "product_price" => $req->product_price,
+            "product_stock" => $req->product_stock,
+            "product_detail" => $req->product_detail,
+        ]);
+
+        if ($result) {
+            return back()->with('success', 'berhasil add Product!');
+        } else {
+            return back()->with('err', 'gagal add Product!');
+        }
+    }
+
     public function itemPage(Request $req)
     {
         $product = Product::find($req->id);

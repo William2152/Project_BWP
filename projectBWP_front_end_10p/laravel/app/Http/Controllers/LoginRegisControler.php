@@ -20,6 +20,16 @@ class LoginRegisControler extends Controller
         ]);
     }
 
+    public function EditProduct(Request $req)
+    {
+        $product = Product::find($req->id);
+        $store = $product->Toko;
+        return view('Toko.EditProduct', [
+            "product" => $product,
+            "toko" => $store,
+        ]);
+    }
+
     public function LoginPage(Request $req)
     {
         return view('menu.loginPage');
