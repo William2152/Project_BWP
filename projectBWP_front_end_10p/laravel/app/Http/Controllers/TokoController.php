@@ -14,7 +14,7 @@ class TokoController extends Controller
     {
         $user = Auth::guard("web")->user();
         $toko = $user->Toko;
-        $product = $toko->Products;
+
 
         if ($toko == null) {
             return view("toko.gakpunyatoko", [
@@ -22,7 +22,7 @@ class TokoController extends Controller
             ]);
         }
 
-
+        $product = $toko->Products;
         return view("toko.tokoProductSaya", [
             "curr" => $user,
             "toko" => $toko,

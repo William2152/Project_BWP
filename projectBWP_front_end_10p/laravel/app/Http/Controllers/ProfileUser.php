@@ -154,7 +154,14 @@ class ProfileUser extends Controller
             "store_revenue" => 0,
             "store_status" => 0
         ]);
+
+
         if ($result) {
+            $userID = Auth::guard("web")->user()->user_id;
+            $user = Users::find($userID);
+            $user->update([
+                "user_role" => "storeOwner",
+            ]);
             return redirect("/tokosaya")->with('success', 'berhasil Tambah Toko!');
         } else {
             return back()->with('err', 'gagal Tambah Toko!');
