@@ -175,4 +175,15 @@ class TokoController extends Controller
             "toko" => $store,
         ]);
     }
+
+    public function ProdukToko(Request $req)
+    {
+        $storeid = $req->toko_id;
+        $toko = Store::where('store_id', $storeid)->first();
+        $product = Product::where('store_id', $storeid)->get();
+        return view('MenuUser.Produk', [
+            "product" => $product,
+            "toko" => $toko,
+        ]);
+    }
 }

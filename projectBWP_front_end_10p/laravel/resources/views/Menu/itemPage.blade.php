@@ -87,6 +87,9 @@
                         <form action="" method="post">
                             @csrf
                             <input type="submit" value="Chat Sekarang" name="btnChat">
+                        </form>
+                        <form action="{{ url('/liattoko/produk/' . $toko->store_id) }}" method="post">
+                            @csrf
                             <input type="submit" value="Kunjungi Toko" name="btnKunjungi">
                         </form>
                     </div>
