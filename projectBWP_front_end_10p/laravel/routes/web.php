@@ -64,7 +64,7 @@ Route::prefix('/profile')->middleware(['cekRole:Customer,storeOwner'])->group(fu
 });
 
 //store owner toko
-Route::get('/tokosaya', [TokoController::class, 'TokoSaya']);
+Route::get('/tokosaya', [TokoController::class, 'TokoSaya'])->middleware(['cekRole:Customer,storeOwner']);
 Route::prefix('tokosaya')->middleware(['cekRole:storeOwner'])->group(function () {
     Route::get('/updatetoko', [TokoController::class, 'editToko']);
     Route::get('/tambahproduk', [TokoController::class, 'AddProductPage']);
