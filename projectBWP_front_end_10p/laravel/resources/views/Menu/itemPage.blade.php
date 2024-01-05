@@ -18,7 +18,7 @@
     }
 </style>
 @section('content')
-    <div class="container" style="margin-top: 2vw; background-color: whitesmoke; height: 30vw;">
+    <div class="container" style="margin-top: 2vw; padding-bottom: 5vw; background-color: whitesmoke;">
         <div class="content" style="margin-top: 2vw; margin-left: 1vw;">
             <div class="row">
                 <div class="col-4">
