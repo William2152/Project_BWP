@@ -71,26 +71,7 @@ Route::prefix('/')->group(function () {
     Route::get('/logout', [LoginRegisControler::class, "Logout"]);
     Route::get('/homePage', [LoginRegisControler::class, "homePageUser"]);
     Route::prefix('/shopping')->group(function () {
-        Route::get('/electronic', [LoginRegisControler::class, "CategoryElectronic"]);
-        Route::get('/clothes', [LoginRegisControler::class, "CategoryClothes"]);
-        Route::get('/jewelry', [LoginRegisControler::class, "CategoryJewelry"]);
-        Route::get('/medicine', [LoginRegisControler::class, "CategoryMedicine"]);
-        Route::get('/shoes', [LoginRegisControler::class, "CategoryShoes"]);
-        Route::get('/bag', [LoginRegisControler::class, "CategoryBag"]);
-        Route::get('/book', [LoginRegisControler::class, "CategoryBook"]);
-        Route::get('/cook', [LoginRegisControler::class, "CategoryCook"]);
-        Route::get('/toys', [LoginRegisControler::class, "CategoryToys"]);
-        Route::get('/pediatrics', [LoginRegisControler::class, "CategoryPediatric"]);
-        Route::get('/headphone', [LoginRegisControler::class, "CategoryHeadphone"]);
-        Route::get('/sport', [LoginRegisControler::class, "CategorySport"]);
-        Route::get('/phone', [LoginRegisControler::class, "CategoryPhone"]);
-        Route::get('/art', [LoginRegisControler::class, "CategoryArt"]);
-        Route::get('/food', [LoginRegisControler::class, "CategoryFood"]);
-        Route::get('/keyboard', [LoginRegisControler::class, "CategoryKeyboard"]);
-        Route::get('/pets', [LoginRegisControler::class, "CategoryPets"]);
-        Route::get('/garden', [LoginRegisControler::class, "CategoryGarden"]);
-        Route::get('/furniture', [LoginRegisControler::class, "CategoryFurniture"]);
-        Route::get('/music', [LoginRegisControler::class, "CategoryMusic"]);
+        Route::get('/{category}', [LoginRegisControler::class, "Category"]);
     });
 });
 

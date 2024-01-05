@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use App\Models\Product;
 use App\Models\Users;
 use Illuminate\Http\Request;
@@ -15,6 +16,7 @@ class LoginRegisControler extends Controller
         $product = Product::all();
         return view('menu.HomePage', [
             "product" => $product,
+            "category" => "Rekomendasi",
         ]);
     }
 
@@ -59,6 +61,8 @@ class LoginRegisControler extends Controller
             if ($user->user_role == "Admin") {
                 return view('user.adminPage', ["curr" => $user]);
             } else if ($user->user_role == "Customer") {
+                return redirect('/homePage');
+            } else if ($user->user_role == "storeOwner") {
                 return redirect('/homePage');
             }
         } else {
@@ -114,204 +118,23 @@ class LoginRegisControler extends Controller
         }
     }
 
-    public function CategoryElectronic(Request $req)
+    public function Category(Request $req)
     {
         $user = Auth::guard("web")->user();
-        $product = Product::where('category_id', 1)->get();
-        return view('category.electric', [
-            "curr" => $user,
-            "product" => $product,
-        ]);
-    }
-
-    public function CategoryClothes(Request $req)
-    {
-        $user = Auth::guard("web")->user();
-        $product = Product::where('category_id', 2)->get();
-        return view('category.clothes', [
-            "curr" => $user,
-            "product" => $product,
-        ]);
-    }
-
-    public function CategoryJewelry(Request $req)
-    {
-        $user = Auth::guard("web")->user();
-        $product = Product::where('category_id', 3)->get();
-        return view('category.jewelry', [
-            "curr" => $user,
-            "product" => $product,
-        ]);
-    }
-
-    public function CategoryMedicine(Request $req)
-    {
-        $user = Auth::guard("web")->user();
-        $product = Product::where('category_id', 4)->get();
-        return view('category.medicine', [
-            "curr" => $user,
-            "product" => $product,
-        ]);
-    }
-
-    public function CategoryMusic(Request $req)
-    {
-        $user = Auth::guard("web")->user();
-        $product = Product::where('category_id', 20)->get();
-        return view('category.music', [
-            "curr" => $user,
-            "product" => $product,
-        ]);
-    }
-
-    public function CategoryShoes(Request $req)
-    {
-        $user = Auth::guard("web")->user();
-        $product = Product::where('category_id', 5)->get();
-        return view('category.shoes', [
-            "curr" => $user,
-            "product" => $product,
-        ]);
-    }
-
-    public function CategoryBag(Request $req)
-    {
-        $user = Auth::guard("web")->user();
-        $product = Product::where('category_id', 6)->get();
-        return view('category.bag', [
-            "curr" => $user,
-            "product" => $product,
-        ]);
-    }
-
-    public function CategoryBook(Request $req)
-    {
-        $user = Auth::guard("web")->user();
-        $product = Product::where('category_id', 7)->get();
-        return view('category.book', [
-            "curr" => $user,
-            "product" => $product,
-        ]);
-    }
-
-    public function CategoryCook(Request $req)
-    {
-        $user = Auth::guard("web")->user();
-        $product = Product::where('category_id', 8)->get();
-        return view('category.cook', [
-            "curr" => $user,
-            "product" => $product,
-        ]);
-    }
-
-    public function CategoryToys(Request $req)
-    {
-        $user = Auth::guard("web")->user();
-        $product = Product::where('category_id', 9)->get();
-        return view('category.cook', [
-            "curr" => $user,
-            "product" => $product,
-        ]);
-    }
-
-    public function CategorySport(Request $req)
-    {
-        $user = Auth::guard("web")->user();
-        $product = Product::where('category_id', 10)->get();
-        return view('category.sport', [
-            "curr" => $user,
-            "product" => $product,
-        ]);
-    }
-
-    public function CategoryPediatric(Request $req)
-    {
-        $user = Auth::guard("web")->user();
-        $product = Product::where('category_id', 11)->get();
-        return view('category.pediatrics', [
-            "curr" => $user,
-            "product" => $product,
-        ]);
-    }
-
-    public function CategoryHeadphone(Request $req)
-    {
-        $user = Auth::guard("web")->user();
-        $product = Product::where('category_id', 12)->get();
-        return view('category.headphone', [
-            "curr" => $user,
-            "product" => $product,
-        ]);
-    }
-
-    public function CategoryPhone(Request $req)
-    {
-        $user = Auth::guard("web")->user();
-        $product = Product::where('category_id', 13)->get();
-        return view('category.phone', [
-            "curr" => $user,
-            "product" => $product,
-        ]);
-    }
-
-    public function CategoryArt(Request $req)
-    {
-        $user = Auth::guard("web")->user();
-        $product = Product::where('category_id', 14)->get();
-        return view('category.art', [
-            "curr" => $user,
-            "product" => $product,
-        ]);
-    }
-
-    public function CategoryFood(Request $req)
-    {
-        $user = Auth::guard("web")->user();
-        $product = Product::where('category_id', 15)->get();
-        return view('category.food', [
-            "curr" => $user,
-            "product" => $product,
-        ]);
-    }
-
-    public function CategoryKeyboard(Request $req)
-    {
-        $user = Auth::guard("web")->user();
-        $product = Product::where('category_id', 16)->get();
-        return view('category.keyboard', [
-            "curr" => $user,
-            "product" => $product,
-        ]);
-    }
-
-    public function CategoryPets(Request $req)
-    {
-        $user = Auth::guard("web")->user();
-        $product = Product::where('category_id', 17)->get();
-        return view('category.pets', [
-            "curr" => $user,
-            "product" => $product,
-        ]);
-    }
-
-    public function CategoryGarden(Request $req)
-    {
-        $user = Auth::guard("web")->user();
-        $product = Product::where('category_id', 18)->get();
-        return view('category.garden', [
-            "curr" => $user,
-            "product" => $product,
-        ]);
-    }
-
-    public function CategoryFurniture(Request $req)
-    {
-        $user = Auth::guard("web")->user();
-        $product = Product::where('category_id', 19)->get();
-        return view('category.furniture', [
-            "curr" => $user,
-            "product" => $product,
-        ]);
+        $category = Categories::where('category_name', $req->category)->first();
+        $product = $category->Product;
+        if (Auth::guard("web")->check()) {
+            return view('User.homePageUser', [
+                "curr" => $user,
+                "product" => $product,
+                "category" => $req->category,
+            ]);
+        } else {
+            return view('Menu.homePage', [
+                "product" => $product,
+                "category" => $req->category,
+            ]);
+        }
     }
 
     public function homePageUser(Request $req)
@@ -321,6 +144,7 @@ class LoginRegisControler extends Controller
         return view('User.homePageUser', [
             "curr" => $user,
             "product" => $product,
+            "category" => "Rekomendasi",
         ]);
     }
 }

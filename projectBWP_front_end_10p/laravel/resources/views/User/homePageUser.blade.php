@@ -251,7 +251,7 @@
     <div class="container" style="margin-top: 2vw;">
         <div class="content d-flex align-items-center justify-content-center"
             style="background-color: black; height: 70px;">
-            <h4 style="color: white;">Rekomendasi</h4>
+            <h4 style="color: white;"> {{ $category }} </h4>
         </div>
     </div>
 @endsection

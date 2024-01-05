@@ -55,6 +55,7 @@
 
 
 @section('category')
+    {{-- @dd(Auth::guard('web')->user()); --}}
     <div class="container" style="margin-top: 2vw">
         <div id="carouselExample" class="carousel slide" style="background-color: black">
             <h5>
@@ -67,7 +68,7 @@
                     <div class="row">
                         <div class="col" style="margin-top: 1vw; margin-left: 10vw;">
                             <div class="bg-light" style="width: 50px; height: 50px;">
-                                <a href="{{ url('/shopping/electric') }}">
+                                <a href="{{ url('/shopping/electronic') }}">
                                     <img src="/assets/category/electric.png" style="width: 50px; height: 50px;"
                                         alt="">
                                 </a>
@@ -224,7 +225,7 @@
     <div class="container" style="margin-top: 2vw;">
         <div class="content d-flex align-items-center justify-content-center"
             style="background-color: black; height: 70px;">
-            <h4 style="color: white;">Rekomendasi</h4>
+            <h4 style="color: white;">{{ $category }}</h4>
         </div>
     </div>
 @endsection
