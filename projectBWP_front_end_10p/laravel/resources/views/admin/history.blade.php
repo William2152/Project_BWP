@@ -45,6 +45,8 @@
             <thead>
                 <th>Username</th>
                 <th>jumlah Saldo</th>
+                <th>Tanggal Top Up</th>
+                <th>Tanggal di Acc</th>
                 <th>Status</th>
             </thead>
             <tbody>
@@ -52,6 +54,14 @@
                     <tr>
                         <td>{{ $u->OwnerSaldo->user_name }}</td>
                         <td>{{ $u->topup_saldo }}</td>
+                        <td>{{ $u->created_at }}</td>
+                        @if ($u->updated_at == $u->created_at)
+                            <td>
+                                <h5>-</h5>
+                            </td>
+                        @else
+                            <td>{{ $u->updated_at }}</td>
+                        @endif
                         @if ($u->topup_status === 1)
                             <td>Diterima</td>
                         @elseif ($u->topup_status === 2)
