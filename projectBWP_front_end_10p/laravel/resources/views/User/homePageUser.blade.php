@@ -5,11 +5,25 @@
         <div>
 
         </div>
-        <form class="d-flex">
+        <form id="searchForm" action="{{ url('/search/') }}" class="d-flex" method="POST">
             @csrf
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 50vw">
+            <input id="searchInput" class="form-control me-2" type="search" name="search" placeholder="Search"
+                aria-label="Search" style="width: 50vw">
             <button class="btn btn-outline" style="background-color: aliceblue; color: black" type="submit">Search</button>
         </form>
+
+        <script>
+            document.getElementById('searchForm').addEventListener('submit', function(event) {
+                // Mendapatkan nilai dari input search
+                var searchValue = document.getElementById('searchInput').value;
+
+                // Menyusun URL dengan nilai search
+                var actionUrl = "{{ url('/search/') }}" + '/' + encodeURIComponent(searchValue);
+
+                // Mengatur action form dengan URL yang sudah disusun
+                this.action = actionUrl;
+            });
+        </script>
         <div class="row row-cols-2" style="">
             <div class="col">
                 <a class="nav-link active text-light text-center fw-bold" style="" aria-current="page"
@@ -110,7 +124,8 @@
                             </div>
                             <div class="bg-light" style="width: 50px; height: 50px; margin-top: 1vw; margin-bottom: 1vw;">
                                 <a href="{{ url('/shopping/medicine') }}">
-                                    <img src="/assets/category/medic.png" style="width: 50px; height: 50px;" alt="">
+                                    <img src="/assets/category/medic.png" style="width: 50px; height: 50px;"
+                                        alt="">
                                 </a>
                             </div>
                         </div>
