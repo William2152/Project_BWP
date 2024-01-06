@@ -145,7 +145,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-/*Table structure for table `saldo` */
+/*Table structure for table `topup` */
 
 DROP TABLE IF EXISTS `topup`;
 
@@ -159,6 +159,39 @@ CREATE TABLE `topup` (
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`topup_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Table structure for table `voucher` */
+
+DROP TABLE IF EXISTS `voucher`;
+
+CREATE TABLE `voucher` (
+  `voucher_id` int(11) NOT NULL AUTO_INCREMENT,
+  `voucher_nama` varchar(255) NOT NULL,
+  `voucher_img` text NULL DEFAULT NULL,
+  `voucher_potongan` int(11) NOT NULL check(voucher_potongan > 0),
+  `voucher_tgl_berlaku` datetime NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`voucher_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Table structure for table `users_voucher` */
+
+DROP TABLE IF EXISTS `users_voucher`;
+
+CREATE TABLE `users_voucher` (
+  `user_id` INT(11) NOT NULL,
+  FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`),
+  `voucher_id` INT(11) NOT NULL,
+  FOREIGN KEY (`voucher_id`) REFERENCES `voucher`(`voucher_id`),
+  `users_voucher_status` INT(2) NOT NULL DEFAULT 0,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+  `updated_at` TIMESTAMP NULL DEFAULT NULL,
+  `deleted_at` TIMESTAMP NULL DEFAULT NULL,
+  PRIMARY KEY (`user_id`, `voucher_id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 /*Data for the table `users` */
 
