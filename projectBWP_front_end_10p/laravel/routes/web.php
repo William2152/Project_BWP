@@ -40,7 +40,7 @@ Route::prefix('/')->group(function () {
 
 //admin
 Route::prefix('admin')->middleware(['cekRole:Admin'])->group(function () {
-    Route::get('/', [LoginRegisControler::class, 'AdminPage']);
+    Route::get('/user', [LoginRegisControler::class, 'AdminPage']);
 });
 
 //profile user
