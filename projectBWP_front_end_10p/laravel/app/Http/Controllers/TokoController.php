@@ -43,6 +43,16 @@ class TokoController extends Controller
         ]);
     }
 
+    public function EditProductPage(Request $req)
+    {
+        $product = Product::find($req->id);
+        $store = $product->Toko;
+        return view('Toko.EditProduct', [
+            "product" => $product,
+            "toko" => $store,
+        ]);
+    }
+
     public function edittoko(Request $req)
     {
         $user = Auth::guard("web")->user();

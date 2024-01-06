@@ -37,7 +37,7 @@
                         style="height: 100%; width: 100%; margin-top: 2vw;" alt="">
                 </div>
                 <div class="col-8">
-                    <form action="{{ url('/edit/request') }}" method="post">
+                    <form action="{{ url('tokosaya/edit/request') }}" method="post">
                         @csrf
                         <input type="text" style="width: 20vw;" name="id" value="{{ $product->product_id }}"
                             id="" hidden>

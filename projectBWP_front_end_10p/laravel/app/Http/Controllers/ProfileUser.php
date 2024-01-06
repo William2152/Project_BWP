@@ -8,6 +8,7 @@ use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class ProfileUser extends Controller
 {
@@ -50,6 +51,7 @@ class ProfileUser extends Controller
             "curr" => $user,
         ]);
     }
+
 
     public function Voucher(Request $req)
     {
@@ -253,5 +255,35 @@ class ProfileUser extends Controller
         } else {
             return back()->with('err', 'gagal update password!');
         }
+    }
+
+    //cart n check out
+
+    private function CartSess()
+    {
+        if (!Session::has('cart')) {
+            $cart = [];
+            Session::put('cart', $cart);
+            return $cart;
+        }
+
+        $cart = Session::get('cart');
+        return $cart;
+    }
+
+    public function Cart(Request $req)
+    {
+        $user = Auth::guard("web")->user();
+        return view("User.userCart", [
+            "curr" => $user,
+        ]);
+    }
+
+    public function CheckOut(Request $req)
+    {
+        $user = Auth::guard("web")->user();
+        return view("User.userCheckout", [
+            "curr" => $user,
+        ]);
     }
 }

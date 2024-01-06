@@ -21,7 +21,8 @@
                             style="text-decoration: none; color: black">Ubah Password</a></p>
                     <p class="fw-bold" style="margin-top: 1vw;"><a href="{{ url('/tokosaya') }}"
                             style="text-decoration: none; color: black">Toko Saya</a></p>
-                    <p class="fw-bold" style="margin-top: 1vw;">Keranjang Saya</p>
+                    <p class="fw-bold" style="margin-top: 1vw;"><a href="{{ url('/profile/userCart') }}"
+                            style="text-decoration: none; color: black">Keranjang Saya</a></p>
                     <p class="fw-bold" style="margin-top: 1vw;"><a href="{{ url('/profile/pesanansaya/belumdikirim') }}"
                             style="text-decoration: none; color: black">Pesanan Saya</a></p>
                     <p class="fw-bold" style="margin-top: 1vw;"><a href="{{ url('/profile/vouchersaya') }}"
@@ -31,7 +32,8 @@
                     <p class="fw-bold" style="margin-top: 0.5vw;"><a href="{{ url('profile/saldosaya/history/topup') }}"
                             style="text-decoration: none; color: black">History TopUp</a>
                     </p>
-                    <p class="fw-bold" style="margin-top: 0.5vw;"><a href="{{ url('profile/saldosaya/history/pembelian') }}"
+                    <p class="fw-bold" style="margin-top: 0.5vw;"><a
+                            href="{{ url('profile/saldosaya/history/pembelian') }}"
                             style="text-decoration: none; color: black">History Pembelian</a>
                     </p>
                 </div>
