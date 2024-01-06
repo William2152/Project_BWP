@@ -19,7 +19,7 @@
             </select>
             <br>
             <label style="width: 9vw; margin-top: 2vw;" for="">Voucher expired</label>:
-            <input type="datetime" style="width: 70vw;" name="voucher_expired" id="">
+            <input type="datetime-local" style="width: 70vw;" name="voucher_expired" id="">
             <br>
             <input type="submit" value="Buat" name="buat" style="margin-top: 1vw; width: 5vw;">
         </form>

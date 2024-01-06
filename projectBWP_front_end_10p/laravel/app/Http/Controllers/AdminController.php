@@ -6,6 +6,7 @@ use App\Models\Store;
 use App\Models\Topup;
 use App\Models\User;
 use App\Models\Users;
+use App\Models\Voucher;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -85,6 +86,22 @@ class AdminController extends Controller
             return back()->with('success', 'berhasil acc topup!');
         } else {
             return back()->with('err', 'gagal acc topup!');
+        }
+    }
+
+    public function addvoucher(Request $req)
+    {
+        $result = Voucher::insert([
+            "voucher_nama" => $req->vouchername,
+            "voucher_img" => $req->voucherimage,
+            "voucher_potongan" => $req->voucher_discount,
+            "voucher_tgl_berlaku" => $req->voucher_expired,
+        ]);
+
+        if ($result) {
+            return back()->with('success', 'berhasil delete user!');
+        } else {
+            return back()->with('err', 'gagal delete user!');
         }
     }
 
