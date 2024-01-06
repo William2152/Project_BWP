@@ -23,7 +23,8 @@ class LoginRegisControler extends Controller
     public function AdminPage(Request $req)
     {
         $user = Auth::guard("web")->user();
-        return view('user.adminPage', ["curr" => $user]);
+        $users = Users::all();
+        return view('admin.user', ["curr" => $user, "user" => $users]);
     }
 
     public function EditProduct(Request $req)
@@ -75,7 +76,7 @@ class LoginRegisControler extends Controller
         if (Auth::guard("web")->attempt($credential)) {
             $user = Auth::guard("web")->user();
             if ($user->user_role == "Admin") {
-                return redirect("/admin");
+                return redirect("/admin/user");
             } else if ($user->user_role == "Customer") {
                 return redirect('/homePage');
             } else if ($user->user_role == "storeOwner") {
