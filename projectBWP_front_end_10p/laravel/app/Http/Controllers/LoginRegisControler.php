@@ -27,15 +27,7 @@ class LoginRegisControler extends Controller
         return view('admin.user', ["curr" => $user, "user" => $users]);
     }
 
-    public function EditProduct(Request $req)
-    {
-        $product = Product::find($req->id);
-        $store = $product->Toko;
-        return view('Toko.EditProduct', [
-            "product" => $product,
-            "toko" => $store,
-        ]);
-    }
+
 
     public function LoginPage(Request $req)
     {
