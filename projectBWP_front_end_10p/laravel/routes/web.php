@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::post('search/{text}', [LoginRegisControler::class, 'search']);
 
 Route::get('/itemPage/{id}', [TokoController::class, 'itemPage']);
 Route::get('/edit/{id}', [LoginRegisControler::class, 'EditProduct']);

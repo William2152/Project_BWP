@@ -156,4 +156,13 @@ class LoginRegisControler extends Controller
             "category" => "Rekomendasi",
         ]);
     }
+
+    public function search(Request $req)
+    {
+        $product = Product::where('product_name', 'like', '%' . $req->text . '%')->get();
+        return view('Menu.homePage', [
+            "product" => $product,
+            "category" => $req->text,
+        ]);
+    }
 }

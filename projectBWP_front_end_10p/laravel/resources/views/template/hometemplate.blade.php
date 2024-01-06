@@ -2,11 +2,26 @@
 
 @section('navbar')
     <div class="container d-flex justify-content-center">
-        <form class="d-flex">
+        <form id="searchForm" action="{{ url('/search/') }}" class="d-flex" method="POST">
             @csrf
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 50vw">
+            <input id="searchInput" class="form-control me-2" type="search" name="search" placeholder="Search"
+                aria-label="Search" style="width: 50vw">
             <button class="btn btn-outline" style="background-color: aliceblue; color: black" type="submit">Search</button>
         </form>
+
+        <script>
+            document.getElementById('searchForm').addEventListener('submit', function(event) {
+                // Mendapatkan nilai dari input search
+                var searchValue = document.getElementById('searchInput').value;
+
+                // Menyusun URL dengan nilai search
+                var actionUrl = "{{ url('/search/') }}" + '/' + encodeURIComponent(searchValue);
+
+                // Mengatur action form dengan URL yang sudah disusun
+                this.action = actionUrl;
+            });
+        </script>
+
     </div>
     <div class="justify-content-center">
         <form action="{{ url('/loginPage') }}" method="GET">
