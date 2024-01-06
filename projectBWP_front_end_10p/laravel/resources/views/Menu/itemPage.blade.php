@@ -19,6 +19,15 @@
 </style>
 @section('content')
     <div class="container" style="margin-top: 2vw; padding-bottom: 5vw; background-color: whitesmoke;">
+        @if ($errors->any())
+            <div class="alert alert-danger">{{ $errors->first() }}</div>
+            {{-- @foreach ($errors->all() as $pesanError)
+                    @endforeach --}}
+        @elseif (Session::has('success'))
+            <div class="alert alert-success">{{ Session::get('success') }}</div>
+        @elseif (Session::has('err'))
+            <div class="alert alert-danger">{{ Session::get('err') }}</div>
+        @endif
         <div class="content" style="margin-top: 2vw; margin-left: 1vw;">
             <div class="row">
                 <div class="col-4">
@@ -34,38 +43,41 @@
                     <p>Ongkos Kirim : </p>
                     <div class="col">
                         <p>Kuantitas </p>
-                        <div class="quantity-selector">
-                            <div class="quantity-button" onclick="updateQuantity(-1)">-</div>
-                            <input type="text" class="quantity-input" id="quantity" value="1">
-                            <div class="quantity-button" onclick="updateQuantity(1)">+</div>
-                            <p style="margin-left: 1vw; text-align: center;"> tersisa 1000 buah</p>
-                        </div>
+                        <form action="{{ url('/profile/userCart/add') }}" method="post">
+                            @csrf
+                            <div class="quantity-selector">
+                                <div class="quantity-button" onclick="updateQuantity(-1)">-</div>
+                                <input type="text" name="qty" class="quantity-input" id="quantity" value="1">
+                                <div class="quantity-button" onclick="updateQuantity(1)">+</div>
+                                <p style="margin-left: 1vw; text-align: center;"> tersisa 1000 buah</p>
+                            </div>
 
-                        <script>
-                            var minQuantity = 1;
-                            var maxQuantity = <?php echo $product->product_stock; ?>;
-                            var price = <?php echo $product->product_price; ?>;
+                            <script>
+                                var minQuantity = 1;
+                                var maxQuantity = <?php echo $product->product_stock; ?>;
+                                var price = <?php echo $product->product_price; ?>;
 
 
-                            function updateQuantity(change) {
-                                var quantityInput = document.getElementById('quantity');
-                                var currentQuantity = parseInt(quantityInput.value, 10);
+                                function updateQuantity(change) {
+                                    var quantityInput = document.getElementById('quantity');
+                                    var currentQuantity = parseInt(quantityInput.value, 10);
 
-                                var newQuantity = Math.min(Math.max(minQuantity, currentQuantity + change), maxQuantity);
+                                    var newQuantity = Math.min(Math.max(minQuantity, currentQuantity + change), maxQuantity);
 
-                                var priceTotal = price * newQuantity;
+                                    var priceTotal = price * newQuantity;
 
-                                quantityInput.value = newQuantity;
-                                document.getElementById('totalHarga').textContent = 'Rp' + priceTotal;
-                            }
-                        </script>
+                                    quantityInput.value = newQuantity;
+                                    document.getElementById('totalHarga').textContent = 'Rp' + priceTotal;
+                                }
+                            </script>
                     </div>
                     <br>
-                    <form action="" method="post">
-                        @csrf
-                        <input type="submit" value="Add To Cart">
-                        <input type="submit" value="Buy Now">
+
+                    <button class="btn btn-primary" name="btnAddCart" value="{{ $product->product_id }}">Add To
+                        Cart</button>
+                    <button class="btn btn-success" name="btnBuyNow" value="{{ $product->product_id }}">Buy Now</button>
                     </form>
+                    <a href="{{ url('profile/userCart') }}" class="btn btn-warning">Keranjang saya</a>
                 </div>
             </div>
         </div>
