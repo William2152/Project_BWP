@@ -28,10 +28,10 @@
                             style="text-decoration: none; color: black">Voucher Saya</a></p>
                     <p class="fw-bold" style="margin-top: 1vw;"><a href="{{ url('/profile/saldosaya') }}"
                             style="text-decoration: none; color: black">Saldo Saya</a></p>
-                    <p style="margin-top: 0.5vw;"><a href="{{ url('profile/saldosaya/history/topup') }}"
+                    <p class="fw-bold" style="margin-top: 0.5vw;"><a href="{{ url('profile/saldosaya/history/topup') }}"
                             style="text-decoration: none; color: black">History TopUp</a>
                     </p>
-                    <p style="margin-top: 0.5vw;"><a href="{{ url('profile/saldosaya/history/pembelian') }}"
+                    <p class="fw-bold" style="margin-top: 0.5vw;"><a href="{{ url('profile/saldosaya/history/pembelian') }}"
                             style="text-decoration: none; color: black">History Pembelian</a>
                     </p>
                 </div>

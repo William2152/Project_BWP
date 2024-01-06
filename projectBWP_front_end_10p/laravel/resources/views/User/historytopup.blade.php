@@ -23,20 +23,29 @@
 </style>
 @section('konten')
     <div class="col-10" style="background-color: whitesmoke; margin-bottom: 2vw;">
-        <table border="1">
+        <table border="1" class="table table-light">
             <thead>
                 <th>Jenis Transaksi</th>
                 <th>Nominal</th>
                 <th>Status</th>
             </thead>
             <tbody>
-                @for ($i = 0; $i < 5; $i++)
-                    <tr>
-                        <td>a</td>
-                        <td>a</td>
-                        <td>a</td>
+                @foreach ($topups as $t)
+                    <tr
+                        class="{{ $t->topup_status == 0 ? 'table-info' : ($t->topup_status == 1 ? 'table-success' : 'table-danger') }}">
+                        <td>Top Up</td>
+                        <td>{{ $t->topup_saldo }}</td>
+                        <td>
+                            @if ($t->topup_status == 0)
+                                sedang di proses...
+                            @elseif ($t->topup_status == 1)
+                                berhasil
+                            @elseif ($t->topup_status == 2)
+                                ditolak
+                            @endif
+                        </td>
                     </tr>
-                @endfor
+                @endforeach
             </tbody>
         </table>
     </div>

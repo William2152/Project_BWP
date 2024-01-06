@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Store;
+use App\Models\Topup;
 use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -69,8 +70,10 @@ class ProfileUser extends Controller
     public function historytopup(Request $req)
     {
         $user = Auth::guard("web")->user();
+        $topup = $user->Topups;
         return view("User.historytopup", [
             "curr" => $user,
+            "topups" => $topup,
         ]);
     }
 
@@ -80,6 +83,33 @@ class ProfileUser extends Controller
         return view("User.saldoSaya", [
             "curr" => $user,
         ]);
+    }
+
+    public function ReqTopup(Request $req)
+    {
+        $req->validate(
+            [
+                "topup_saldo" => "required|numeric|min:1",
+            ],
+            [
+                "topup_saldo.required" => "saldo tidak boleh kosong!",
+                "topup_saldo.numeric" => "saldo harus dalam bentuk angka!",
+                "topup_saldo.min" => "saldo harus lebih besar dari 0!",
+            ]
+        );
+
+        $userID = Auth::guard("web")->user()->user_id;
+
+        $result = Topup::create([
+            "user_id" => $userID,
+            "topup_saldo" => $req->topup_saldo,
+        ]);
+
+        if ($result) {
+            return back()->with('success', 'berhasil request topup!');
+        } else {
+            return back()->with('err', 'gagal request topup!');
+        }
     }
 
 
