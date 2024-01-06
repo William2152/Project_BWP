@@ -39,8 +39,7 @@
                     <p>Rating : 5 | 100 Penilaian | 100 Terjual</p>
                     <br>
                     <h1 id="totalHarga">Rp{{ $product->product_price }}</h1>
-                    <p>Pengiriman ke : </p>
-                    <p>Ongkos Kirim : </p>
+                    <p class="fw-bold">Stok : {{ $product->product_stock }}</p>
                     <div class="col">
                         <p>Kuantitas </p>
                         <form action="{{ url('/profile/userCart/add') }}" method="post">
