@@ -64,6 +64,10 @@ Route::prefix('/profile')->middleware(['cekRole:Customer,storeOwner'])->group(fu
         Route::get('/sedangdikirim', [ProfileUser::class, 'sedangdikirim']);
         Route::get('/selesai', [ProfileUser::class, 'selesai']);
     });
+    Route::get('/userCart', [ProfileUser::class, 'Cart']);
+    Route::post('/userCart/add', [ProfileUser::class, 'ProsesCart']);
+    Route::post('/userCart/delete', [ProfileUser::class, 'DeleteCart']);
+    Route::get('/userCheckout', [ProfileUser::class, 'CheckOut']);
     Route::get('/vouchersaya', [ProfileUser::class, 'Voucher']);
     Route::get('/formtoko', [ProfileUser::class, 'BuatToko']);
 

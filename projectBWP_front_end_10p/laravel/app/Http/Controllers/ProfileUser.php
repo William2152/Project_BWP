@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Store;
 use App\Models\Topup;
 use App\Models\Users;
@@ -271,11 +272,100 @@ class ProfileUser extends Controller
         return $cart;
     }
 
+    private function searchIDProd($id)
+    {
+        $cart = $this->CartSess();
+
+        foreach ($cart as $idx => $val) {
+            if ($val['product']->product_id == $id) {
+                return $idx;
+            }
+        }
+
+        return -1;
+    }
+
+
+    public function ProsesCart(Request $req)
+    {
+        $req->validate(
+            [
+                "qty" => "required|numeric|min:1",
+            ],
+            [
+                "qty.required" => "qty tidak boleh kosong!",
+                "qty.numeric" => "qty harus angka!",
+                "qty.min" => "qty harus lebih dari 0!",
+            ]
+        );
+
+        $cart = $this->CartSess();
+        $user = Auth::guard("web")->user();
+
+        if ($req->btnAddCart != null) {
+            //cari index session cart
+            $idDelete = $this->searchIDProd($req->btnAddCart);
+
+            //cari id
+            $product = Product::find($req->btnAddCart);
+
+            if ($idDelete != -1) {
+
+                if ($cart[$idDelete]['qty'] + $req->qty <= $product->product_stock) {
+                    $cart[$idDelete]['qty'] = $cart[$idDelete]['qty'] + $req->qty;
+                    Session::put('cart', $cart);
+                    return back()->with("success", "jumlah item berhasil di update!");
+                } else {
+                    return back()->with("err", "jumlah item yang dibeli lebih banyak daripada stock!");
+                }
+            }
+
+
+
+            // $product = Product::find($req->btnAddCart);
+
+            Session::push('cart', [
+                "product" => $product,
+                "qty" => $req->qty,
+            ]);
+
+            return back()->with("success", "item berhasil di add ke cart!");
+        } else {
+        }
+    }
+
+
+
+    public function DeleteCart(Request $req)
+    {
+        $cart = $this->CartSess();
+        $user = Auth::guard("web")->user();
+
+        if ($req->btnDeleteCart != null) {
+
+            //cari id
+            $idDelete = $this->searchIDProd($req->btnDeleteCart);
+
+            if ($idDelete != -1) {
+                unset($cart[$idDelete]);
+                //reindexing
+                $cart = array_values($cart);
+
+                Session::put('cart', $cart);
+            }
+
+            return back();
+        } else {
+        }
+    }
+
     public function Cart(Request $req)
     {
+        $item = Session::get('cart');
         $user = Auth::guard("web")->user();
         return view("User.userCart", [
             "curr" => $user,
+            "items" => $item
         ]);
     }
 
