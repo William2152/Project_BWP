@@ -52,18 +52,20 @@
             </thead>
             <tbody>
                 @foreach ($user as $u)
-                    <tr>
-                        <td>{{ $u->user_name }}</td>
-                        <td>{{ $u->user_nama }}</td>
-                        <td>{{ $u->user_email }}</td>
-                        <td>{{ $u->user_money }}</td>
-                        <td>
-                            <form action="/admin/user/delete" method="post">
-                                @csrf
-                                <button value="{{ $u->user_id }}" name="delete">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
+                    @if ($u->user_role != 'Admin')
+                        <tr>
+                            <td>{{ $u->user_name }}</td>
+                            <td>{{ $u->user_nama }}</td>
+                            <td>{{ $u->user_email }}</td>
+                            <td>{{ $u->user_money }}</td>
+                            <td>
+                                <form action="/admin/user/delete" method="post">
+                                    @csrf
+                                    <button value="{{ $u->user_id }}" name="delete">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endif
                 @endforeach
             </tbody>
         </table>
