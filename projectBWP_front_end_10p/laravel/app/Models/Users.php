@@ -46,4 +46,9 @@ class Users extends Authenticatable
     {
         return $this->hasOne(Store::class, 'user_id', 'user_id');
     }
+
+    public function Topups()
+    {
+        return $this->hasMany(Topup::class, 'user_id', 'user_id');
+    }
 }
