@@ -35,6 +35,16 @@ class AdminController extends Controller
         ]);
     }
 
+    public function VoucherPage(Request $req)
+    {
+        // $topup = Topup::where('topup_status', 0)->get();
+        return view('admin.voucher', [
+            // "topup" => $topup,
+        ]);
+    }
+
+
+
     public function buatstoreberhasil(Request $req)
     {
         $store_id = $req->terima;
@@ -91,17 +101,35 @@ class AdminController extends Controller
 
     public function addvoucher(Request $req)
     {
-        $result = Voucher::insert([
-            "voucher_nama" => $req->vouchername,
-            "voucher_img" => $req->voucherimage,
+        $convertedDatetime = date("Y-m-d H:i:00", strtotime($req->voucher_expired));
+
+        $req->validate(
+            [
+                "voucher_name" => "required",
+                "voucher_expired" => "required",
+            ],
+            [
+                "voucher_name.required" => "nama voucher harus diisi!",
+                "voucher_expired.required" => "tanggal voucher harus diisi!",
+                // "voucher_expired.date_format" => "tanggal format harus sesuai format 00-00-0000 00:00:00!",
+            ]
+        );
+
+        $img = $req->voucher_discount . "_persen.png";
+        $tgl_exp = date("Y-m-d 00:00:00", strtotime($req->voucher_expired));
+        dd($tgl_exp);
+
+        $result = Voucher::create([
+            "voucher_nama" => $req->voucher_name,
+            "voucher_img" => $img,
             "voucher_potongan" => $req->voucher_discount,
-            "voucher_tgl_berlaku" => $req->voucher_expired,
+            "voucher_tgl_berlaku" => $tgl_exp,
         ]);
 
         if ($result) {
-            return back()->with('success', 'berhasil delete user!');
+            return back()->with('success', 'berhasil insert voucher!');
         } else {
-            return back()->with('err', 'gagal delete user!');
+            return back()->with('err', 'gagal insert voucher!');
         }
     }
 
