@@ -57,6 +57,12 @@ class Users extends Authenticatable
     public function Vouchers()
     {
         return $this->belongsToMany(Voucher::class, 'users_voucher', 'user_id', 'voucher_id')
-            ->withPivot('users_voucher_status');
+            ->withPivot('users_voucher_status')
+            ->wherePivot('users_voucher_status', '=', 0);
+    }
+
+    public function Orders()
+    {
+        return $this->hasMany(Orders::class, 'user_id', 'user_id');
     }
 }

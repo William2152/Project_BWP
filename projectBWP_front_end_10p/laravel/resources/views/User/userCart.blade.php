@@ -1,12 +1,22 @@
 @extends('template.main')
 
 @section('content')
-    {{-- @dump(Session::get('cart')) --}}
+    @dump(Session::get('cart'))
+    @dump($items)
     <div class="content" style="margin-top: 1vw; margin-bottom: 1vw; height: auto;">
         <h1 style="text-align: center">Cart</h1>
+        @if ($errors->any())
+            <div class="alert alert-danger">{{ $errors->first() }}</div>
+            {{-- @foreach ($errors->all() as $pesanError)
+                    @endforeach --}}
+        @elseif (Session::has('success'))
+            <div class="alert alert-success">{{ Session::get('success') }}</div>
+        @elseif (Session::has('err'))
+            <div class="alert alert-danger">{{ Session::get('err') }}</div>
+        @endif
         <div class="container"
             style="background-color: whitesmoke; margin-top: 1vw; margin-bottom: 1vw; height: auto; padding-top: 1vw; padding-bottom: 1vw; display: flex; flex-direction: column; justify-content: center;">
-            @foreach (Session::get('cart') as $c)
+            @foreach ($items as $c)
                 <div class="boxItem"
                     style="margin-right: 1vw; margin-left: 1vw; background-color: aliceblue; width: 100% -2vw; padding-bottom: 1vw; display: flex;  flex-direction: row; margin-bottom: 1vw; margin-top: 1vw;">
                     <div class="imageBox" style="width: 30%; height: 17vw;">

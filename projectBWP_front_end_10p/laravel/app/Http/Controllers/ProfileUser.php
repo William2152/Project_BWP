@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Orders;
 use App\Models\Product;
 use App\Models\Store;
 use App\Models\Topup;
 use App\Models\Users;
+use App\Models\Voucher;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -56,17 +59,22 @@ class ProfileUser extends Controller
 
     public function Voucher(Request $req)
     {
+
         $user = Auth::guard("web")->user();
+        $voucher = $user->Vouchers;
         return view("User.voucherSaya", [
             "curr" => $user,
+            "voucher" => $voucher,
         ]);
     }
 
     public function historypembelian(Request $req)
     {
         $user = Auth::guard("web")->user();
+        $orders = $user->Orders;
         return view("User.historypembelian", [
             "curr" => $user,
+            "orders" => $orders,
         ]);
     }
 
@@ -327,6 +335,7 @@ class ProfileUser extends Controller
             Session::push('cart', [
                 "product" => $product,
                 "qty" => $req->qty,
+                "id_user" => $user->user_id,
             ]);
 
             return back()->with("success", "item berhasil di add ke cart!");
@@ -334,7 +343,19 @@ class ProfileUser extends Controller
         }
     }
 
+    private function deleteItemCart($id_prod)
+    {
+        $cart = $this->CartSess();
+        $idDelete = $this->searchIDProd($id_prod);
 
+        if ($idDelete != -1) {
+            unset($cart[$idDelete]);
+            //reindexing
+            $cart = array_values($cart);
+
+            Session::put('cart', $cart);
+        }
+    }
 
     public function DeleteCart(Request $req)
     {
@@ -343,26 +364,33 @@ class ProfileUser extends Controller
 
         if ($req->btnDeleteCart != null) {
 
-            //cari id
-            $idDelete = $this->searchIDProd($req->btnDeleteCart);
-
-            if ($idDelete != -1) {
-                unset($cart[$idDelete]);
-                //reindexing
-                $cart = array_values($cart);
-
-                Session::put('cart', $cart);
-            }
+            // deleteCart
+            $this->deleteItemCart($req->btnDeleteCart);
 
             return back();
         } else {
         }
     }
 
-    public function Cart(Request $req)
+
+
+    private function UserCart($id)
     {
         $item = $this->CartSess();
+        $privateCart = [];
+        foreach ($item as $i) {
+            if ($i['id_user'] == $id) {
+                $privateCart[] = $i;
+            }
+        }
+        return $privateCart;
+    }
+
+    public function Cart(Request $req)
+    {
+
         $user = Auth::guard("web")->user();
+        $item = $this->UserCart($user->user_id);
         return view("User.userCart", [
             "curr" => $user,
             "items" => $item,
@@ -371,23 +399,132 @@ class ProfileUser extends Controller
 
     public function CheckOut(Request $req)
     {
-        $item = $this->CartSess();
+
         $user = Auth::guard("web")->user();
+        $item = $this->UserCart($user->user_id);
         $total = $this->hitungTotal();
+        $voucher = $user->Vouchers;
+
+        if (count($item) <= 0) {
+            return back()->with("err", 'cart masih kosong!');
+        }
+
         return view("User.userCheckout", [
             "curr" => $user,
             "items" => $item,
             "total" => $total,
+            "voucher" => $voucher,
         ]);
     }
 
     public function hitungTotal()
     {
-        $item = $this->CartSess();
+        $user = Auth::guard("web")->user();
+        $item = $this->UserCart($user->user_id);
         $total = 0;
         foreach ($item as $i) {
             $total += ($i['product']->product_price * $i['qty']);
         }
         return $total;
+    }
+
+    public function hitungGrandTotal($id_v)
+    {
+        $user = Auth::guard("web")->user();
+        $item = $this->UserCart($user->user_id);
+        $voucher = Voucher::find($id_v);
+
+        $total = 0;
+        $hasil = 0;
+
+        foreach ($item as $i) {
+            $total += ($i['product']->product_price * $i['qty']);
+        }
+        $diskon = 0;
+        if ($voucher != null) {
+            $diskon = (int) (($total * $voucher->voucher_potongan) / 100);
+        }
+
+        $hasil = $total - $diskon;
+
+
+        return $hasil;
+    }
+
+    public function prosesCheckOut(Request $req)
+    {
+        $user = Auth::guard("web")->user();
+        $item = $this->UserCart($user->user_id);
+        $total = $this->hitungTotal();
+        $grand_total = $this->hitungGrandTotal($req->order_disc);
+        $voucher = Voucher::find($req->order_disc);
+
+        // dd($grand_total);
+
+        //klo saldo ga cukup
+        if ($user->user_money < $grand_total) {
+            return back()->with('err', 'saldo tidak cukup');
+        }
+
+        //validation
+        $req->validate(
+            [
+                "order_destination" => "required",
+            ],
+            [
+                "order_destination.required" => "alamat pengiriman harus diisi!",
+            ]
+        );
+
+        //urusi add order_detail
+        //insert orders dulu
+        $result = Orders::create([
+            "user_id" => $user->user_id,
+            "voucher_id" => $req->order_disc,
+            "order_total_no_disc" => $total,
+            "order_total_amount" => $grand_total,
+            "order_destination" => $req->order_destination,
+        ]);
+
+        //insert ke masing order detail
+        $order_id = Orders::latest()->first()->order_id;
+        $order = Orders::find($order_id);
+        $errMsg = "";
+        try {
+            foreach ($item as $c) {
+                $result = $order->Products()->attach($c['product']->product_id, [
+                    'order_product_quantity' => $c['qty']
+                ]);
+            }
+            //hapus cart
+
+
+
+            foreach ($item as $c) {
+                $this->deleteItemCart($c['product']->product_id);
+            }
+            //sek ada kemungkinan cart nyantol
+
+            //deaktifkan voucher
+            if ($voucher != null) {
+                $voucher->Customers()->updateExistingPivot($user, [
+                    'users_voucher_status' => 1,
+                ]);
+            }
+
+
+            //kurangi saldo
+            $saldoSisa = $user->user_money - $grand_total;
+            $updateUser = Users::find($user->user_id);
+            $updateUser->update([
+                'user_money' => $saldoSisa,
+            ]);
+
+            return back()->with('success', 'berhasil checkout!');
+        } catch (QueryException $e) {
+            // Tangani kesalahan
+            $errMsg = $e->getMessage();
+            return back()->with('err', $errMsg);
+        }
     }
 }

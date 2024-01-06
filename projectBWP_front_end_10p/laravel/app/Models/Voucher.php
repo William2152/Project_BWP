@@ -25,6 +25,8 @@ class Voucher extends Model
 
     public function Customers()
     {
-        return $this->belongsToMany(Users::class, 'users_voucher', 'voucher_id', 'user_id');
+        return $this->belongsToMany(Users::class, 'users_voucher', 'voucher_id', 'user_id')
+            ->withPivot('users_voucher_status')
+            ->wherePivot('users_voucher_status', '=', 0);
     }
 }

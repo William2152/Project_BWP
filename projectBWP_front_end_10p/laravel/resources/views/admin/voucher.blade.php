@@ -25,14 +25,6 @@
                 <option value="70">70%</option>
             </select>
             <br>
-            {{-- <label style="width: 9vw; margin-top: 2vw;" for="">Gambar Voucher</label>:
-            <select name="voucher_image" style="width: 70vw;" id="">
-                <option value="">25%</option>
-                <option value="">30%</option>
-                <option value="">50%</option>
-                <option value="">70%</option>
-            </select>
-            <br> --}}
             <label style="width: 9vw; margin-top: 2vw;" for="">Voucher expired</label>:
             <input type="datetime-local" style="width: 70vw;" name="voucher_expired" id="">
             <button class="btn btn-primary" name="btnBuat" style="margin-top: 2vw;">Buat</button>

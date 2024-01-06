@@ -61,14 +61,17 @@ DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
+  `voucher_id` int(11) NULL,
+  `order_total_no_disc` int(11) NOT NULL,
   `order_total_amount` int(11) NOT NULL,
-  `order_status` int(2) NOT NULL,
+  `order_status` int(2) NOT NULL DEFAULT 0,
   `order_destination` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`order_id`),
   KEY `user_id` (`user_id`),
+  KEY `voucher_id` (`voucher_id`),
   CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

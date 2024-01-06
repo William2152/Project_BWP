@@ -80,6 +80,7 @@ Route::prefix('/profile')->middleware(['cekRole:Customer,storeOwner'])->group(fu
     Route::post('/ubahProfile', [ProfileUser::class, 'ubahProfile']);
     Route::post('/ubahPass', [ProfileUser::class, 'ubahProfilePass']);
     Route::post('/tambahtoko', [ProfileUser::class, 'TambahToko']);
+    Route::post('/prosesCheckout', [ProfileUser::class, 'prosesCheckOut']);
 });
 
 //store owner toko
