@@ -202,4 +202,13 @@ class TokoController extends Controller
             "toko" => $toko,
         ]);
     }
+
+    public function TentangToko(Request $req)
+    {
+        $storeid = $req->toko_id;
+        $toko = Store::where('store_id', $storeid)->first();
+        return view('MenuUser.TentangToko', [
+            "toko" => $toko,
+        ]);
+    }
 }

@@ -43,23 +43,34 @@
                     <div class="row">
                         <div class="col-3">
                             <p style="text-decoration-style: bold; color: white; margin-top: 3vw;">Layanan Pelanggan</p>
-                            <p style="color: white; margin-top: 1vw;">Bantuan</p>
-                            <p style="color: white; margin-top: 1vw;">Pembayaran</p>
-                            <p style="color: white; margin-top: 1vw;">Hubungi Kami</p>
+                            <p style="color: white; margin-top: 1vw;"><a href="#"
+                                    style="text-decoration: none; color: white;">Bantuan</a></p>
+                            <p style="color: white; margin-top: 1vw;"><a href="#"
+                                    style="text-decoration: none; color: white;">Pembayaran</a></p>
+                            <p style="color: white; margin-top: 1vw;"><a href="#"
+                                    style="text-decoration: none; color: white;">Hubungi Kami</a></p>
                         </div>
                         <div class="col-3">
                             <p style="text-decoration-style: bold; color: white; margin-top: 3vw;">Jelajahi KA Store</p>
-                            <p style="color: white; margin-top: 1vw;">Tentang kami</p>
-                            <p style="color: white; margin-top: 1vw;">Kebijakan</p>
-                            <p style="color: white; margin-top: 1vw;">Afiliate</p>
-                            <p style="color: white; margin-top: 1vw;">Store Owner</p>
+                            <p style="color: white; margin-top: 1vw;"><a href="#"
+                                    style="text-decoration: none; color: white;">Tentang Kami</a></p>
+                            <p style="color: white; margin-top: 1vw;"><a href="#"
+                                    style="text-decoration: none; color: white;">Kebijakan</a></p>
+                            <p style="color: white; margin-top: 1vw;"><a href="#"
+                                    style="text-decoration: none; color: white;">Affiliate</a></p>
+                            <p style="color: white; margin-top: 1vw;"><a href="#"
+                                    style="text-decoration: none; color: white;">Store Owner</a></p>
                         </div>
                         <div class="col-3">
                             <p style="text-decoration-style: bold; color: white; margin-top: 3vw;">Ikuti Kami</p>
-                            <p style="color: white; margin-top: 1vw;">Facebook</p>
-                            <p style="color: white; margin-top: 1vw;">Instagram</p>
-                            <p style="color: white; margin-top: 1vw;">Twitter</p>
-                            <p style="color: white; margin-top: 1vw;">LinkedIn</p>
+                            <p style="color: white; margin-top: 1vw;"><a href="#"
+                                    style="text-decoration: none; color: white;">Facebook</a></p>
+                            <p style="color: white; margin-top: 1vw;"><a href="#"
+                                    style="text-decoration: none; color: white;">Instagram</a></p>
+                            <p style="color: white; margin-top: 1vw;"><a href="#"
+                                    style="text-decoration: none; color: white;">Twitter</a></p>
+                            <p style="color: white; margin-top: 1vw;"><a href="#"
+                                    style="text-decoration: none; color: white;">LinkedIn</a></p>
                         </div>
                         <div class="col-3">
                             <p style="text-decoration-style: bold; color: white; margin-top: 3vw;">Kelompok</p>

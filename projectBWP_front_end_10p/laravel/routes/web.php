@@ -37,6 +37,8 @@ Route::prefix('/')->group(function () {
     });
     Route::post('/liattoko/produk/{toko_id}', [TokoController::class, "ProdukToko"]);
     Route::get('/liattoko/produk/{toko_id}', [TokoController::class, "ProdukToko"]);
+    Route::post('/liattoko/tentangtoko/{toko_id}', [TokoController::class, "TentangToko"]);
+    Route::get('/liattoko/tentangtoko/{toko_id}', [TokoController::class, "TentangToko"]);
 });
 
 //admin

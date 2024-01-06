@@ -32,7 +32,8 @@
                     </h5>
                 </div>
                 <div class="col-4" style="margin-top: 1vw; margin-bottom: 1vw;">
-                    <h5><a href="{{ url('/liattoko/tentangtoko') }}" style="text-decoration: none; color: black">Tentang
+                    <h5><a href="{{ url('/liattoko/tentangtoko/' . $toko->store_id) }}"
+                            style="text-decoration: none; color: black">Tentang
                             Toko</a>
                     </h5>
                 </div>

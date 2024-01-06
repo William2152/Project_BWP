@@ -9,8 +9,8 @@
             @foreach (Session::get('cart') as $c)
                 <div class="boxItem"
                     style="margin-right: 1vw; margin-left: 1vw; background-color: aliceblue; width: 100% -2vw; padding-bottom: 1vw; display: flex;  flex-direction: row; margin-bottom: 1vw; margin-top: 1vw;">
-                    <div class="imageBox" style="width: 30%; height: 12vw; background-color: blue;">
-                        <img src="{{ $c['product']->product_img }}" alt="" style="width: 100%; height: 100%;">
+                    <div class="imageBox" style="width: 30%; height: 17vw;">
+                        <img src="{{ $c['product']->product_img }}" alt="" style="width: 17vw; height: 17vw;">
                     </div>
                     <div class="descBox" style="width: 60%; height: 100%; padding-top: 1vw; padding-left: 1vw;">
                         <h5>Nama Barang : {{ $c['product']->product_name }} </h5> <br>
