@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginRegisControler;
 use App\Http\Controllers\ProfileUser;
 use App\Http\Controllers\TokoController;
@@ -41,6 +42,12 @@ Route::prefix('/')->group(function () {
 //admin
 Route::prefix('admin')->middleware(['cekRole:Admin'])->group(function () {
     Route::get('/user', [LoginRegisControler::class, 'AdminPage']);
+    Route::get('/topup', [AdminController::class, 'kehalamanacc']);
+    Route::post('/topup/berhasil', [AdminController::class, 'topupberhasil']);
+    Route::post('/topup/gagal', [AdminController::class, 'topupgagal']);
+    Route::get('/voucher', function () {
+        return view('admin.voucher');
+    });
 });
 
 //profile user
