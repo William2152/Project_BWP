@@ -31,6 +31,16 @@
 </style>
 
 @section('isimenu')
+@section('isimenu')
+    @if ($errors->any())
+        <div class="alert alert-danger mb-4">{{ $errors->first() }}</div>
+        {{-- @foreach ($errors->all() as $pesanError)
+            @endforeach --}}
+    @elseif (Session::has('success'))
+        <div class="alert alert-success">{{ Session::get('success') }}</div>
+    @elseif (Session::has('err'))
+        <div class="alert alert-danger">{{ Session::get('err') }}</div>
+    @endif
     <div class="isi" style="margin-top: 1vw;">
         <table class="table">
             <thead>
@@ -38,6 +48,7 @@
                 <th>Nama</th>
                 <th>Email</th>
                 <th>Saldo</th>
+                <th>Action</th>
             </thead>
             <tbody>
                 @foreach ($user as $u)
@@ -46,6 +57,12 @@
                         <td>{{ $u->user_nama }}</td>
                         <td>{{ $u->user_email }}</td>
                         <td>{{ $u->user_money }}</td>
+                        <td>
+                            <form action="/admin/user/delete" method="post">
+                                @csrf
+                                <button value="{{ $u->user_id }}" name="delete">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

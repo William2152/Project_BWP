@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Store;
 use App\Models\Topup;
+use App\Models\User;
 use App\Models\Users;
 use Illuminate\Http\Request;
 
@@ -84,6 +85,20 @@ class AdminController extends Controller
             return back()->with('success', 'berhasil acc topup!');
         } else {
             return back()->with('err', 'gagal acc topup!');
+        }
+    }
+
+    public function userDelete(Request $req)
+    {
+        $user = $req->delete;
+        // dd($user);
+        $users = Users::find($user);
+
+        if ($users) {
+            $users->delete();
+            return back()->with('success', 'berhasil delete user!');
+        } else {
+            return back()->with('err', 'gagal delete user!');
         }
     }
 

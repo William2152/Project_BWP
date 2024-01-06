@@ -20,7 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/itemPage/{id}', [TokoController::class, 'itemPage']);
-
+Route::get('/edit/{id}', [LoginRegisControler::class, 'EditProduct']);
+Route::post('/edit/request', [TokoController::class, 'EditProduct']);
 
 //umum
 Route::prefix('/')->group(function () {
@@ -48,6 +49,7 @@ Route::prefix('admin')->middleware(['cekRole:Admin'])->group(function () {
     Route::get('/topup', [AdminController::class, 'kehalamanacc']);
     Route::post('/topup/berhasil', [AdminController::class, 'topupberhasil']);
     Route::post('/topup/gagal', [AdminController::class, 'topupgagal']);
+    Route::post('/user/delete', [AdminController::class, 'userDelete']);
     Route::get('/voucher', function () {
         return view('admin.voucher');
     });
@@ -62,8 +64,6 @@ Route::prefix('/profile')->middleware(['cekRole:Customer,storeOwner'])->group(fu
         Route::get('/sedangdikirim', [ProfileUser::class, 'sedangdikirim']);
         Route::get('/selesai', [ProfileUser::class, 'selesai']);
     });
-    Route::get('/userCart', [ProfileUser::class, 'Cart']);
-    Route::get('/userCheckout', [ProfileUser::class, 'CheckOut']);
     Route::get('/vouchersaya', [ProfileUser::class, 'Voucher']);
     Route::get('/formtoko', [ProfileUser::class, 'BuatToko']);
 
@@ -82,9 +82,15 @@ Route::get('/tokosaya', [TokoController::class, 'TokoSaya'])->middleware(['cekRo
 Route::prefix('tokosaya')->middleware(['cekRole:storeOwner'])->group(function () {
     Route::get('/updatetoko', [TokoController::class, 'editToko']);
     Route::get('/tambahproduk', [TokoController::class, 'AddProductPage']);
-    Route::get('/edit/{id}', [TokoController::class, 'EditProductPage']);
-
     Route::post('/ubahtoko', [TokoController::class, 'UpdateToko']);
     Route::post('/addProduct', [TokoController::class, 'AddProduct']);
-    Route::post('/edit/request', [TokoController::class, 'EditProduct']);
+});
+
+
+Route::get('/userCart', function () {
+    return view('User.userCart');
+});
+
+Route::get('/userCheckout', function () {
+    return view('User.userCheckout');
 });
