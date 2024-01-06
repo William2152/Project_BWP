@@ -7,6 +7,7 @@ use App\Models\Topup;
 use App\Models\User;
 use App\Models\Users;
 use App\Models\Voucher;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -101,24 +102,25 @@ class AdminController extends Controller
 
     public function addvoucher(Request $req)
     {
-        $convertedDatetime = date("Y-m-d H:i:00", strtotime($req->voucher_expired));
 
+        // dd($req->voucher_expired);
         $req->validate(
             [
                 "voucher_name" => "required",
-                "voucher_expired" => "required",
+                "voucher_expired" => "required|regex:/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/",
             ],
             [
                 "voucher_name.required" => "nama voucher harus diisi!",
                 "voucher_expired.required" => "tanggal voucher harus diisi!",
-                // "voucher_expired.date_format" => "tanggal format harus sesuai format 00-00-0000 00:00:00!",
+                "voucher_expired.regex" => "tanggal format harus sesuai format 00-00-0000 00:00!",
             ]
         );
 
         $img = $req->voucher_discount . "_persen.png";
-        $tgl_exp = date("Y-m-d 00:00:00", strtotime($req->voucher_expired));
-        dd($tgl_exp);
+        $tgl_exp = date("Y-m-d 23:59:59", strtotime($req->voucher_expired));
+        // dd($tgl_exp);
 
+        //insert voucher
         $result = Voucher::create([
             "voucher_nama" => $req->voucher_name,
             "voucher_img" => $img,
@@ -126,10 +128,21 @@ class AdminController extends Controller
             "voucher_tgl_berlaku" => $tgl_exp,
         ]);
 
-        if ($result) {
-            return back()->with('success', 'berhasil insert voucher!');
-        } else {
-            return back()->with('err', 'gagal insert voucher!');
+        //insert users_voucher
+        $user = Users::all();
+        $lastVoucher = Voucher::latest()->first()->voucher_id;
+        $errMsg = "";
+        try {
+            foreach ($user as $u) {
+                if ($u->user_role != "Admin") {
+                    $result = $u->Vouchers()->attach($lastVoucher);
+                }
+            }
+            return back()->with('success', 'berhasil seluruh insert voucher!');
+        } catch (QueryException $e) {
+            // Tangani kesalahan
+            $errMsg = $e->getMessage();
+            return back()->with('err', $errMsg);
         }
     }
 
