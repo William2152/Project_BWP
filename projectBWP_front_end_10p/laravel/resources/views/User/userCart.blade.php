@@ -1,7 +1,7 @@
 @extends('template.main')
 
 @section('content')
-    @dump(Session::get('cart'))
+    {{-- @dump(Session::get('cart')) --}}
     <div class="content" style="margin-top: 1vw; margin-bottom: 1vw; height: auto;">
         <h1 style="text-align: center">Cart</h1>
         <div class="container"
@@ -12,7 +12,7 @@
                     <div class="imageBox" style="width: 30%; height: 17vw;">
                         <img src="{{ $c['product']->product_img }}" alt="" style="width: 17vw; height: 17vw;">
                     </div>
-                    <div class="descBox" style="width: 60%; height: 100%; padding-top: 1vw; padding-left: 1vw;">
+                    <div class="descBox" style="width: 60%; height: 100%; padding-top: 4vw; padding-left: 1vw;">
                         <h5>Nama Barang : {{ $c['product']->product_name }} </h5> <br>
                         <h5>Harga per Item : {{ $c['product']->product_price }}</h5> <br>
                         <h5>Quantity : {{ $c['qty'] }}</h5> <br>
@@ -21,7 +21,7 @@
                         <form action="{{ url('profile/userCart/delete') }}" method="post">
                             @csrf
                             <button class="btn-danger"
-                                style="background-color: red; width: 100%; height: 12vw; text-align: center;"
+                                style="background-color: red; width: 100%; height: 17vw; text-align: center;"
                                 name="btnDeleteCart" value="{{ $c['product']->product_id }}">X</button>
 
                         </form>

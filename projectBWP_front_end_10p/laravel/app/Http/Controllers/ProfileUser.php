@@ -361,19 +361,33 @@ class ProfileUser extends Controller
 
     public function Cart(Request $req)
     {
-        $item = Session::get('cart');
+        $item = $this->CartSess();
         $user = Auth::guard("web")->user();
         return view("User.userCart", [
             "curr" => $user,
-            "items" => $item
+            "items" => $item,
         ]);
     }
 
     public function CheckOut(Request $req)
     {
+        $item = $this->CartSess();
         $user = Auth::guard("web")->user();
+        $total = $this->hitungTotal();
         return view("User.userCheckout", [
             "curr" => $user,
+            "items" => $item,
+            "total" => $total,
         ]);
+    }
+
+    public function hitungTotal()
+    {
+        $item = $this->CartSess();
+        $total = 0;
+        foreach ($item as $i) {
+            $total += ($i['product']->product_price * $i['qty']);
+        }
+        return $total;
     }
 }
