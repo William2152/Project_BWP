@@ -53,4 +53,10 @@ class Users extends Authenticatable
     {
         return $this->hasMany(Topup::class, 'user_id', 'user_id');
     }
+
+    public function Vouchers()
+    {
+        return $this->belongsToMany(Voucher::class, 'users_voucher', 'user_id', 'voucher_id')
+            ->withPivot('users_voucher_status');
+    }
 }
