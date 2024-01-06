@@ -162,7 +162,7 @@ class LoginRegisControler extends Controller
         $user = Auth::guard("web")->user();
         $product = Product::where('product_name', 'like', '%' . $req->text . '%')->get();
         if (Auth::guard("web")->check()) {
-            return view('Menu.homePage', [
+            return view('User.homePageUser', [
                 "curr" => $user,
                 "product" => $product,
                 "category" => $req->text,
