@@ -22,12 +22,18 @@ class TokoController extends Controller
             ]);
         }
 
-        $product = $toko->Products;
-        return view("toko.tokoProductSaya", [
-            "curr" => $user,
-            "toko" => $toko,
-            "product" => $product,
-        ]);
+        if ($toko->store_status === 1) {
+            $product = $toko->Products;
+            return view("toko.tokoProductSaya", [
+                "curr" => $user,
+                "toko" => $toko,
+                "product" => $product,
+            ]);
+        } else {
+            return view("Toko.belumacc", [
+                "curr" => $user,
+            ]);
+        }
     }
 
     public function AddProductPage(Request $req)

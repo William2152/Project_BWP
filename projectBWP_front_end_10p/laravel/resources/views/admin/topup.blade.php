@@ -45,8 +45,8 @@
             <thead>
                 <th>Username</th>
                 <th>jumlah Saldo</th>
-                <th>accept</th>
-                <th>denied</th>
+                <th>action</th>
+                <th>action</th>
             </thead>
             <tbody>
                 @foreach ($topup as $u)

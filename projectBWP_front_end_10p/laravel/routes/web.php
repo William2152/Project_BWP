@@ -42,6 +42,10 @@ Route::prefix('/')->group(function () {
 //admin
 Route::prefix('admin')->middleware(['cekRole:Admin'])->group(function () {
     Route::get('/user', [LoginRegisControler::class, 'AdminPage']);
+    Route::get('/store', [AdminController::class, 'kehalamanstore']);
+    Route::get('/history', [AdminController::class, 'kehalamanhistory']);
+    Route::post('/store/terima', [AdminController::class, 'buatstoreberhasil']);
+    // Route::post('/store/tolak', [AdminController::class, 'buatstoregagal']);
     Route::get('/topup', [AdminController::class, 'kehalamanacc']);
     Route::post('/topup/berhasil', [AdminController::class, 'topupberhasil']);
     Route::post('/topup/gagal', [AdminController::class, 'topupgagal']);

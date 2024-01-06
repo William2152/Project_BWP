@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Store;
 use App\Models\Topup;
 use App\Models\Users;
 use Illuminate\Http\Request;
@@ -14,6 +15,52 @@ class AdminController extends Controller
         return view('admin.topup', [
             "topup" => $topup,
         ]);
+    }
+
+    public function kehalamanstore(Request $req)
+    {
+        $store = Store::where('store_status', 0)->get();
+        return view('admin.store', [
+            "store" => $store,
+        ]);
+    }
+
+    public function kehalamanhistory(Request $req)
+    {
+        $topup = Topup::all();
+        return view('admin.history', [
+            "topup" => $topup,
+        ]);
+    }
+
+    public function buatstoreberhasil(Request $req)
+    {
+        $store_id = $req->terima;
+        $berhasil = Store::find($store_id);
+        $res = $berhasil->update([
+            "store_status" => 1,
+        ]);
+
+        if ($res) {
+            return back()->with('success', 'berhasil acc store!');
+        } else {
+            return back()->with('err', 'gagal acc store!');
+        }
+    }
+
+    public function buatstoregagal(Request $req)
+    {
+        $store_id = $req->tolak;
+        $gagal = Store::find($store_id);
+        $res = $gagal->update([
+            "store_status" => 2,
+        ]);
+
+        if ($res) {
+            return back()->with('success', 'berhasil acc store!');
+        } else {
+            return back()->with('err', 'gagal acc store!');
+        }
     }
 
     public function topupberhasil(Request $req)
