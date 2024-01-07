@@ -105,8 +105,12 @@ Route::get('/tokosaya', [TokoController::class, 'TokoSaya'])->middleware(['cekRo
 Route::prefix('tokosaya')->middleware(['cekRole:storeOwner'])->group(function () {
     Route::get('/updatetoko', [TokoController::class, 'editToko']);
     Route::get('/tambahproduk', [TokoController::class, 'AddProductPage']);
+    Route::get('/pesanan', [TokoController::class, 'kehalamanacc']);
+    Route::get('/pesanan/detail/{order_id}', [TokoController::class, 'kehalamandetail']);
+    Route::post('/pesanan/detail/{order_id}', [TokoController::class, 'kehalamandetail']);
     Route::post('/ubahtoko', [TokoController::class, 'UpdateToko']);
     Route::post('/addProduct', [TokoController::class, 'AddProduct']);
+    Route::post('/acc', [TokoController::class, 'terima']);
 });
 
 

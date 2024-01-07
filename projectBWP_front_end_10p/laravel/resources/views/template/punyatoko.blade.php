@@ -24,21 +24,35 @@
                     <p>Penilaian</p>
                     <p></p>
                 </div>
-                <div class="col-4">
+                <div class="col-2">
                     <h5 style="margin-left: 3vw; margin-top: 1vw;">
                         <h5><a href="{{ url('/tokosaya') }}" style="text-decoration: none; color: black">Product Saya</a>
                         </h5>
                     </h5>
                 </div>
-                <div class="col-4" style="margin-top: 1vw; margin-bottom: 1vw;">
+                <div class="col-2" style="margin-top: 1vw; margin-bottom: 1vw;">
                     <h5><a href="{{ url('/tokosaya/tambahproduk') }}" style="text-decoration: none; color: black">Tambah
                             Product</a>
                     </h5>
                 </div>
-                <div class="col-4" style="margin-top: 1vw; margin-bottom: 1vw;">
+                <div class="col-2" style="margin-top: 1vw; margin-bottom: 1vw;">
                     <h5>
                         <a href="{{ url('/tokosaya/updatetoko') }}" style="text-decoration: none; color: black">
                             Edit Toko
+                        </a>
+                    </h5>
+                </div>
+                <div class="col-2" style="margin-top: 1vw; margin-bottom: 1vw;">
+                    <h5>
+                        <a href="{{ url('/tokosaya/pesanan') }}" style="text-decoration: none; color: black">
+                            Acc Pesanan
+                        </a>
+                    </h5>
+                </div>
+                <div class="col-2" style="margin-top: 1vw; margin-bottom: 1vw;">
+                    <h5>
+                        <a href="{{ url('/tokosaya/historypesanan') }}" style="text-decoration: none; color: black">
+                            History Pesanan
                         </a>
                     </h5>
                 </div>

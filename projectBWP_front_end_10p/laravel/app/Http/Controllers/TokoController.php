@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
+use App\Models\Orders;
 use App\Models\Product;
 use App\Models\Store;
 use Illuminate\Http\Request;
@@ -210,5 +211,49 @@ class TokoController extends Controller
         return view('MenuUser.TentangToko', [
             "toko" => $toko,
         ]);
+    }
+
+    public function kehalamanacc(Request $req)
+    {
+        $user = Auth::guard("web")->user();
+        $toko_id = $user->Toko->store_id;
+        // dd($toko_id);
+        $toko = $user->Toko;
+        $order = Orders::where('store_id', $toko_id)->get();
+        return view('Toko.accpesanan', [
+            "order" => $order,
+            "user" => $user,
+            "toko" => $toko,
+        ]);
+    }
+
+    public function kehalamandetail(Request $req)
+    {
+        $user = Auth::guard("web")->user();
+        $toko_id = $user->Toko->store_id;
+        // dd($toko_id);
+        $toko = $user->Toko;
+        $order = Orders::where('store_id', $toko_id)->get();
+        return view('Toko.detail', [
+            "order" => $order,
+            "user" => $user,
+            "toko" => $toko,
+        ]);
+    }
+
+    public function terima(Request $req)
+    {
+        if ($req->btnTerima != null) {
+            $order = Orders::find($req->btnTerima);
+            $result = $order->update([
+                'order_status' => 1,
+            ]);
+
+            if ($result == true) {
+                return back()->with('success', 'berhasil acc pesanan!');
+            } else {
+                return back()->with('err', 'gagal acc pesanan!');
+            }
+        }
     }
 }
