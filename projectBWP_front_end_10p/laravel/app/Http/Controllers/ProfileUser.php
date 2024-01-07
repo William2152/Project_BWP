@@ -280,12 +280,12 @@ class ProfileUser extends Controller
         return $cart;
     }
 
-    private function searchIDProd($id)
+    private function searchIDProd($id, $id_user)
     {
         $cart = $this->CartSess();
 
         foreach ($cart as $idx => $val) {
-            if ($val['product']->product_id == $id) {
+            if ($val['product']->product_id == $id && $val['id_user'] == $id_user) {
                 return $idx;
             }
         }
@@ -312,7 +312,7 @@ class ProfileUser extends Controller
 
         if ($req->btnAddCart != null) {
             //cari index session cart
-            $idDelete = $this->searchIDProd($req->btnAddCart);
+            $idDelete = $this->searchIDProd($req->btnAddCart, $user->user_id);
 
             //cari id
             $product = Product::find($req->btnAddCart);
@@ -339,14 +339,23 @@ class ProfileUser extends Controller
             ]);
 
             return back()->with("success", "item berhasil di add ke cart!");
-        } else {
+        } else if ($req->btnBuyNow != null) {
+            $product = Product::find($req->btnBuyNow);
+
+            Session::push('cart', [
+                "product" => $product,
+                "qty" => $req->qty,
+                "id_user" => $user->user_id,
+            ]);
+            return redirect("/profile/userCheckout");
         }
     }
 
     private function deleteItemCart($id_prod)
     {
         $cart = $this->CartSess();
-        $idDelete = $this->searchIDProd($id_prod);
+        $user = Auth::guard("web")->user();
+        $idDelete = $this->searchIDProd($id_prod, $user->user_id);
 
         if ($idDelete != -1) {
             unset($cart[$idDelete]);

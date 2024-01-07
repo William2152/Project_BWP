@@ -69,14 +69,17 @@
                                     document.getElementById('totalHarga').textContent = 'Rp' + priceTotal;
                                 }
                             </script>
-                    </div>
-                    <br>
 
-                    <button class="btn btn-primary" name="btnAddCart" value="{{ $product->product_id }}">Add To
-                        Cart</button>
-                    <button class="btn btn-success" name="btnBuyNow" value="{{ $product->product_id }}">Buy Now</button>
-                    </form>
-                    <a href="{{ url('profile/userCart') }}" class="btn btn-warning">Keranjang saya</a>
+                            <br>
+
+                            <button class="btn btn-primary" name="btnAddCart" value="{{ $product->product_id }}">Add To
+                                Cart</button>
+                            <button class="btn btn-success" name="btnBuyNow" value="{{ $product->product_id }}">Buy
+                                Now</button>
+                            <a href="{{ url('profile/userCart') }}" class="btn btn-warning">Keranjang saya</a>
+                        </form>
+
+                    </div>
                 </div>
             </div>
         </div>
