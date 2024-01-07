@@ -45,6 +45,7 @@
         <table class="table text-center">
             <thead>
                 <th>Owner</th>
+                <th>Tanggal Transaksi</th>
                 <th>Alamat Tujuan</th>
                 <th>Nama Kurir</th>
                 <th>Action</th>
@@ -56,6 +57,7 @@
                             @csrf
                             <tr>
                                 <td>{{ $o->Owned->user_nama }}</td>
+                                <td>{{ $o->created_at }}</td>
                                 <td>{{ $o->order_destination }}</td>
                                 <td>
                                     <select style="width: 100%;" name="kurir" id="">

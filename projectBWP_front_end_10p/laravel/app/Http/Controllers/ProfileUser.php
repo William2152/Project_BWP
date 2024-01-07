@@ -78,6 +78,21 @@ class ProfileUser extends Controller
         ]);
     }
 
+    public function detailpembelian(Request $req)
+    {
+        $user = Auth::guard("web")->user();
+        $order = Orders::find($req->id);
+        $toko = $user->Toko;
+        // // dd($toko_id);
+        $product = $order->Products;
+        // $order = Orders::where('store_id', $toko_id)->get();
+        return view('User.detailPembelian', [
+            "curr" => $user,
+            "product" => $product,
+            "toko" => $toko,
+        ]);
+    }
+
     public function historytopup(Request $req)
     {
         $user = Auth::guard("web")->user();
