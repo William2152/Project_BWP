@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\KurirController;
 use App\Http\Controllers\LoginRegisControler;
 use App\Http\Controllers\ProfileUser;
@@ -71,6 +72,7 @@ Route::prefix('admin')->middleware(['cekRole:Admin'])->group(function () {
     Route::post('/user/delete', [AdminController::class, 'userDelete']);
     Route::post('/voucher/add', [AdminController::class, 'addvoucher']);
     Route::post('/filter/{id}', [AdminController::class, 'kehalamanhistorypesananfilter']);
+    Route::post('/export', [ExportController::class, 'export']);
 });
 
 //profile user
