@@ -13,9 +13,8 @@
                         {{ $o->created_at }}
                     </div>
                     <div class="col-2" style="margin-top: 1vw;">
-                        <div class="kotak ps-1 text-center" style="background-color: lightgreen; ">
-                            <strong>Selesai</strong>
-                        </div>
+                        <div class="kotak ps-1 text-center" style="background-color: lightcoral; "><strong>menunggu
+                                kurir</strong></div>
                     </div>
                 </div>
                 <div class="container">

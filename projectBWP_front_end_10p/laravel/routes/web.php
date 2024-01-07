@@ -78,8 +78,10 @@ Route::prefix('/profile')->middleware(['cekRole:Customer,storeOwner'])->group(fu
     Route::get('/detail', [ProfileUser::class, 'Profile']);
     Route::get('/ubahpw', [ProfileUser::class, 'ProfilePass']);
     Route::prefix('/pesanansaya')->group(function () {
-        Route::get('/belumdikirim', [ProfileUser::class, 'belumdikirim']);
+        Route::get('/belumdiproses', [ProfileUser::class, 'belumdikirim']);
+        Route::get('/menunggukurir', [ProfileUser::class, 'menungguKurir']);
         Route::get('/sedangdikirim', [ProfileUser::class, 'sedangdikirim']);
+        Route::post('/sedangdikirim/selesai', [ProfileUser::class, 'sedangdikirimselesai']);
         Route::get('/selesai', [ProfileUser::class, 'selesai']);
     });
     Route::get('/userCart', [ProfileUser::class, 'Cart']);

@@ -35,7 +35,7 @@ class ProfileUser extends Controller
     public function Belumdikirim(Request $req)
     {
         $user = Auth::guard("web")->user();
-        $order = Orders::where('user_id', $user->user_id)->get();
+        $order = Orders::where('user_id', $user->user_id)->where('order_status', 0)->get();
         // $product = $order->Products;
         return view("User.belumdikirim", [
             "curr" => $user,
@@ -47,16 +47,52 @@ class ProfileUser extends Controller
     public function sedangdikirim(Request $req)
     {
         $user = Auth::guard("web")->user();
+        $order = Orders::where('user_id', $user->user_id)->where('order_status', 2)->get();
+        // $product = $order->Products;
         return view("User.terkirim", [
             "curr" => $user,
+            "order" => $order,
+            // "product" => $product,
+        ]);
+    }
+
+    public function sedangdikirimselesai(Request $req)
+    {
+        if ($req->selesai != null) {
+            $order = Orders::find($req->selesai);
+            $result = $order->update([
+                'order_status' => 3,
+            ]);
+
+            if ($result == true) {
+                return back()->with('success', 'berhasil kirim pesanan!');
+            } else {
+                return back()->with('err', 'gagal kirim pesanan!');
+            }
+        }
+    }
+
+    public function menungguKurir(Request $req)
+    {
+        $user = Auth::guard("web")->user();
+        $order = Orders::where('user_id', $user->user_id)->where('order_status', 1)->get();
+        // $product = $order->Products;
+        return view("User.menunggu", [
+            "curr" => $user,
+            "order" => $order,
+            // "product" => $product,
         ]);
     }
 
     public function selesai(Request $req)
     {
         $user = Auth::guard("web")->user();
+        $order = Orders::where('user_id', $user->user_id)->where('order_status', 3)->get();
+        // $product = $order->Products;
         return view("User.selesai", [
             "curr" => $user,
+            "order" => $order,
+            // "product" => $product,
         ]);
     }
 
