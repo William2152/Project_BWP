@@ -13,6 +13,11 @@ class LoginRegisControler extends Controller
 {
     public function HomePage(Request $req)
     {
+        //klo udh login redirect
+        if (Auth::guard("web")->check()) {
+            return redirect("/homePage");
+        }
+
         $product = Product::all();
         return view('menu.HomePage', [
             "product" => $product,

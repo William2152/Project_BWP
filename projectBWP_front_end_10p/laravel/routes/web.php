@@ -93,6 +93,7 @@ Route::prefix('/profile')->middleware(['cekRole:Customer,storeOwner'])->group(fu
     Route::get('/saldosaya', [ProfileUser::class, 'Saldo']);
     Route::get('/saldosaya/history/topup', [ProfileUser::class, 'historytopup']);
     Route::get('/saldosaya/history/pembelian', [ProfileUser::class, 'historypembelian']);
+    Route::get('/saldosaya/history/pembelian/detail/{id}', [ProfileUser::class, 'detailpembelian']);
 
     Route::post('/reqTopup', [ProfileUser::class, 'ReqTopup']);
     Route::post('/ubahProfile', [ProfileUser::class, 'ubahProfile']);

@@ -1,12 +1,11 @@
-@extends('template.punyatoko')
-
-@section('content')
-    <div class="content" style="margin-top: 1vw; margin-bottom: 1vw; height: auto;">
+@extends('template.profilePage')
+@section('konten')
+    <div class="col-10" style="margin-top: 1vw; margin-bottom: 1vw; height: auto;">
         <h1 style="text-align: center">Detail</h1>
         @if ($errors->any())
             <div class="alert alert-danger">{{ $errors->first() }}</div>
             {{-- @foreach ($errors->all() as $pesanError)
-                    @endforeach --}}
+                @endforeach --}}
         @elseif (Session::has('success'))
             <div class="alert alert-success">{{ Session::get('success') }}</div>
         @elseif (Session::has('err'))
@@ -27,7 +26,7 @@
                     </div>
                 </div>
             @endforeach
-            <a href="{{ url('/tokosaya/pesanan') }}" class="btn btn-danger">Back</a>
+            <a href="{{ url('/profile/saldosaya/history/pembelian') }}" class="btn btn-danger">Back</a>
         </div>
     </div>
 @endsection

@@ -2,18 +2,46 @@
 
 @section('status')
     @for ($i = 0; $i < 5; $i++)
-        <div class="itemBox"
-            style="width: 56vw; height: 9vw; background-color: black; display: flex; flex-direction: row;padding-top: 0.5vw; margin-bottom: 0.5vw;">
-            <div class="itemImageBox"
-                style="width: 12vw; height: 8vw; margin-left: 0.5vw; background-color: #fff; text-align: center; padding-top: 2.5vw;">
-                <h4>Item Image</h4>
-            </div>
-            <div class="itemDescBox"
-                style="height: 8vw; width: 42.5vw; margin-left: 0.5vw; background-color: #fff; display: flex; flex-direction: column; padding-left: 0.3vw;">
-                <h5><label for="">Nama Barang</label>:</h5>
-                <h5><label for="">Jumlah Barang</label>:</h5>
-                <h5><label for="">Nama Toko</label>:</h5>
-                <h5><label for="">Total Harga</label>:</h5>
+        <div class="container">
+            <div class="isi" style="background-color: white; width: 100%;">
+                <div class="row">
+                    <div class="col-1" style="margin-top: 1vw; margin-left: 1vw;">
+                        <img src="/shopping.png" style="height: 3vw; width: 3vw;" alt="">
+                    </div>
+                    <div class="col-9" style="margin-top: 1vw;"><strong>Pesanan</strong>
+                        <br>
+                        13-12-2024
+                    </div>
+                    <div class="col-1" style="margin-top: 1vw;">
+                        <div class="kotak ps-2" style="background-color: lightgreen; "><strong>Status</strong></div>
+                    </div>
+                </div>
+                <div class="container">
+                    <hr>
+                </div>
+                <div class="row">
+                    <div class="col-1">
+                        <img src="/Carousel1.jpg" style="height: 5vw; width: 5vw; margin-left: 1vw;" alt="">
+                    </div>
+                    <div class="col-10" style="margin-left: 2vw;">
+                        <strong>Nama Barang</strong>
+                        <br>
+                        jumlah barang
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6" style="margin-left: 1vw;">
+                        <h5>+1 produk lainnya</h5>
+                    </div>
+                </div>
+                <br>
+                <div class="row" style="margin-bottom: 2vw; padding-bottom: 1vw;">
+                    <div class="col-3" style="margin-left: 1vw;">
+                        <strong style="font-size: larger">Total Belanja</strong>
+                        <br>
+                        <strong style="font-size: larger">$harga</strong>
+                    </div>
+                </div>
             </div>
         </div>
     @endfor

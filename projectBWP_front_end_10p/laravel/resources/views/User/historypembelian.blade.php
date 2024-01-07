@@ -29,6 +29,7 @@
                 <th>Tanggal Transaksi</th>
                 <th>Nominal</th>
                 <th>Status</th>
+                <th>Detail</th>
             </thead>
             <tbody>
                 @foreach ($orders as $o)
@@ -47,6 +48,10 @@
                             @elseif ($o->order_status == 3)
                                 pesanan sudah selesai
                             @endif
+                        </td>
+                        <td>
+                            <a href="{{ url('/profile/saldosaya/history/pembelian/detail/' . $o->order_id) }}"
+                                class="btn btn-primary text-light" name="btnDetail">Detail</a>
                         </td>
                     </tr>
                 @endforeach
