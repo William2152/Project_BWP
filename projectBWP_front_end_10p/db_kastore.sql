@@ -52,6 +52,23 @@ insert  into `category`(`category_id`,`category_name`,`created_at`,`updated_at`,
 (18,'garden','2022-01-01 08:00:00',NULL,NULL),
 (19,'furniture','2022-01-01 08:00:00',NULL,NULL),
 (20,'music','2022-01-01 08:00:00',NULL,NULL);
+/*Table structure for table `category` */
+
+DROP TABLE IF EXISTS `messages`;
+
+CREATE TABLE messages (
+    message_id INT PRIMARY KEY AUTO_INCREMENT,
+    sender_id INT NOT NULL,
+    receiver_id INT NOT NULL,
+    content TEXT NOT NULL,
+    `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+    `updated_at` timestamp NULL DEFAULT NULL,
+    `deleted_at` timestamp NULL DEFAULT NULL,
+    FOREIGN KEY (sender_id) REFERENCES users(user_id),
+    FOREIGN KEY (receiver_id) REFERENCES users(user_id)
+);
+
+/*Data for the table `category` */
 
 /*Table structure for table `order_product` */
 

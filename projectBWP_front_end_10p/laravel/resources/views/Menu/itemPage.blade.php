@@ -87,7 +87,7 @@
 @endsection
 
 @section('toko')
-    <div class="container" style="margin-top: 2vw; background-color: whitesmoke; height: 10vw; margin-bottom: 2vw;">
+    <div class="container" style="margin-top: 2vw; background-color: whitesmoke; height: 13vw; margin-bottom: 2vw;">
         <div class="content">
             <div class="row">
                 <div class="tokoMiniProfileBox" style="width: 30vw; height: 10vw; display: flex; flex-direction: row;">
@@ -98,9 +98,9 @@
                     <div class="tokoMiniProfileBox2" style="margin-left: 2vw; padding-top: 2vw;">
                         <h4 style="text-align:">{{ $toko->store_name }}</h4>
                         <h6 style="font-style: oblique; color: gray">Online</h6>
-                        <form action="" method="post">
+                        <form action="{{ url('/liattoko/chattoko/' . $toko->store_id) }}"  method="post">
                             @csrf
-                            <input type="submit" value="Chat Sekarang" name="btnChat">
+                            <input type="submit" value="Chat Sekarang" name="btnChat" class="btn btn-primary">
                         </form>
                         <form action="{{ url('/liattoko/produk/' . $toko->store_id) }}" method="post">
                             @csrf
