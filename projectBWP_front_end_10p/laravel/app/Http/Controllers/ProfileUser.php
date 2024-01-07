@@ -35,8 +35,12 @@ class ProfileUser extends Controller
     public function Belumdikirim(Request $req)
     {
         $user = Auth::guard("web")->user();
+        $order = Orders::where('user_id', $user->user_id)->get();
+        // $product = $order->Products;
         return view("User.belumdikirim", [
             "curr" => $user,
+            "order" => $order,
+            // "product" => $product,
         ]);
     }
 

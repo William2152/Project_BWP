@@ -13,7 +13,7 @@
             <div class="row" style="margin-top: 2vw;">
                 <div class="col-4">
                     <h4 class="menu"><a href={{ url('/profile/pesanansaya/belumdikirim') }}
-                            style="text-decoration: none; color:black">Belum Dikirim</a></h4>
+                            style="text-decoration: none; color:black">Belum Diproses</a></h4>
                 </div>
                 <div class="col-4">
                     <h4 class="menu"><a href="{{ url('/profile/pesanansaya/sedangdikirim') }}"
