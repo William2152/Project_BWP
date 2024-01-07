@@ -386,6 +386,19 @@ class ProfileUser extends Controller
         return $privateCart;
     }
 
+    //ini biar user cart private yang isinya barang di 1 toko aja
+    private function UserCartByStoreID($s_id, $u_id)
+    {
+        $item = $this->CartSess();
+        $privateCart = [];
+        foreach ($item as $i) {
+            if ($i['product']->store_id == $s_id && $i['id_user'] == $u_id) {
+                $privateCart[] = $i;
+            }
+        }
+        return $privateCart;
+    }
+
     public function Cart(Request $req)
     {
 
@@ -417,6 +430,44 @@ class ProfileUser extends Controller
         ]);
     }
 
+    //ini buat total semua barang dari masing" toko di cart
+    public function hitungTotalStoreCart($s_id)
+    {
+        $user = Auth::guard("web")->user();
+        $item = $this->UserCartByStoreID($s_id, $user->user_id);
+        $total = 0;
+        foreach ($item as $i) {
+            $total += ($i['product']->product_price * $i['qty']);
+        }
+        return $total;
+    }
+
+    public function hitungGrandTotalStoreCart($id_v, $s_id)
+    {
+        $user = Auth::guard("web")->user();
+        $item = $this->UserCartByStoreID($s_id, $user->user_id);
+        $voucher = Voucher::find($id_v);
+
+        $total = 0;
+        $hasil = 0;
+
+        foreach ($item as $i) {
+            $total += ($i['product']->product_price * $i['qty']);
+        }
+        $diskon = 0;
+        if ($voucher != null) {
+            $diskon = (int) (($total * $voucher->voucher_potongan) / 100);
+        }
+
+        $hasil = $total - $diskon;
+
+
+        return $hasil;
+    }
+
+
+
+    //ini buat total semua barang dari semua toko yang di halaman check out
     public function hitungTotal()
     {
         $user = Auth::guard("web")->user();
@@ -493,33 +544,47 @@ class ProfileUser extends Controller
             }
         }
 
-        dd($id_toko_temp);
+        // dd($id_toko_temp);
 
-        //urusi add order_detail
-        //insert orders dulu
-        $result = Orders::create([
-            "user_id" => $user->user_id,
-            "voucher_id" => $req->order_disc,
-            "order_total_no_disc" => $total,
-            "order_total_amount" => $grand_total,
-            "order_destination" => $req->order_destination,
-            "store_id" => $item[0]["product"]->store_id,
-        ]);
+        foreach ($id_toko_temp as $s_id) {
+            # code...
+            //insert orders dulu
+            $perStoreTotal = $this->hitungTotalStoreCart($s_id);
+            $perStoreGrandTotal = $this->hitungGrandTotalStoreCart($req->order_disc, $s_id);
+            $result = Orders::create([
+                "user_id" => $user->user_id,
+                "voucher_id" => $req->order_disc,
+                "order_total_no_disc" => $perStoreTotal,
+                "order_total_amount" => $perStoreGrandTotal,
+                "order_destination" => $req->order_destination,
+                "store_id" => $s_id,
+            ]);
 
-        //insert ke masing order detail
-        $order_id = Orders::latest()->first()->order_id;
-        $order = Orders::find($order_id);
-        $errMsg = "";
-        try {
-            foreach ($item as $c) {
-                $result = $order->Products()->attach($c['product']->product_id, [
-                    'order_product_quantity' => $c['qty']
-                ]);
+            $itemPerStore = $this->UserCartByStoreID($s_id, $user->user_id);
+
+            //insert ke masing order detail
+            // $order_id = Orders::latest()->first()->order_id;
+            $order_id  = $result->order_id;
+            $order = Orders::find($order_id);
+            $errMsg = "";
+            try {
+                //buat order detail
+                foreach ($itemPerStore as $c) {
+                    $result = $order->Products()->attach($c['product']->product_id, [
+                        'order_product_quantity' => $c['qty']
+                    ]);
+                }
+            } catch (QueryException $e) {
+                // Tangani kesalahan
+                $errMsg = $e->getMessage();
             }
+        }
+
+        //penyelesaian
+        //klo success
+        if ($errMsg == "") {
+
             //hapus cart
-
-
-
             foreach ($item as $c) {
                 $this->deleteItemCart($c['product']->product_id);
             }
@@ -541,9 +606,7 @@ class ProfileUser extends Controller
             ]);
 
             return redirect("/profile/userCart")->with('success', 'berhasil checkout!');
-        } catch (QueryException $e) {
-            // Tangani kesalahan
-            $errMsg = $e->getMessage();
+        } else {
             return redirect("/profile/userCheckout")->with('err', $errMsg);
         }
     }
