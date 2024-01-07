@@ -39,6 +39,7 @@ Route::prefix('/')->group(function () {
     Route::get('/liattoko/produk/{toko_id}', [TokoController::class, "ProdukToko"]);
     Route::post('/liattoko/tentangtoko/{toko_id}', [TokoController::class, "TentangToko"]);
     Route::get('/liattoko/tentangtoko/{toko_id}', [TokoController::class, "TentangToko"]);
+    Route::any('/liattoko/chattoko/{toko_id}', [TokoController::class, "ChatTokoAsUser"]);
 });
 
 //kurir
@@ -108,6 +109,7 @@ Route::prefix('/profile')->middleware(['cekRole:Customer,storeOwner'])->group(fu
 //store owner toko
 Route::get('/tokosaya', [TokoController::class, 'TokoSaya'])->middleware(['cekRole:Customer,storeOwner']);
 Route::prefix('tokosaya')->middleware(['cekRole:storeOwner'])->group(function () {
+    Route::any('/chattoko', [TokoController::class, 'ChatTokoAsOwner']);
     Route::get('/updatetoko', [TokoController::class, 'editToko']);
     Route::get('/tambahproduk', [TokoController::class, 'AddProductPage']);
     Route::get('/pesanan', [TokoController::class, 'kehalamanacc']);
@@ -122,6 +124,9 @@ Route::prefix('tokosaya')->middleware(['cekRole:storeOwner'])->group(function ()
     Route::post('/edit/request', [TokoController::class, 'EditProduct']);
 });
 
+
+Route::post('/send-message', [TokoController::class, 'sendMessage']);
+Route::post('/get-messages', [TokoController::class, 'getMessages']);
 
 Route::get('/userCart', function () {
     return view('User.userCart');

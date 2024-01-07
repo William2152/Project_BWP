@@ -6,6 +6,7 @@ use App\Models\Categories;
 use App\Models\Orders;
 use App\Models\Product;
 use App\Models\Store;
+use App\Models\Messages;
 use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -61,6 +62,57 @@ class TokoController extends Controller
             "toko" => $store,
             "category" => $category,
         ]);
+    }
+
+    public function getMessages(Request $request)
+    {
+        $request->validate([
+            'senderId' => 'required|integer',
+            'receiverId' => 'required|integer',
+        ]);
+
+        $senderId = $request->senderId;
+        $receiverId = $request->receiverId;
+
+        $messages = Messages::select('messages.*', 'sender.user_nama as sender_name', 'receiver.user_nama as receiver_name')
+            ->join('users as sender', 'messages.sender_id', '=', 'sender.user_id')
+            ->join('users as receiver', 'messages.receiver_id', '=', 'receiver.user_id')
+            ->where(function ($query) use ($senderId, $receiverId) {
+                $query->where('messages.sender_id', $senderId)
+                    ->where('messages.receiver_id', $receiverId);
+            })
+            ->orWhere(function ($query) use ($senderId, $receiverId) {
+                $query->where('messages.sender_id', $receiverId)
+                    ->where('messages.receiver_id', $senderId);
+            })
+            ->orderBy('messages.created_at', 'ASC')
+            ->get();
+
+        return response()->json($messages);
+    }
+
+    public function sendMessage(Request $request)
+    {
+        $request->validate([
+            'senderId' => 'required|integer',
+            'receiverId' => 'required|integer',
+            'content' => 'required|string',
+        ]);
+
+        $senderId = $request->senderId;
+        $receiverId = $request->receiverId;
+        $content = $request->input("content");
+
+        $message = new Messages();
+        $message->sender_id = $senderId;
+        $message->receiver_id = $receiverId;
+        $message->content = $content;
+
+        if ($message->save()) {
+            return redirect()->back()->with('success', 'Message sent successfully');
+        } else {
+            return redirect()->back()->with('error', 'Failed to send message');
+        }
     }
 
     public function edittoko(Request $req)
@@ -325,6 +377,43 @@ class TokoController extends Controller
             } else {
                 return back()->with('err', 'gagal acc pesanan!');
             }
+        }
+    }
+    public function ChatTokoAsOwner(Request $req)
+    {
+        $user = Auth::guard("web")->user();
+        $toko = $user->Toko;
+        $senderId = $user->user_id;
+
+        $senderIds = Messages::select('sender_id')
+            ->where('receiver_id', $senderId)
+            ->whereNotNull('content')
+            ->groupBy('sender_id')
+            ->pluck('sender_id');
+
+        $senderNames = Users::select('user_id', 'user_nama as receiver_name')
+            ->whereIn('user_id', $senderIds)
+            ->get();
+
+        return view("Toko.chatToko", compact('senderId', 'senderNames', 'user', 'toko'));
+    }
+
+    public function ChatTokoAsUser(Request $req)
+    {
+        $user = Auth::guard("web")->user();
+        if($user != null) {
+            $senderId = $user->user_id;
+            $receiverId = $req->toko_id;
+            $receiverUser = Store::where('store_id', $receiverId)->first();
+            $receiver = Users::where('user_id', $receiverUser->user_id)->first();
+            if ($receiver) {
+                $receiverName = $receiver->user_nama;
+            } else {
+                $receiverName = 'Unknown Receiver';
+            }
+            return view('MenuUser.chatToko', compact('senderId', 'receiverId', 'receiverName'));
+        } else {
+            return redirect('/loginPage');
         }
     }
 }

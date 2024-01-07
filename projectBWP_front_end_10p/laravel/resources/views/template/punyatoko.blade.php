@@ -23,6 +23,8 @@
                     <p>Pengikut</p>
                     <p>Penilaian</p>
                     <p>store revenue : ${{ $toko->store_revenue }}</p>
+                    <a href="{{ url('/tokosaya/chattoko') }}"
+                        style="text-decoration: none; color: black; font-weight: bolder">Chat Toko</a>
                 </div>
                 <div class="col-2">
                     <h5 style="margin-left: 3vw; margin-top: 1vw;">
