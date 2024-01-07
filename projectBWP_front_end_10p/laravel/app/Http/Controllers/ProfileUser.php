@@ -520,11 +520,11 @@ class ProfileUser extends Controller
                 'user_money' => $saldoSisa,
             ]);
 
-            return back()->with('success', 'berhasil checkout!');
+            return redirect("/profile/userCart")->with('success', 'berhasil checkout!');
         } catch (QueryException $e) {
             // Tangani kesalahan
             $errMsg = $e->getMessage();
-            return back()->with('err', $errMsg);
+            return redirect("/profile/userCheckout")->with('err', $errMsg);
         }
     }
 }
