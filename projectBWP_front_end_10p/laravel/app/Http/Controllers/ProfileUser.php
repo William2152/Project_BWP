@@ -478,6 +478,23 @@ class ProfileUser extends Controller
             ]
         );
 
+        $id_toko_temp = [];
+        $ada = false;
+        foreach ($item as $c) {
+            $ada = false;
+            foreach ($id_toko_temp as $idt) {
+                if ($idt == $c['product']->store_id) {
+                    $ada = true;
+                }
+            }
+
+            if ($ada == false) {
+                $id_toko_temp[] = $c['product']->store_id;
+            }
+        }
+
+        dd($id_toko_temp);
+
         //urusi add order_detail
         //insert orders dulu
         $result = Orders::create([
