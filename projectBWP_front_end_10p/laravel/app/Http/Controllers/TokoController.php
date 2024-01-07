@@ -245,6 +245,20 @@ class TokoController extends Controller
         ]);
     }
 
+    public function kehalamanhistorypesanan(Request $req)
+    {
+        $user = Auth::guard("web")->user();
+        $toko_id = $user->Toko->store_id;
+        // dd($toko_id);
+        $toko = $user->Toko;
+        $order = Orders::where('store_id', $toko_id)->where('order_status', '>', 1)->where('order_status', '<', 4)->get();
+        return view('Toko.historypesanan', [
+            "order" => $order,
+            "user" => $user,
+            "toko" => $toko,
+        ]);
+    }
+
     public function terima(Request $req)
     {
         if ($req->btnTerima != null) {
