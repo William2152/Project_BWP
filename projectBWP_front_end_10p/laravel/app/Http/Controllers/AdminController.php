@@ -25,6 +25,10 @@ class AdminController extends Controller
 
     public function kehalamanhistorypesananfilter(Request $req)
     {
+        if ($req->id == "-") {
+            return redirect("/admin/historypesanan")->with('err', 'filter nama user harus diisi!');
+        }
+
         $order = Orders::where('user_id', $req->id)->get();
         $user = Users::all();
         return view('admin.historypesanan', [

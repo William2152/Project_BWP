@@ -1,4 +1,4 @@
-@extends('template.Admin');
+@extends('template.Admin')
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <style>
     .isi {
@@ -48,6 +48,7 @@
             </div>
             <div class="col-2">
                 <select name="filter" id="filterDropdown">
+                    <option disabled selected hidden value="ANJ">Nama User</option>
                     @foreach ($user as $u)
                         @if ($u->user_role == 'storeOwner' || $u->user_role == 'Customer')
                             <option value="{{ $u->user_id }}">{{ $u->user_name }}</option>
@@ -116,7 +117,13 @@
         // Menangkap pengajuan formulir
         $('#filterForm').submit(function(e) {
             // Formulir akan diarahkan ke URL dinamis sesuai dengan nilai dropdown yang dipilih
-            $(this).attr('action', '/admin/filter/' + $('#filterInput').val());
+            var hehe = "";
+            if ($('#filterInput').val() == "") {
+                hehe = "-";
+            } else {
+                hehe = $('#filterInput').val();
+            }
+            $(this).attr('action', '/admin/filter/' + hehe);
         });
     </script>
 @endsection
