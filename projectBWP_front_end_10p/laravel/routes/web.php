@@ -21,8 +21,6 @@ use Illuminate\Support\Facades\Route;
 Route::post('search/{text}', [LoginRegisControler::class, 'search']);
 
 Route::get('/itemPage/{id}', [TokoController::class, 'itemPage']);
-Route::get('/edit/{id}', [LoginRegisControler::class, 'EditProduct']);
-Route::post('/edit/request', [TokoController::class, 'EditProduct']);
 
 //umum
 Route::prefix('/')->group(function () {
@@ -111,6 +109,8 @@ Route::prefix('tokosaya')->middleware(['cekRole:storeOwner'])->group(function ()
     Route::post('/ubahtoko', [TokoController::class, 'UpdateToko']);
     Route::post('/addProduct', [TokoController::class, 'AddProduct']);
     Route::post('/acc', [TokoController::class, 'terima']);
+    Route::get('/edit/{id}', [TokoController::class, 'EditProductPage']);
+    Route::post('/edit/request', [TokoController::class, 'EditProduct']);
 });
 
 

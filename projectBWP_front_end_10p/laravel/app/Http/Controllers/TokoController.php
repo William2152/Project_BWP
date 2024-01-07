@@ -53,10 +53,12 @@ class TokoController extends Controller
     public function EditProductPage(Request $req)
     {
         $product = Product::find($req->id);
+        $category = Categories::all();
         $store = $product->Toko;
         return view('Toko.EditProduct', [
             "product" => $product,
             "toko" => $store,
+            "category" => $category,
         ]);
     }
 
@@ -173,6 +175,7 @@ class TokoController extends Controller
             "product_name" => $req->product_name,
             "product_price" => $req->product_price,
             "product_stock" => $req->product_stock,
+            "category_id" => $req->category_id,
             "product_detail" => $req->product_detail,
         ]);
 

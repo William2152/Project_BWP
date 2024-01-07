@@ -57,6 +57,13 @@
                         <input type="text" style="width: 20vw;" value="{{ $product->product_stock }}"
                             name="product_stock" id="">
                         <br>
+                        <label style="width: 9vw; margin-top: 2vw;" for="">Kategori Barang</label>
+                        <select name="category_id" id="" style="width: 20vw;">
+                            @foreach ($category as $c)
+                                <option value="{{ $c->category_id }}">{{ $c->category_name }}</option>
+                            @endforeach
+                        </select>
+                        <br>
                         <label style="width: 9vw; margin-top: 2vw;" for="">Deskripsi Produk</label>:
                         <textarea style="margin-top: 2vw;" name="product_detail" id="" cols="40" rows="10"> {{ $product->product_detail }}</textarea>
                         <br>
