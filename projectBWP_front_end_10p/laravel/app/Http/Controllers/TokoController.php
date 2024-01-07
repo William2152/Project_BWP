@@ -6,6 +6,7 @@ use App\Models\Categories;
 use App\Models\Orders;
 use App\Models\Product;
 use App\Models\Store;
+use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -257,6 +258,42 @@ class TokoController extends Controller
             "user" => $user,
             "toko" => $toko,
         ]);
+    }
+
+    public function kehalamantarik(Request $req)
+    {
+        $user = Auth::guard("web")->user();
+        $toko_id = $user->Toko->store_id;
+        // dd($toko_id);
+        $toko = $user->Toko;
+        return view('Toko.tarikrevenue', [
+            "user" => $user,
+            "toko" => $toko,
+        ]);
+    }
+
+    public function tarik(Request $req)
+    {
+        $result = false;
+        $user = Auth::guard("web")->user();
+        $users = Users::find($user->user_id);
+        $toko_id = $user->Toko->store_id;
+        $toko = $user->Toko;
+        if ($req->revenue <= $toko->store_revenue) {
+            $saldo = $req->revenue + $user->user_money;
+            $saldotoko = $toko->store_revenue - $req->revenue;
+            $result = $users->update([
+                "user_money" => $saldo,
+            ]);
+            $result = $toko->update([
+                "store_revenue" => $saldotoko,
+            ]);
+        }
+        if ($result) {
+            return back()->with('success', 'berhasil transfer saldo!');
+        } else {
+            return back()->with('err', 'gagal transfer saldo!');
+        }
     }
 
     public function terima(Request $req)

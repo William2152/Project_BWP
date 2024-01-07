@@ -56,6 +56,13 @@
                         </a>
                     </h5>
                 </div>
+                <div class="col-2" style="margin-top: 1vw; margin-bottom: 1vw;">
+                    <h5>
+                        <a href="{{ url('/tokosaya/tarik') }}" style="text-decoration: none; color: black">
+                            Tarik Revenue
+                        </a>
+                    </h5>
+                </div>
             </div>
         </div>
     </div>

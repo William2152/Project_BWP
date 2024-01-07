@@ -111,6 +111,8 @@ Route::prefix('tokosaya')->middleware(['cekRole:storeOwner'])->group(function ()
     Route::get('/pesanan', [TokoController::class, 'kehalamanacc']);
     Route::get('/pesanan/detail/{order_id}', [TokoController::class, 'kehalamandetail']);
     Route::get('/historypesanan', [TokoController::class, 'kehalamanhistorypesanan']);
+    Route::get('/tarik', [TokoController::class, 'kehalamantarik']);
+    Route::post('/tarik/revenue', [TokoController::class, 'tarik']);
     Route::post('/ubahtoko', [TokoController::class, 'UpdateToko']);
     Route::post('/addProduct', [TokoController::class, 'AddProduct']);
     Route::post('/acc', [TokoController::class, 'terima']);
