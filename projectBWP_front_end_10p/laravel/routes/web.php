@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\KurirController;
 use App\Http\Controllers\LoginRegisControler;
 use App\Http\Controllers\ProfileUser;
 use App\Http\Controllers\TokoController;
@@ -39,6 +40,14 @@ Route::prefix('/')->group(function () {
     Route::get('/liattoko/produk/{toko_id}', [TokoController::class, "ProdukToko"]);
     Route::post('/liattoko/tentangtoko/{toko_id}', [TokoController::class, "TentangToko"]);
     Route::get('/liattoko/tentangtoko/{toko_id}', [TokoController::class, "TentangToko"]);
+});
+
+//kurir
+Route::prefix('/kurir')->group(function () {
+    Route::get('/daftar', [KurirController::class, 'registerKurir']);
+    Route::get('/admin', [KurirController::class, 'kehalamanadminkurir']);
+    Route::get('/home', [KurirController::class, 'kehalamanhomekurir']);
+    Route::post('/register', [KurirController::class, 'register']);
 });
 
 //admin

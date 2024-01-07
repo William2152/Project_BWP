@@ -25,6 +25,8 @@
     </div>
     <div class="justify-content-center">
         <form action="{{ url('/loginPage') }}" method="GET">
+            <a href="{{ url('/kurir/daftar') }}"
+                style="background-color: none; color: aliceblue; text-decoration: none;">Daftar Kurir</a>
             <input type="submit" value="Log In" class="btn me-2" style="background-color: none; color: aliceblue;">
         </form>
     </div>

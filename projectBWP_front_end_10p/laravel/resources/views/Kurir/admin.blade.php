@@ -1,4 +1,5 @@
-@extends('template.Admin')
+@extends('template.kurir')
+
 <style>
     .isi {
         background-color: whitesmoke;
@@ -43,28 +44,30 @@
     <div class="isi" style="margin-top: 1vw;">
         <table class="table">
             <thead>
-                <th>Username</th>
-                <th>Nama</th>
-                <th>Email</th>
-                <th>Saldo</th>
+                <th>Owner</th>
+                <th>Alamat Tujuan</th>
+                <th>Nama Kurir</th>
                 <th>Action</th>
             </thead>
             <tbody>
-                @foreach ($user as $u)
-                    @if ($u->user_role != 'Admin')
-                        <tr>
-                            <td>{{ $u->user_name }}</td>
-                            <td>{{ $u->user_nama }}</td>
-                            <td>{{ $u->user_email }}</td>
-                            <td>{{ $u->user_money }}</td>
-                            <td>
-                                <form action="/admin/user/delete" method="post">
-                                    @csrf
-                                    <button value="{{ $u->user_id }}" name="delete">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endif
+                @foreach ($order as $o)
+                    <tr>
+                        <td>{{ $o->Owned->user_nama }}</td>
+                        <td>{{ $o->order_destination }}</td>
+                        <td>
+                            <select style="width: 100%;" name="kurir" id="">
+                                @foreach ($kurir as $k)
+                                    <option value="{{ $k->user_id }}">{{ $k->user_nama }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <form action="/admin/user/delete" method="post">
+                                @csrf
+                                <button value="{{ $o->order_id }}" name="delete">Assign</button>
+                            </form>
+                        </td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>

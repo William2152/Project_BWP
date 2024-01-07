@@ -73,6 +73,10 @@ class LoginRegisControler extends Controller
                 return redirect('/homePage');
             } else if ($user->user_role == "storeOwner") {
                 return redirect('/homePage');
+            } else if ($user->user_role == "Kurir") {
+                return redirect('/kurir/home');
+            } else if ($user->user_role == "AdminKurir") {
+                return redirect('/kurir/admin');
             }
         } else {
             return redirect('/loginPage')->with('err', 'gagal login!');
