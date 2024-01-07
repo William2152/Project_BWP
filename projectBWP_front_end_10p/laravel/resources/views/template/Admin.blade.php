@@ -41,6 +41,9 @@
                 <h5 class="text-light"><a href="{{ url('/admin/voucher') }}"
                         style="text-decoration: none; color: white;" class="menu">Buat Voucher</a></h5>
                 <hr style="color: white">
+                <h5 class="text-light"><a href="{{ url('/admin/historypesanan') }}"
+                        style="text-decoration: none; color: white;" class="menu">History Pesanan</a></h5>
+                <hr style="color: white">
                 <h5 class="text-light"><a href="{{ url('/logout') }}" style="text-decoration: none; color: white;"
                         class="menu">Logout</a></h5>
                 <hr style="color: white">

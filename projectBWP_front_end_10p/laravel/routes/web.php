@@ -59,6 +59,7 @@ Route::prefix('/kurir')->middleware(['cekRole:Kurir'])->group(function () {
 //admin
 Route::prefix('admin')->middleware(['cekRole:Admin'])->group(function () {
     Route::get('/user', [LoginRegisControler::class, 'AdminPage']);
+    Route::get('/historypesanan', [AdminController::class, 'kehalamanhistorypesanan']);
     Route::get('/store', [AdminController::class, 'kehalamanstore']);
     Route::get('/history', [AdminController::class, 'kehalamanhistory']);
     Route::post('/store/terima', [AdminController::class, 'buatstoreberhasil']);
@@ -69,6 +70,7 @@ Route::prefix('admin')->middleware(['cekRole:Admin'])->group(function () {
     Route::post('/topup/gagal', [AdminController::class, 'topupgagal']);
     Route::post('/user/delete', [AdminController::class, 'userDelete']);
     Route::post('/voucher/add', [AdminController::class, 'addvoucher']);
+    Route::post('/filter/{id}', [AdminController::class, 'kehalamanhistorypesananfilter']);
 });
 
 //profile user

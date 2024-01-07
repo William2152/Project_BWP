@@ -29,4 +29,9 @@ class Voucher extends Model
             ->withPivot('users_voucher_status')
             ->wherePivot('users_voucher_status', '=', 0);
     }
+
+    public function Owned()
+    {
+        return $this->belongsTo(Orders::class, 'voucher_id', 'voucher_id');
+    }
 }

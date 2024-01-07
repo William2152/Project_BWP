@@ -33,6 +33,21 @@ class Orders extends Model
         return $this->belongsToMany(Product::class, 'order_product', 'order_id', 'product_id')->withPivot('product_id', 'order_product_id', 'order_product_quantity', 'order_product_review', 'order_product_rating');
     }
 
+    public function Kurir()
+    {
+        return $this->belongsTo(Users::class, 'kurir_id', 'user_id');
+    }
+
+    public function Voucher()
+    {
+        return $this->hasOne(Voucher::class, 'voucher_id', 'voucher_id');
+    }
+
+    public function Toko()
+    {
+        return $this->belongsTo(Store::class, 'store_id', 'store_id');
+    }
+
     public function Owned()
     {
         return $this->belongsTo(Users::class, 'user_id', 'user_id');

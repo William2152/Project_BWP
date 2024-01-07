@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Orders;
 use App\Models\Store;
 use App\Models\Topup;
 use App\Models\User;
@@ -12,6 +13,26 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    public function kehalamanhistorypesanan(Request $req)
+    {
+        $order = Orders::all();
+        $user = Users::all();
+        return view('admin.historypesanan', [
+            "order" => $order,
+            "user" => $user,
+        ]);
+    }
+
+    public function kehalamanhistorypesananfilter(Request $req)
+    {
+        $order = Orders::where('user_id', $req->id)->get();
+        $user = Users::all();
+        return view('admin.historypesanan', [
+            "order" => $order,
+            "user" => $user,
+        ]);
+    }
+
     public function kehalamanacc(Request $req)
     {
         $topup = Topup::where('topup_status', 0)->get();
