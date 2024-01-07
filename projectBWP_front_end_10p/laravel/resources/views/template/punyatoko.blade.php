@@ -22,7 +22,7 @@
                 <div class="col-4">
                     <p>Pengikut</p>
                     <p>Penilaian</p>
-                    <p></p>
+                    <p>store revenue : ${{ $toko->store_revenue }}</p>
                 </div>
                 <div class="col-2">
                     <h5 style="margin-left: 3vw; margin-top: 1vw;">
