@@ -296,6 +296,10 @@ class ProfileUser extends Controller
 
     public function ProsesCart(Request $req)
     {
+        $cart = $this->CartSess();
+        $user = Auth::guard("web")->user();
+
+
         $req->validate(
             [
                 "qty" => "required|numeric|min:1",
@@ -307,15 +311,22 @@ class ProfileUser extends Controller
             ]
         );
 
-        $cart = $this->CartSess();
-        $user = Auth::guard("web")->user();
+
 
         if ($req->btnAddCart != null) {
+            //klo store owner mau beli barang dari toko sendiri
+            $product = Product::find($req->btnAddCart);
+
+            if ($user->user_id == $product->Toko->user_id) {
+                return back()->with('err', 'store owner tidak bisa membeli product sendiri!');
+            }
+
+
             //cari index session cart
             $idDelete = $this->searchIDProd($req->btnAddCart, $user->user_id);
 
             //cari id
-            $product = Product::find($req->btnAddCart);
+            // $product = Product::find($req->btnAddCart);
 
             if ($idDelete != -1) {
 
@@ -340,7 +351,12 @@ class ProfileUser extends Controller
 
             return back()->with("success", "item berhasil di add ke cart!");
         } else if ($req->btnBuyNow != null) {
+            //klo store owner mau beli barang dari toko sendiri
             $product = Product::find($req->btnBuyNow);
+
+            if ($user->user_id == $product->Toko->user_id) {
+                return back()->with('err', 'store owner tidak bisa membeli product sendiri!');
+            }
 
             Session::push('cart', [
                 "product" => $product,
