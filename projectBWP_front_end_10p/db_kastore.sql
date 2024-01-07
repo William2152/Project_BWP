@@ -62,6 +62,8 @@ CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `voucher_id` int(11) NULL,
+  `store_id` int(11) NOT NULL,
+  `kurir_id` int(11) NULL,
   `order_total_no_disc` int(11) NOT NULL,
   `order_total_amount` int(11) NOT NULL,
   `order_status` int(2) NOT NULL DEFAULT 0,
@@ -72,7 +74,12 @@ CREATE TABLE `orders` (
   PRIMARY KEY (`order_id`),
   KEY `user_id` (`user_id`),
   KEY `voucher_id` (`voucher_id`),
-  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+  KEY `store_id` (`store_id`),
+  KEY `kurir_id` (`kurir_id`),
+  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
+  CONSTRAINT `orders_voucher` FOREIGN KEY (`voucher_id`) REFERENCES `voucher` (`voucher_id`),
+  CONSTRAINT `orders_store` FOREIGN KEY (`store_id`) REFERENCES `store` (`store_id`),
+  CONSTRAINT `orders_kurir` FOREIGN KEY (`kurir_id`) REFERENCES `users` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `orders` */

@@ -39,7 +39,7 @@
                         <td>Rp. {{ number_format($o->order_total_amount, 0, '.', ',') }}</td>
                         <td>
                             @if ($o->order_status == 0)
-                                pesanan sedang di proses...
+                                pesanan belum di proses...
                             @elseif ($o->order_status == 1)
                                 pesanan sudah di antar
                             @elseif ($o->order_status == 2)

@@ -19,6 +19,8 @@ class Orders extends Model
     protected $fillable = [
         'user_id',
         'voucher_id',
+        'store_id',
+        'kurir_id',
         'order_total_no_disc',
         'order_total_amount',
         'order_status',

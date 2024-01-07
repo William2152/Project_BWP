@@ -459,12 +459,14 @@ class ProfileUser extends Controller
         $grand_total = $this->hitungGrandTotal($req->order_disc);
         $voucher = Voucher::find($req->order_disc);
 
-        // dd($grand_total);
+        // dd();
 
         //klo saldo ga cukup
         if ($user->user_money < $grand_total) {
             return back()->with('err', 'saldo tidak cukup');
         }
+
+
 
         //validation
         $req->validate(
@@ -484,6 +486,7 @@ class ProfileUser extends Controller
             "order_total_no_disc" => $total,
             "order_total_amount" => $grand_total,
             "order_destination" => $req->order_destination,
+            "store_id" => $item[0]["product"]->store_id,
         ]);
 
         //insert ke masing order detail
