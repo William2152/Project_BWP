@@ -67,24 +67,59 @@ class KurirController extends Controller
     {
         $order = Orders::where('order_status', 1)->get();
         $kurir = Users::where('user_role', "Kurir")->get();
-        return view(
-            'Kurir.admin',
-            [
-                "order" => $order,
-                "kurir" => $kurir,
-            ]
-        );
+        $user = Auth::guard("web")->user();
+        return view('Kurir.admin', [
+            "order" => $order,
+            "kurir" => $kurir,
+            "user" => $user,
+        ]);
+    }
+
+    public function assignKurir(Request $req)
+    {
+        if ($req->kurir == null) {
+            return back()->with('err', 'harus ada kurir yang di assign!');
+        }
+
+        if ($req->btnAssign != null) {
+            $order = Orders::find($req->btnAssign);
+            $result = $order->update([
+                'kurir_id' => $req->kurir,
+            ]);
+
+            if ($result == true) {
+                return back()->with('success', 'berhasil assign kurir!');
+            } else {
+                return back()->with('err', 'gagal assign kurir!');
+            }
+        }
+
+        return back()->with('err', 'order id tidak ada!');
     }
 
     public function kehalamanhomekurir(Request $req)
     {
         $user = Auth::guard("web")->user();
-        $order = Orders::where('kurir_id', $user)->get();
-        return view(
-            'Kurir.home',
-            [
-                "order" => $order,
-            ]
-        );
+        $order = Orders::where('kurir_id', $user->user_id)->get();
+        return view('Kurir.home', [
+            "order" => $order,
+            "user" => $user,
+        ]);
+    }
+
+    public function terima(Request $req)
+    {
+        if ($req->btnTerima != null) {
+            $order = Orders::find($req->btnTerima);
+            $result = $order->update([
+                'order_status' => 2,
+            ]);
+
+            if ($result == true) {
+                return back()->with('success', 'berhasil kirim pesanan!');
+            } else {
+                return back()->with('err', 'gagal kirim pesanan!');
+            }
+        }
     }
 }

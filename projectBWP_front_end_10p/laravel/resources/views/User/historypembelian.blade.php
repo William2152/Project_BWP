@@ -33,7 +33,7 @@
             <tbody>
                 @foreach ($orders as $o)
                     <tr
-                        class="{{ $o->order_status == 0 ? 'table-info' : ($o->order_status == 1 ? 'table-success' : 'table-danger') }}">
+                        class="{{ $o->order_status == 0 ? 'table-light' : ($o->order_status == 1 ? 'table-warning' : ($o->order_status == 2 ? 'table-info' : 'table-success')) }}">
                         <td>Pembelian</td>
                         <td>{{ $o->created_at }}</td>
                         <td>Rp. {{ number_format($o->order_total_amount, 0, '.', ',') }}</td>
@@ -41,8 +41,10 @@
                             @if ($o->order_status == 0)
                                 pesanan belum di proses...
                             @elseif ($o->order_status == 1)
-                                pesanan sudah di antar
+                                pesanan sudah di proses
                             @elseif ($o->order_status == 2)
+                                pesanan sudah diantar
+                            @elseif ($o->order_status == 3)
                                 pesanan sudah selesai
                             @endif
                         </td>

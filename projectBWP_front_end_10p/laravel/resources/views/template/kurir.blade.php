@@ -21,7 +21,7 @@
             <div class="col-2 d-flex flex-column" style="background-color: black;">
                 <img src="/profile.jpg" class=""
                     style="width: 10vw; border-radius: 100%; margin-top: 2vw; margin-left: 2vw;">
-                <h4 class="text-light" style="margin-top: 2vw; margin-left: 5vw;">Admin</h4>
+                <h4 class="text-light text-center" style="margin-top: 2vw;">{{ $user->user_nama }}</h4>
                 <hr style="color: white">
                 <h5 class="text-light"><a href="{{ url('/logout') }}" style="text-decoration: none; color: white;"
                         class="menu">Logout</a></h5>

@@ -50,16 +50,18 @@
             </thead>
             <tbody>
                 @foreach ($order as $o)
-                    <tr>
-                        <td>{{ $o->Owned->user_nama }}</td>
-                        <td>{{ $o->order_destination }}</td>
-                        <td>
-                            <form action="/admin/user/delete" method="post">
-                                @csrf
-                                <button value="{{ $o->order_id }}" name="delete">Terima</button>
-                            </form>
-                        </td>
-                    </tr>
+                    @if ($o->order_status == 1)
+                        <tr>
+                            <td>{{ $o->Owned->user_nama }}</td>
+                            <td>{{ $o->order_destination }}</td>
+                            <td>
+                                <form action="{{ url('/kurir/terima') }}" method="post">
+                                    @csrf
+                                    <button value="{{ $o->order_id }}" name="btnTerima">Terima</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endif
                 @endforeach
             </tbody>
         </table>

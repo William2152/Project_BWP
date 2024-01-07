@@ -1,7 +1,10 @@
 @extends('template.main')
 
 @section('navbar')
-    <div class="container d-flex justify-content-center">
+    <div class="container d-flex justify-content-between">
+        <div>
+
+        </div>
         <form id="searchForm" action="{{ url('/search/') }}" class="d-flex" method="POST">
             @csrf
             <input id="searchInput" class="form-control me-2" type="search" name="search" placeholder="Search"
@@ -22,12 +25,16 @@
             });
         </script>
 
-    </div>
-    <div class="justify-content-center">
-        <form action="{{ url('/loginPage') }}" method="GET">
-            <a href="{{ url('/kurir/daftar') }}"
-                style="background-color: none; color: aliceblue; text-decoration: none;">Daftar Kurir</a>
-            <input type="submit" value="Log In" class="btn me-2" style="background-color: none; color: aliceblue;">
-        </form>
+        <div class="row w-10">
+
+            <div class="col-8">
+                <a class="nav-link active text-light text-center fw-bold" style="" aria-current="page"
+                    href="{{ url('/kurir/daftar') }}">Daftar
+                    Kurir</a>
+            </div>
+            <div class="col-4">
+                <a class="nav-link text-light text-center fw-bold" href="{{ url('/loginPage') }}">Login</a>
+            </div>
+        </div>
     </div>
 @endsection

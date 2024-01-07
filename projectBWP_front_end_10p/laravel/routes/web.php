@@ -43,11 +43,19 @@ Route::prefix('/')->group(function () {
 });
 
 //kurir
+Route::prefix('adminKurir')->middleware(['cekRole:AdminKurir'])->group(function () {
+    Route::get('/', [KurirController::class, 'kehalamanadminkurir']);
+    Route::post('/assign', [KurirController::class, 'assignKurir']);
+});
+
 Route::prefix('/kurir')->group(function () {
     Route::get('/daftar', [KurirController::class, 'registerKurir']);
-    Route::get('/admin', [KurirController::class, 'kehalamanadminkurir']);
-    Route::get('/home', [KurirController::class, 'kehalamanhomekurir']);
     Route::post('/register', [KurirController::class, 'register']);
+});
+
+Route::prefix('/kurir')->middleware(['cekRole:Kurir'])->group(function () {
+    Route::get('/home', [KurirController::class, 'kehalamanhomekurir']);
+    Route::post('/terima', [KurirController::class, 'terima']);
 });
 
 //admin
