@@ -62,14 +62,13 @@
                             <td>
                                 <form action="{{ url('/tokosaya/acc') }}" method="post">
                                     @csrf
-                                    <button value="{{ $o->order_id }}" name="btnTerima">Terima</button>
+                                    <button class="btn btn-success" value="{{ $o->order_id }}"
+                                        name="btnTerima">Terima</button>
                                 </form>
                             </td>
                             <td>
-                                <form action="{{ url('/tokosaya/pesanan/detail/' . $o->order_id) }}" method="post">
-                                    @csrf
-                                    <button value="{{ $o->order_id }}" name="btnTerima">Detail</button>
-                                </form>
+                                <a href="{{ url('/tokosaya/pesanan/detail/' . $o->order_id) }}"
+                                    class="btn btn-primary text-light" name="btnDetail">Detail</a>
                             </td>
                         </tr>
                     @endif

@@ -230,13 +230,14 @@ class TokoController extends Controller
     public function kehalamandetail(Request $req)
     {
         $user = Auth::guard("web")->user();
-        $toko_id = $user->Toko->store_id;
-        // dd($toko_id);
+        $order = Orders::find($req->order_id);
         $toko = $user->Toko;
-        $order = Orders::where('store_id', $toko_id)->get();
+        // // dd($toko_id);
+        $product = $order->Products;
+        // $order = Orders::where('store_id', $toko_id)->get();
         return view('Toko.detail', [
-            "order" => $order,
             "user" => $user,
+            "product" => $product,
             "toko" => $toko,
         ]);
     }
