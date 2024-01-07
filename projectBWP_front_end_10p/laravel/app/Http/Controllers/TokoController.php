@@ -257,7 +257,7 @@ class TokoController extends Controller
             //kurangi stock
             $products = $order->Products;
             // $pr = $order->Products();
-            $toko = $products->Toko;
+            $toko = $order->Toko;
             foreach ($products as $p) {
                 $hasil = $p->update([
                     "product_stock" => $p->product_stock - $p->pivot->order_product_quantity,
