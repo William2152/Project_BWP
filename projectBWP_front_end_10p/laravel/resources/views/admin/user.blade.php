@@ -55,7 +55,7 @@
             </thead>
             <tbody>
                 @foreach ($user as $u)
-                    @if ($u->user_role != 'Admin')
+                    @if ($u->user_role != 'Admin' && $u->user_role != 'AdminKurir')
                         <tr>
                             <td>{{ $u->user_name }}</td>
                             <td>{{ $u->user_nama }}</td>
