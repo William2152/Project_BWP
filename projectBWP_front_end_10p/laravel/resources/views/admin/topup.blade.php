@@ -52,7 +52,7 @@
                 @foreach ($topup as $u)
                     <tr>
                         <td>{{ $u->OwnerSaldo->user_name }}</td>
-                        <td>{{ $u->topup_saldo }}</td>
+                        <td>$ {{ $u->topup_saldo }}</td>
                         <td>
                             <form action="{{ url('/admin/topup/berhasil') }} " method="post">
                                 @csrf

@@ -12,7 +12,7 @@
                                         style="object-fit: cover; height: 12vw;" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $p->product_name }}</h5>
-                                        <p class="card-text fw-bold">Price : Rp {{ $p->product_price }}</p>
+                                        <p class="card-text fw-bold">Price : $ {{ $p->product_price }}</p>
                                         <p class="card-text fw-bold">Stok : {{ $p->product_stock }}</p>
                                         <p class="card-text">{{ $p->product_detail }}</p>
                                     </div>

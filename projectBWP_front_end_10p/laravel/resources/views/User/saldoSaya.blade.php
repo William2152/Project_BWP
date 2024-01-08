@@ -13,7 +13,7 @@
         @endif
         <div class="container" style="display: flex; flex-direction: column; justify-content: center;">
             <h2 style="margin-top: 0.8vw; margin-left: 0.3vw; margin-bottom: 1vw;">Saldo Saya</h2>
-            <h5>Saldo : Rp. {{ $curr->user_money }}</h5>
+            <h5>Saldo : $ {{ number_format($curr->user_money, 0, '.', ',') }}</h5>
             <form action="{{ url('profile/reqTopup') }}" method="post">
                 @csrf
                 <input type="number" name="topup_saldo" id="" placeholder="Amount">
