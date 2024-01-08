@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\KurirController;
 use App\Http\Controllers\LoginRegisControler;
 use App\Http\Controllers\ProfileUser;
@@ -72,6 +73,7 @@ Route::prefix('admin')->middleware(['cekRole:Admin'])->group(function () {
     Route::post('/user/delete', [AdminController::class, 'userDelete']);
     Route::post('/voucher/add', [AdminController::class, 'addvoucher']);
     Route::post('/filter/{id}', [AdminController::class, 'kehalamanhistorypesananfilter']);
+    Route::post('/export', [ExportController::class, 'export']);
 });
 
 //profile user
@@ -79,8 +81,10 @@ Route::prefix('/profile')->middleware(['cekRole:Customer,storeOwner'])->group(fu
     Route::get('/detail', [ProfileUser::class, 'Profile']);
     Route::get('/ubahpw', [ProfileUser::class, 'ProfilePass']);
     Route::prefix('/pesanansaya')->group(function () {
-        Route::get('/belumdikirim', [ProfileUser::class, 'belumdikirim']);
+        Route::get('/belumdiproses', [ProfileUser::class, 'belumdikirim']);
+        Route::get('/menunggukurir', [ProfileUser::class, 'menungguKurir']);
         Route::get('/sedangdikirim', [ProfileUser::class, 'sedangdikirim']);
+        Route::post('/sedangdikirim/selesai', [ProfileUser::class, 'sedangdikirimselesai']);
         Route::get('/selesai', [ProfileUser::class, 'selesai']);
     });
     Route::get('/userCart', [ProfileUser::class, 'Cart']);
@@ -110,7 +114,9 @@ Route::prefix('tokosaya')->middleware(['cekRole:storeOwner'])->group(function ()
     Route::get('/tambahproduk', [TokoController::class, 'AddProductPage']);
     Route::get('/pesanan', [TokoController::class, 'kehalamanacc']);
     Route::get('/pesanan/detail/{order_id}', [TokoController::class, 'kehalamandetail']);
-
+    Route::get('/historypesanan', [TokoController::class, 'kehalamanhistorypesanan']);
+    Route::get('/tarik', [TokoController::class, 'kehalamantarik']);
+    Route::post('/tarik/revenue', [TokoController::class, 'tarik']);
     Route::post('/ubahtoko', [TokoController::class, 'UpdateToko']);
     Route::post('/addProduct', [TokoController::class, 'AddProduct']);
     Route::post('/acc', [TokoController::class, 'terima']);

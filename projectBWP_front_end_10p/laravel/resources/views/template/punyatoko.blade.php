@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-4">
                     <p>Pengikut</p>
-                    <p>Penilaian</p>
+                    <p>store revenue : ${{ $toko->store_revenue }}</p>
                     <a href="{{ url('/tokosaya/chattoko') }}" style="text-decoration: none; color: black; font-weight: bolder">Chat Toko</a>
                 </div>
                 <div class="col-2">
@@ -53,6 +53,13 @@
                     <h5>
                         <a href="{{ url('/tokosaya/historypesanan') }}" style="text-decoration: none; color: black">
                             History Pesanan
+                        </a>
+                    </h5>
+                </div>
+                <div class="col-2" style="margin-top: 1vw; margin-bottom: 1vw;">
+                    <h5>
+                        <a href="{{ url('/tokosaya/tarik') }}" style="text-decoration: none; color: black">
+                            Tarik Revenue
                         </a>
                     </h5>
                 </div>

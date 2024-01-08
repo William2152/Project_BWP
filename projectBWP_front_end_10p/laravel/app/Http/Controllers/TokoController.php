@@ -298,6 +298,56 @@ class TokoController extends Controller
         ]);
     }
 
+    public function kehalamanhistorypesanan(Request $req)
+    {
+        $user = Auth::guard("web")->user();
+        $toko_id = $user->Toko->store_id;
+        // dd($toko_id);
+        $toko = $user->Toko;
+        $order = Orders::where('store_id', $toko_id)->where('order_status', '>', 1)->where('order_status', '<', 4)->get();
+        return view('Toko.historypesanan', [
+            "order" => $order,
+            "user" => $user,
+            "toko" => $toko,
+        ]);
+    }
+
+    public function kehalamantarik(Request $req)
+    {
+        $user = Auth::guard("web")->user();
+        $toko_id = $user->Toko->store_id;
+        // dd($toko_id);
+        $toko = $user->Toko;
+        return view('Toko.tarikrevenue', [
+            "user" => $user,
+            "toko" => $toko,
+        ]);
+    }
+
+    public function tarik(Request $req)
+    {
+        $result = false;
+        $user = Auth::guard("web")->user();
+        $users = Users::find($user->user_id);
+        $toko_id = $user->Toko->store_id;
+        $toko = $user->Toko;
+        if ($req->revenue <= $toko->store_revenue) {
+            $saldo = $req->revenue + $user->user_money;
+            $saldotoko = $toko->store_revenue - $req->revenue;
+            $result = $users->update([
+                "user_money" => $saldo,
+            ]);
+            $result = $toko->update([
+                "store_revenue" => $saldotoko,
+            ]);
+        }
+        if ($result) {
+            return back()->with('success', 'berhasil transfer saldo!');
+        } else {
+            return back()->with('err', 'gagal transfer saldo!');
+        }
+    }
+
     public function terima(Request $req)
     {
         if ($req->btnTerima != null) {
@@ -310,17 +360,13 @@ class TokoController extends Controller
             //kurangi stock
             $products = $order->Products;
             // $pr = $order->Products();
-            $toko = $order->Toko;
+            // $toko = $order->Toko;
             foreach ($products as $p) {
                 $hasil = $p->update([
                     "product_stock" => $p->product_stock - $p->pivot->order_product_quantity,
                 ]);
             }
 
-            //tambah store revenue
-            $result = $toko->update([
-                'store_revenue' => $toko->store_revenue + $order->order_total_amount,
-            ]);
 
             if ($result == true) {
                 return back()->with('success', 'berhasil acc pesanan!');
