@@ -64,6 +64,12 @@ class ProfileUser extends Controller
                 'order_status' => 3,
             ]);
 
+            $toko = $order->Toko;
+            //tambah store revenue
+            $result = $toko->update([
+                'store_revenue' => $toko->store_revenue + $order->order_total_amount,
+            ]);
+
             if ($result == true) {
                 return back()->with('success', 'berhasil kirim pesanan!');
             } else {
@@ -397,14 +403,18 @@ class ProfileUser extends Controller
 
 
             // $product = Product::find($req->btnAddCart);
+            //tanya apakah stok product lebih besar dr qty yg dibeli
+            if ($req->qty <= $product->product_stock) {
+                Session::push('cart', [
+                    "product" => $product,
+                    "qty" => $req->qty,
+                    "id_user" => $user->user_id,
+                ]);
 
-            Session::push('cart', [
-                "product" => $product,
-                "qty" => $req->qty,
-                "id_user" => $user->user_id,
-            ]);
+                return back()->with("success", "item berhasil di add ke cart!");
+            }
 
-            return back()->with("success", "item berhasil di add ke cart!");
+            return back()->with("err", "jumlah item yang dibeli lebih banyak daripada stock!");
         } else if ($req->btnBuyNow != null) {
             //klo store owner mau beli barang dari toko sendiri
             $product = Product::find($req->btnBuyNow);

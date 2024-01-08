@@ -18,7 +18,7 @@ class LoginRegisControler extends Controller
             return redirect("/homePage");
         }
 
-        $product = Product::all();
+        $product = Product::where('product_stock', '>', 0)->get();
         return view('menu.HomePage', [
             "product" => $product,
             "category" => "Rekomendasi",
@@ -158,7 +158,7 @@ class LoginRegisControler extends Controller
     public function homePageUser(Request $req)
     {
         $user = Auth::guard("web")->user();
-        $product = Product::all();
+        $product = Product::where('product_stock', '>', 0)->get();
         return view('User.homePageUser', [
             "curr" => $user,
             "product" => $product,

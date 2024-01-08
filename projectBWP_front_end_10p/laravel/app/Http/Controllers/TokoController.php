@@ -308,17 +308,13 @@ class TokoController extends Controller
             //kurangi stock
             $products = $order->Products;
             // $pr = $order->Products();
-            $toko = $order->Toko;
+            // $toko = $order->Toko;
             foreach ($products as $p) {
                 $hasil = $p->update([
                     "product_stock" => $p->product_stock - $p->pivot->order_product_quantity,
                 ]);
             }
 
-            //tambah store revenue
-            $result = $toko->update([
-                'store_revenue' => $toko->store_revenue + $order->order_total_amount,
-            ]);
 
             if ($result == true) {
                 return back()->with('success', 'berhasil acc pesanan!');
