@@ -43,7 +43,7 @@
     <div class="isi" style="margin-top: 1vw;">
         <form action="{{ url('admin/export') }}" method="post">
             @csrf
-            <button class="btn btn-success mt-2 mx-2 w-100">Export ke Excel</button>
+            <button class="btn btn-success mt-2 mx-2 w-100" name="btnExport" value="user">Export ke Excel</button>
         </form>
         <table class="table">
             <thead>

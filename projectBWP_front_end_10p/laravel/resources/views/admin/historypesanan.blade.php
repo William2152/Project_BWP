@@ -42,6 +42,10 @@
         <div class="alert alert-danger">{{ Session::get('err') }}</div>
     @endif
     <div class="isi" style="margin-top: 1vw;">
+        <form action="{{ url('admin/export') }}" method="post">
+            @csrf
+            <button class="btn btn-success mt-2 mx-2 w-100" name="btnExport" value="order">Export ke Excel</button>
+        </form>
         <div class="row">
             <div class="col-1">
                 <h5>Filter</h5>
@@ -64,6 +68,7 @@
                 </form>
             </div>
         </div>
+
         <table class="table">
             <thead>
                 <th>Waktu Order</th>
