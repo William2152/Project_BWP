@@ -426,7 +426,7 @@ insert  into `store`(`store_id`,`store_name`,`store_email`,`store_img`,`store_ad
 (26,'Artistic Inspirations','artisticinspirations@example.com','https://i.pinimg.com/564x/0c/ec/e6/0cece6d7749bac9a07a64d2f59ce5c05.jpg','789 Creativity Court, Artland',26,8000,1,'2022-02-26 14:45:00',NULL,NULL),
 (27,'Chic Couture','chiccouture@example.com','https://i.pinimg.com/564x/7c/ce/91/7cce91171ce9e290635527470b434ade.jpg','567 Trendy Terrace, Style City',27,4500,1,'2022-02-27 17:30:00',NULL,NULL),
 (28,'Culinary Creations','culinarycreations@example.com','https://i.pinimg.com/564x/9f/45/22/9f4522804779ac9a22032ec02adea640.jpg','234 Culinary Court, Foodville',28,6000,1,'2022-02-28 09:45:00',NULL,NULL),
-(29,'GreenThumb Garden Supplies','greenthumbgardensupplies@example.com','https://i.pinimg.com/736x/1e/ba/4d/1eba4d3933dd1e0ad1578a05444ba263.jpg','234 garden Court, Gardenville',35,6600,0,'2022-02-28 09:45:00',NULL,NULL),
+(29,'GreenThumb Garden Supplies','greenthumbgardensupplies@example.com','https://i.pinimg.com/736x/1e/ba/4d/1eba4d3933dd1e0ad1578a05444ba263.jpg','234 garden Court, Gardenville',35,6600,1,'2022-02-28 09:45:00',NULL,NULL),
 (30,'Footwear Haven','footwearhaven@example.com','https://i.pinimg.com/564x/50/98/0c/50980c03b2e1238431c084e4001dcf57.jpg','234 foot Court, Footville',29,6900,1,'2022-02-28 09:45:00',NULL,NULL),
 (31,'Ella Fashion Store','ellasfashion@example.com','https://i.pinimg.com/474x/ec/0d/31/ec0d31d5c31b84f10072ab90dbde9934.jpg','234 Fashion Show street, Sydney',30,0,1,'2024-01-04 07:04:20','2024-01-04 07:36:48',NULL);
 
