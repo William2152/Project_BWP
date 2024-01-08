@@ -86,11 +86,11 @@
                 <table>
                     <tr>
                         <th>Subtotal untuk Product :</th>
-                        <td><span id="productSubtotal">Rp. {{ number_format($total, 0, '.', ',') }}</span></td>
+                        <td><span id="productSubtotal">$ {{ number_format($total, 0, '.', ',') }}</span></td>
                     </tr>
                     <tr>
                         <th>Total Discount :</th>
-                        <td><span id="totalDiscount">Rp. -</span></td>
+                        <td><span id="totalDiscount">$ -</span></td>
                     </tr>
                     <tr>
                         <th>Voucher :</th>
@@ -102,7 +102,7 @@
                         </th>
                         <td>
                             <span>
-                                <h4 id="grandTotal"><b>Rp. -</b></h4>
+                                <h4 id="grandTotal"><b>$ -</b></h4>
                             </span>
                         </td>
                     </tr>
@@ -139,14 +139,14 @@
             var totalDiscount = (voucherPotongan / 100) * productSubtotal;
             var grandTotal = productSubtotal - totalDiscount;
 
-            $("#productSubtotal").html("<b>Rp. " + productSubtotal.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</b>");
-            $("#totalDiscount").html("<b>Rp. " + totalDiscount.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</b>");
+            $("#productSubtotal").html("<b>$ " + productSubtotal.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</b>");
+            $("#totalDiscount").html("<b>$ " + totalDiscount.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</b>");
             if(selectedOption.data('namavoucher')) {
                 $("#voucherValue").html("<b>" + selectedOption.data('namavoucher') + "</b>");
             } else {
                 $("#voucherValue").html("<b>-</b>");
             }
-            $("#grandTotal").html("<b>Rp. " + grandTotal.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</b>");
+            $("#grandTotal").html("<b>$ " + grandTotal.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</b>");
         }
 
         // Call the function initially
