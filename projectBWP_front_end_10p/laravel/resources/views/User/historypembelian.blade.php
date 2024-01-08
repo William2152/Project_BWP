@@ -37,7 +37,7 @@
                         class="{{ $o->order_status == 0 ? 'table-light' : ($o->order_status == 1 ? 'table-warning' : ($o->order_status == 2 ? 'table-info' : 'table-success')) }}">
                         <td>Pembelian</td>
                         <td>{{ $o->created_at }}</td>
-                        <td>Rp. {{ number_format($o->order_total_amount, 0, '.', ',') }}</td>
+                        <td>$ {{ number_format($o->order_total_amount, 0, '.', ',') }}</td>
                         <td>
                             @if ($o->order_status == 0)
                                 pesanan belum di proses...

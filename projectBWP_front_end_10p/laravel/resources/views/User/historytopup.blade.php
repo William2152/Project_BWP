@@ -34,7 +34,7 @@
                     <tr
                         class="{{ $t->topup_status == 0 ? 'table-info' : ($t->topup_status == 1 ? 'table-success' : 'table-danger') }}">
                         <td>Top Up</td>
-                        <td>Rp. {{ number_format($t->topup_saldo, 0, '.', ',') }}</td>
+                        <td>$ {{ number_format($t->topup_saldo, 0, '.', ',') }}</td>
                         <td>
                             @if ($t->topup_status == 0)
                                 sedang di proses...

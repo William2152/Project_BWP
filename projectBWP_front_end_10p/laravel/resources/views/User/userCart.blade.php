@@ -1,8 +1,8 @@
 @extends('template.main')
 
 @section('content')
-    @dump(Session::get('cart'))
-    @dump($items)
+    {{-- @dump(Session::get('cart')) --}}
+    {{-- @dump($items) --}}
     <div class="content" style="margin-top: 1vw; margin-bottom: 1vw; height: auto;">
         <h1 style="text-align: center">Cart</h1>
         @if ($errors->any())
@@ -24,7 +24,7 @@
                     </div>
                     <div class="descBox" style="width: 60%; height: 100%; padding-top: 4vw; padding-left: 1vw;">
                         <h5>Nama Barang : {{ $c['product']->product_name }} </h5> <br>
-                        <h5>Harga per Item : {{ $c['product']->product_price }}</h5> <br>
+                        <h5>Harga per Item :$ {{ $c['product']->product_price }}</h5> <br>
                         <h5>Quantity : {{ $c['qty'] }}</h5> <br>
                     </div>
                     <div class="cancelButton" style="width: 10%; height: 100%; background-color: red; text-align: center;">

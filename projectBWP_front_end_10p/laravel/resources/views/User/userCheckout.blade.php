@@ -34,7 +34,7 @@
                     </div>
                 </div>
             @endforeach
-            <h2 style="text-align: right; margin-right: 1vw;">Total ({{ count($items) }} menu) : Rp
+            <h2 style="text-align: right; margin-right: 1vw;">Total ({{ count($items) }} menu) : $
                 {{ number_format($total, 0, '.', ',') }}</h2>
         </div>
 

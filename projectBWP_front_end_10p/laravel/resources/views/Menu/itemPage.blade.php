@@ -38,7 +38,7 @@
                     <h4 style="margin-top: 2vw;">{{ $product->product_name }}</h4>
                     <p>Rating : 5 | 100 Penilaian | 100 Terjual</p>
                     <br>
-                    <h1 id="totalHarga">Rp{{ $product->product_price }}</h1>
+                    <h1 id="totalHarga">${{ $product->product_price }}</h1>
                     <p class="fw-bold">Stok : {{ $product->product_stock }}</p>
                     <div class="col">
                         <p>Kuantitas </p>
@@ -48,7 +48,6 @@
                                 <div class="quantity-button" onclick="updateQuantity(-1)">-</div>
                                 <input type="text" name="qty" class="quantity-input" id="quantity" value="1">
                                 <div class="quantity-button" onclick="updateQuantity(1)">+</div>
-                                <p style="margin-left: 1vw; text-align: center;"> tersisa 1000 buah</p>
                             </div>
 
                             <script>
