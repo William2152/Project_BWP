@@ -52,8 +52,8 @@
                 <select name="order_disc" id="order_disc" class="form-select">
                     <option disabled hidden selected value="NULL">Voucher</option>
                     @foreach ($voucher as $v)
-                        <option value="{{ $v->voucher_id }}">Voucher : {{ $v->voucher_nama }}, Potongan :
-                            {{ $v->voucher_potongan }}%
+                        <option value="{{ $v->voucher_id }}" data-potongan="{{ $v->voucher_potongan }}" data-namaVoucher="{{ $v->voucher_nama }}">
+                            Voucher : {{ $v->voucher_nama }}, Potongan : {{ $v->voucher_potongan }}%
                         </option>
                     @endforeach
                 </select>
@@ -86,31 +86,25 @@
                 <table>
                     <tr>
                         <th>Subtotal untuk Product :</th>
-                        <td><span>Rp. {{ number_format($total, 0, '.', ',') }}</span></td>
+                        <td><span id="productSubtotal">Rp. {{ number_format($total, 0, '.', ',') }}</span></td>
                     </tr>
                     <tr>
-                        <th>Subtotal untuk Pengiriman :</th>
-                        <td><span>Rp. 9,000</span></td>
+                        <th>Total Discount :</th>
+                        <td><span id="totalDiscount">Rp. -</span></td>
                     </tr>
                     <tr>
-                        <th>Total Discount Pengiriman :</th>
-                        <td><span>Rp. 0</span></td>
-                    </tr>
-                    <tr>
-                        <th>Biaya Layanan :</th>
-                        <td><span>Rp. 1,000</span></td>
-                    </tr>
-                    <tr>
-                        <th>Biaya Penanganan :</th>
-                        <td><span>Rp. 1,000</span></td>
+                        <th>Voucher :</th>
+                        <td><b id="voucherValue">-</b></td>
                     </tr>
                     <tr>
                         <th>
                             <h4>Total Pembayaran</h4>
                         </th>
-                        <td><span>
-                                <h4 id="grand_total">Rp. 311,000</h4>
-                            </span></td>
+                        <td>
+                            <span>
+                                <h4 id="grandTotal"><b>Rp. -</b></h4>
+                            </span>
+                        </td>
                     </tr>
                 </table>
 
@@ -130,5 +124,37 @@
                 </div>
         </form>
     </div>
-    </div>
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"
+    ></script>
+    <script>
+        function updateOrder() {
+            var selectedOption = $("#order_disc option:selected");
+
+            var voucherPotongan = parseFloat(selectedOption.data('potongan')) || 0;
+
+            var productSubtotal = parseFloat("{{ $total }}") || 0;
+            var totalDiscount = (voucherPotongan / 100) * productSubtotal;
+            var grandTotal = productSubtotal - totalDiscount;
+
+            $("#productSubtotal").html("<b>Rp. " + productSubtotal.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</b>");
+            $("#totalDiscount").html("<b>Rp. " + totalDiscount.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</b>");
+            if(selectedOption.data('namavoucher')) {
+                $("#voucherValue").html("<b>" + selectedOption.data('namavoucher') + "</b>");
+            } else {
+                $("#voucherValue").html("<b>-</b>");
+            }
+            $("#grandTotal").html("<b>Rp. " + grandTotal.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</b>");
+        }
+
+        // Call the function initially
+        updateOrder();
+
+        // Bind the function to select change event
+        $("#order_disc").on("change", function () {
+            updateOrder();
+        });
+    </script>
 @endsection

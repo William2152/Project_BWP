@@ -557,8 +557,6 @@ class ProfileUser extends Controller
             return back()->with('err', 'saldo tidak cukup');
         }
 
-
-
         //validation
         $req->validate(
             [
